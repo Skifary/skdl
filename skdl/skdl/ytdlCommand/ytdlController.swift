@@ -30,4 +30,8 @@ class ytdlController {
         return jsons
     }
     
+    func download(url: String, localPath: String) {
+        
+    }
+    
 }

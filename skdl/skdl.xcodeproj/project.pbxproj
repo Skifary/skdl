@@ -52,7 +52,14 @@
 		D5B68E111F5FA58800D8D4A6 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68DEE1F5FA58800D8D4A6 /* LayoutConstraint.swift */; };
 		D5B68E121F5FA58800D8D4A6 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68DEF1F5FA58800D8D4A6 /* LayoutConstraintItem.swift */; };
 		D5B68E131F5FA58800D8D4A6 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68DF11F5FA58800D8D4A6 /* UILayoutSupport+Extensions.swift */; };
+		D5C6B22D1F64F0FE00BC2D04 /* FileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C6B22C1F64F0FE00BC2D04 /* FileSize.swift */; };
+		D5C6B2341F6509C600BC2D04 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C6B2311F6509C600BC2D04 /* MASPreferencesWindow.xib */; };
+		D5C6B2351F6509C600BC2D04 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C6B2331F6509C600BC2D04 /* MASPreferencesWindowController.m */; };
+		D5C6B2391F650ACD00BC2D04 /* PGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C6B2371F650ACD00BC2D04 /* PGeneralViewController.swift */; };
+		D5C6B23A1F650ACD00BC2D04 /* PGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5C6B2381F650ACD00BC2D04 /* PGeneralViewController.xib */; };
+		D5C6B2421F65100D00BC2D04 /* PreferenceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C6B2411F65100D00BC2D04 /* PreferenceDefine.swift */; };
 		D5C72ABD1F6286A5004CB147 /* ytdlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C72ABC1F6286A5004CB147 /* ytdlController.swift */; };
+		D5C72ABF1F62951D004CB147 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C72ABE1F62951D004CB147 /* JSONHelper.swift */; };
 		D5D10DC41F513AB100044739 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D10DC31F513AB100044739 /* MainWindowController.swift */; };
 		D5D10DCF1F515ED800044739 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D10DCE1F515ED800044739 /* MainToolbar.swift */; };
 		D5D10DD11F515EF400044739 /* MainToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D10DD01F515EF400044739 /* MainToolbarItem.swift */; };
@@ -109,7 +116,18 @@
 		D5B68DEF1F5FA58800D8D4A6 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		D5B68DF01F5FA58800D8D4A6 /* SnapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapKit.h; sourceTree = "<group>"; };
 		D5B68DF11F5FA58800D8D4A6 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		D5C6B22C1F64F0FE00BC2D04 /* FileSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileSize.swift; path = Utils/FileSize.swift; sourceTree = "<group>"; };
+		D5C6B22F1F6509C600BC2D04 /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
+		D5C6B2301F6509C600BC2D04 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		D5C6B2311F6509C600BC2D04 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		D5C6B2321F6509C600BC2D04 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		D5C6B2331F6509C600BC2D04 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		D5C6B2371F650ACD00BC2D04 /* PGeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PGeneralViewController.swift; path = Preference/ViewController/PGeneralViewController.swift; sourceTree = "<group>"; };
+		D5C6B2381F650ACD00BC2D04 /* PGeneralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGeneralViewController.xib; path = Preference/ViewController/PGeneralViewController.xib; sourceTree = "<group>"; };
+		D5C6B2401F650E9E00BC2D04 /* skdl-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "skdl-Bridging-Header.h"; sourceTree = "<group>"; };
+		D5C6B2411F65100D00BC2D04 /* PreferenceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferenceDefine.swift; path = Preference/PreferenceDefine.swift; sourceTree = "<group>"; };
 		D5C72ABC1F6286A5004CB147 /* ytdlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlController.swift; path = ytdlCommand/ytdlController.swift; sourceTree = "<group>"; };
+		D5C72ABE1F62951D004CB147 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONHelper.swift; path = Utils/JSONHelper.swift; sourceTree = "<group>"; };
 		D5D10DC31F513AB100044739 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = Main/MainWindowController.swift; sourceTree = "<group>"; };
 		D5D10DCE1F515ED800044739 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainToolbar.swift; path = Main/Toolbar/MainToolbar.swift; sourceTree = "<group>"; };
 		D5D10DD01F515EF400044739 /* MainToolbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainToolbarItem.swift; path = Main/Toolbar/MainToolbarItem.swift; sourceTree = "<group>"; };
@@ -147,6 +165,7 @@
 		D5067AF01F4E7FEB00B93ED4 /* skdl */ = {
 			isa = PBXGroup;
 			children = (
+				D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */,
 				D5D10DC61F5140EE00044739 /* FileDownloader */,
 				D5D10DC71F5140F700044739 /* FileManager */,
 				D5D10DC21F513A7900044739 /* Main */,
@@ -180,6 +199,8 @@
 		D5067B021F4E80A000B93ED4 /* Preference */ = {
 			isa = PBXGroup;
 			children = (
+				D5C6B2361F6509D200BC2D04 /* ViewController */,
+				D5C6B2411F65100D00BC2D04 /* PreferenceDefine.swift */,
 			);
 			name = Preference;
 			sourceTree = "<group>";
@@ -187,6 +208,7 @@
 		D5067B031F4E818000B93ED4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				D5C6B22E1F6509C600BC2D04 /* MASPreferences */,
 				D5B68DCE1F5FA58800D8D4A6 /* SnapKit */,
 				D5067B001F4E807200B93ED4 /* youtube-dl */,
 			);
@@ -198,6 +220,7 @@
 			children = (
 				D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */,
 				D5067AFA1F4E7FEB00B93ED4 /* Info.plist */,
+				D5C6B2401F650E9E00BC2D04 /* skdl-Bridging-Header.h */,
 			);
 			name = SurportFiles;
 			sourceTree = "<group>";
@@ -271,13 +294,34 @@
 			path = Vendor/SnapKit;
 			sourceTree = "<group>";
 		};
+		D5C6B22E1F6509C600BC2D04 /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				D5C6B22F1F6509C600BC2D04 /* MASPreferences.h */,
+				D5C6B2301F6509C600BC2D04 /* MASPreferencesViewController.h */,
+				D5C6B2311F6509C600BC2D04 /* MASPreferencesWindow.xib */,
+				D5C6B2321F6509C600BC2D04 /* MASPreferencesWindowController.h */,
+				D5C6B2331F6509C600BC2D04 /* MASPreferencesWindowController.m */,
+			);
+			name = MASPreferences;
+			path = Vendor/MASPreferences;
+			sourceTree = "<group>";
+		};
+		D5C6B2361F6509D200BC2D04 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5C6B2371F650ACD00BC2D04 /* PGeneralViewController.swift */,
+				D5C6B2381F650ACD00BC2D04 /* PGeneralViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		D5D10DC21F513A7900044739 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				D5EC7FCE1F5EC69F009DD3D5 /* Menu */,
 				D5D10DCD1F515EB200044739 /* Toolbar */,
 				D5D10DCA1F51483B00044739 /* View */,
-				D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */,
 				D5067AF71F4E7FEB00B93ED4 /* Main.storyboard */,
 				D5D10DC31F513AB100044739 /* MainWindowController.swift */,
 			);
@@ -288,6 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				D554C4C11F6029E5002D4BF9 /* Model */,
+				D5C72ABE1F62951D004CB147 /* JSONHelper.swift */,
+				D5C6B22C1F64F0FE00BC2D04 /* FileSize.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -417,12 +463,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5C6B23A1F650ACD00BC2D04 /* PGeneralViewController.xib in Resources */,
 				D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */,
 				D554C4BB1F6006AF002D4BF9 /* NTWindowController.xib in Resources */,
 				D554C4C01F6029C4002D4BF9 /* FIWindowController.xib in Resources */,
 				D5067AF91F4E7FEB00B93ED4 /* Main.storyboard in Resources */,
 				D56AFB321F612B5000131348 /* youtube-dl in Resources */,
 				D5B68E101F5FA58800D8D4A6 /* Info.plist in Resources */,
+				D5C6B2341F6509C600BC2D04 /* MASPreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +485,7 @@
 				D5B68DF21F5FA58800D8D4A6 /* Constraint.swift in Sources */,
 				D5B68E041F5FA58800D8D4A6 /* ConstraintMakerPriortizable.swift in Sources */,
 				D5B68DF51F5FA58800D8D4A6 /* ConstraintConstantTarget.swift in Sources */,
+				D5C6B2351F6509C600BC2D04 /* MASPreferencesWindowController.m in Sources */,
 				D5B68E061F5FA58800D8D4A6 /* ConstraintMultiplierTarget.swift in Sources */,
 				D5B68DFA1F5FA58800D8D4A6 /* ConstraintItem.swift in Sources */,
 				D5D10DC41F513AB100044739 /* MainWindowController.swift in Sources */,
@@ -445,7 +494,9 @@
 				D5B68E031F5FA58800D8D4A6 /* ConstraintMakerFinalizable.swift in Sources */,
 				D5D10DD31F51672900044739 /* MainWindow.swift in Sources */,
 				D5B68DFE1F5FA58800D8D4A6 /* ConstraintLayoutSupport.swift in Sources */,
+				D5C6B22D1F64F0FE00BC2D04 /* FileSize.swift in Sources */,
 				D5B68E051F5FA58800D8D4A6 /* ConstraintMakerRelatable.swift in Sources */,
+				D5C72ABF1F62951D004CB147 /* JSONHelper.swift in Sources */,
 				D5B68E0B1F5FA58800D8D4A6 /* ConstraintRelation.swift in Sources */,
 				D5B68E121F5FA58800D8D4A6 /* LayoutConstraintItem.swift in Sources */,
 				D5C72ABD1F6286A5004CB147 /* ytdlController.swift in Sources */,
@@ -469,6 +520,7 @@
 				D5B68E0C1F5FA58800D8D4A6 /* ConstraintView+Extensions.swift in Sources */,
 				D5B68E131F5FA58800D8D4A6 /* UILayoutSupport+Extensions.swift in Sources */,
 				D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */,
+				D5C6B2391F650ACD00BC2D04 /* PGeneralViewController.swift in Sources */,
 				D5EC7FD21F5ECC8C009DD3D5 /* MenuConstant.swift in Sources */,
 				D5B68E091F5FA58800D8D4A6 /* ConstraintPriorityTarget.swift in Sources */,
 				D5B68DFD1F5FA58800D8D4A6 /* ConstraintLayoutGuideDSL.swift in Sources */,
@@ -478,6 +530,7 @@
 				D5D10DD11F515EF400044739 /* MainToolbarItem.swift in Sources */,
 				D5B68DF81F5FA58800D8D4A6 /* ConstraintInsets.swift in Sources */,
 				D5B68DF61F5FA58800D8D4A6 /* ConstraintDescription.swift in Sources */,
+				D5C6B2421F65100D00BC2D04 /* PreferenceDefine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -611,6 +665,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
