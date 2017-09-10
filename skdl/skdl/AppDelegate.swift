@@ -13,12 +13,14 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    //MARK:- var
     
-    lazy var newTaskWindowController: NTWindowController = {
-        return NTWindowController()
-    }()
+    var newTaskWindowController: NTWindowController?
+    
+    var prefecenceWindowController: MASPreferencesWindowController?
 
-
+    //MARK:- application
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         setMenu()
@@ -43,6 +45,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    //MARK:- IBAction
+    
+    @IBAction func showPreference(_ sender: Any) {
+        
+        let viewControllers: [NSViewController] = [PGeneralViewController()]
+        
+        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: Preference.kTitle)
+        
+        prefecenceWindowController?.window?.delegate = self
+        
+        prefecenceWindowController?.showWindow(nil)
+        
+    }
     
     //MARK:- menu
     
@@ -76,11 +91,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc fileprivate func newTaskAction() {
-        if (newTaskWindowController.window?.isVisible)! {
+        
+        if newTaskWindowController == nil {
+            newTaskWindowController = NTWindowController()
+        }
+        
+        if (newTaskWindowController?.window?.isVisible)! {
             return
         }
-        newTaskWindowController.showWindow(nil)
-        newTaskWindowController.window?.center()
+        newTaskWindowController?.showWindow(nil)
+        newTaskWindowController?.window?.center()
     }
     
     // window menu
@@ -107,3 +127,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 }
 
+
+extension AppDelegate: NSWindowDelegate {
+    
+    func windowWillClose(_ notification: Notification) {
+        if (prefecenceWindowController?.window?.isEqual(notification.object))! {
+            prefecenceWindowController = nil
+        }
+    }
+    
+}

@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NTWindowController" customModule="skdl" customModuleProvider="target">
             <connections>
-                <outlet property="startDownloadButton" destination="220-SM-jTA" id="l25-QX-6WK"/>
+                <outlet property="analysisButton" destination="220-SM-jTA" id="DzS-BZ-uMr"/>
                 <outlet property="urlTextView" destination="Ltz-ac-y12" id="YQH-bf-xsB"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -55,12 +55,12 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="69" id="bCO-hO-EkT"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mut-8M-M7a">
+                        <buttonCell key="cell" type="push" title="解析链接" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mut-8M-M7a">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="startDownload:" target="-2" id="viG-fJ-SbK"/>
+                            <action selector="analysisAction:" target="-2" id="0YR-DC-P7K"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yY7-E6-1uR">
