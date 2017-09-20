@@ -16,7 +16,7 @@ fileprivate typealias C = Constant
 
 class MainWindowController: NSWindowController {
     
-    
+    var mainViewController: MainViewController?
     
     //MARK:- life cycle
     
@@ -24,7 +24,8 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
         
         setWindow()
-       
+        setMainViewController()
+        
     }
     
     //MARK:- file private
@@ -35,9 +36,14 @@ class MainWindowController: NSWindowController {
     }
     
     fileprivate func setToolbar() {
-        let toolbar = MainToolbar(identifier: kMainToolbarIdentifier)
+        let toolbar = MainToolbar(identifier: NSToolbar.Identifier(kMainToolbarIdentifier))
         toolbar.delegate = self
         self.window?.toolbar = toolbar
+    }
+    
+    fileprivate func setMainViewController() {
+        mainViewController = MainViewController()
+        window?.contentViewController = mainViewController
     }
     
     
@@ -47,27 +53,27 @@ class MainWindowController: NSWindowController {
 //MARK:-
 extension MainWindowController: NSToolbarDelegate {
     
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
+    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return [
-                kMainToolbarItemDownloaderIdentifier,
-                kMainToolbarItemFileManagerIdentifier,
+                NSToolbarItem.Identifier(rawValue: kMainToolbarItemDownloaderIdentifier),
+                NSToolbarItem.Identifier(rawValue: kMainToolbarItemFileManagerIdentifier),
         ]
     }
     
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
+    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return [
-                NSToolbarFlexibleSpaceItemIdentifier,
-                kMainToolbarItemDownloaderIdentifier,
-                kMainToolbarItemFileManagerIdentifier,
-                NSToolbarFlexibleSpaceItemIdentifier,
+                NSToolbarItem.Identifier.flexibleSpace,
+                NSToolbarItem.Identifier(rawValue: kMainToolbarItemDownloaderIdentifier),
+                NSToolbarItem.Identifier(rawValue: kMainToolbarItemFileManagerIdentifier),
+                NSToolbarItem.Identifier.flexibleSpace,
         ]
     }
     
-    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: String, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         
-        let toolbarItem = MainToolbarItem(itemIdentifier: itemIdentifier)
+        let toolbarItem = MainToolbarItem(itemIdentifier: NSToolbarItem.Identifier(itemIdentifier.rawValue))
         toolbarItem.target = self
-        if itemIdentifier == kMainToolbarItemDownloaderIdentifier {
+        if itemIdentifier.rawValue == kMainToolbarItemDownloaderIdentifier {
             toolbarItem.action = #selector(downloadItemClick)
             toolbarItem.label = kMainToolbarItemDownloaderTitle
         } else {
@@ -78,11 +84,13 @@ extension MainWindowController: NSToolbarDelegate {
         
     }
     
-    func downloadItemClick() {
-        print("downloadItemClick")
+    @objc func downloadItemClick() {
+        let mainVC = self.contentViewController as! MainViewController
+        mainVC.showFileDownloadView()
     }
     
-    func fileItemClick() {
-         print("fileItemClick")
+    @objc func fileItemClick() {
+        let mainVC = self.contentViewController as! MainViewController
+        mainVC.showFileManagerView()
     }
 }

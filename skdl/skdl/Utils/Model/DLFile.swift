@@ -24,9 +24,11 @@ class DLFile: NSObject {
     
     var playlist: String? = ""
     
+    var local: String? = ""
+    
     var sizeDescription: String {
         get {
-           return FileSize.format(size: size!)
+           return FileSize.format(size: size)
         }
     }
     

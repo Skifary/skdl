@@ -113,16 +113,10 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="yV0-Fb-JgA"/>
                         </constraints>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cOK-mj-RnM" id="7q0-yP-uci">
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="7q0-yP-uci">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
-                            <menu key="menu" id="MbE-SE-onN">
-                                <items>
-                                    <menuItem title="Item 1" state="on" id="cOK-mj-RnM"/>
-                                    <menuItem title="Item 2" id="uO2-uh-bmS"/>
-                                    <menuItem title="Item 3" id="4TO-FX-DFx"/>
-                                </items>
-                            </menu>
+                            <menu key="menu" id="MbE-SE-onN"/>
                         </popUpButtonCell>
                     </popUpButton>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="dIQ-RZ-yf9">

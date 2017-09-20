@@ -23,7 +23,7 @@ fileprivate typealias C = Constant
 
 class MainToolbarItem: NSToolbarItem {
     
-    override init(itemIdentifier: String) {
+    override init(itemIdentifier: NSToolbarItem.Identifier) {
         super.init(itemIdentifier: itemIdentifier)
         
         

@@ -14,6 +14,11 @@ fileprivate struct Constant {
     static let windowDefaultHeight: Int = 300
     
     static let windowTitle = "新建下载任务"
+    
+    static let warningTitle = "无效的链接"
+    
+    static let warningMessage = "下载链接无效"
+    
 }
 
 fileprivate typealias C = Constant
@@ -23,31 +28,44 @@ class NTWindowController: NSWindowController {
 
     //MARK:- IBOutlet
     @IBOutlet var urlTextView: NSTextView!
+    
     @IBOutlet weak var analysisButton: NSButton!
+    
+    @IBOutlet weak var waitingView: NSVisualEffectView!
+    
+    @IBOutlet weak var waitingIdicator: NSProgressIndicator!
     
     //MARK:- var
     
     var fiWindowController: FIWindowController?
     
     //MARK:- life cycle
-    override var windowNibName: String? {
-        return "NTWindowController"
+//    override var windowNibName: String? {
+//        return "NTWindowController"
+//    }
+    
+    override var windowNibName: NSNib.Name? {
+        return NSNib.Name("NTWindowController")
     }
     
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        setWindow()
-        
-        self.urlTextView.delegate = self
+        basicSetting()
         
     }
     
     //MARK:- file private
     
+    fileprivate func basicSetting() {
+        setWindow()
+        hideWaitingView()
+        urlTextView.isRichText = false
+    }
+    
     fileprivate func setWindow() {
         self.window?.delegate = self
-        window?.styleMask = [.borderless, .titled, .closable]
+        window?.styleMask = [NSWindow.StyleMask.borderless, NSWindow.StyleMask.titled, NSWindow.StyleMask.closable]
         window?.backingType = .buffered
         window?.title = C.windowTitle
         let frame = NSRect(x: 0, y: 0, width: C.windowDefaultWidth, height: C.windowDefaultHeight)
@@ -57,46 +75,66 @@ class NTWindowController: NSWindowController {
         window?.center()
     }
     
-//    fileprivate func setText
+    fileprivate func showWaitingView() {
+        self.waitingView.isHidden = false
+        self.waitingIdicator.startAnimation(nil)
+        self.urlTextView.isEditable = false
+        self.analysisButton.isEnabled = false
+    }
     
+    fileprivate func hideWaitingView() {
+        self.waitingView.isHidden = true
+        self.waitingIdicator.stopAnimation(nil)
+        self.urlTextView.isEditable = true
+        self.analysisButton.isEnabled = true
+    }
+
     //MARK:- button action
     
     @IBAction func analysisAction(_ sender: Any) {
+        showWaitingView()
+        let separatedStr = urlTextView.string.components(separatedBy: "\n")
+        DispatchQueue.global().async {
+            let urls = separatedStr.filter({ (str) -> Bool in
+                if str == "" {
+                    return false
+                }
+                return ytdlController.shared.isUrlAvailable(url: str)
+            })
+            
+            if (urls.isEmpty) {
+                self.hideWaitingView()
+                DispatchQueue.main.async {
+                    MessageAlert.show(title: C.warningTitle, message: C.warningMessage)
+                }
+                return
+            }
         
-        let urls: [String]? = urlTextView.string?.components(separatedBy: "\n")
-        
-         /* TODO: 这里需要放到其他线程，显示菊花 */
-        let jsons = ytdlController.shared.dumpJson(urls: urls!)
-        let dics = JSONHelper.convertJSONToDictionary(jsons: jsons!)
-        var files: [DLFile] = []
-        
-        if (dics?.isEmpty)! {
-            /* TODO: 弹窗错误
-             */
-            // 这里需要加弹窗错误
-            return
+            let jsons = ytdlController.shared.dumpJson(urls: urls)
+            let dics = JSONHelper.convertJSONToDictionary(jsons: jsons!)
+            
+            DispatchQueue.main.async {
+                self.hideWaitingView()
+                var files: [DLFile] = []
+                for (index,item) in urls.enumerated() {
+                    let file = DLFile()
+                    file.url = item
+                    file.name = dics?[index][YDJKey.kTitle] as? String
+                    file.ext = dics?[index][YDJKey.kExt] as? String
+                    file.size = dics?[index][YDJKey.kFileSize] as? uint64
+                    file.duration = dics?[index][YDJKey.kDuration] as? uint64
+                    file.format = dics?[index][YDJKey.kFormat] as? String
+                    file.playlist = dics?[index][YDJKey.kPlayList] as? String
+                    files.append(file)
+                }
+                self.fiWindowController = FIWindowController(files: files)
+                self.fiWindowController?.showWindow(self)
+            }
+
         }
-        
-        for (index,item) in (urls?.enumerated())! {
-            let file = DLFile()
-            file.url = item
-            file.name = dics?[index]["title"] as? String
-            file.ext = dics?[index]["ext"] as? String
-            file.size = dics?[index]["filesize"] as? uint64
-            file.duration = dics?[index]["duration"] as? uint64
-            file.format = dics?[index]["format"] as? String
-            file.playlist = dics?[index]["playlist"] as? String
-            files.append(file)
-        }
-        
-        fiWindowController = FIWindowController(files: files)
-        
-        fiWindowController?.showWindow(self)
-        
     }
     
 }
-
 
 extension NTWindowController: NSWindowDelegate {
  
@@ -104,30 +142,5 @@ extension NTWindowController: NSWindowDelegate {
         let appDelegate = NSApp.delegate as! AppDelegate
         appDelegate.newTaskWindowController = nil
     }
-    
-}
-
-/* TODO: 这里需要去除富文本
- */
-
-extension NTWindowController: NSTextViewDelegate {
-    
-    func textDidChange(_ notification: Notification) {
-        print("text did change")
-        
-   //    urlTextView.textStorage?.attributeKeys.forEach { (key) in
-     //       urlTextView.textStorage?.removeAttribute(key, range: NSRange.init(location: 0, length: urlTextView.attributedString().length))
-      //  }
-      //  return
-//     //   urlTextView.textStorage?.removeAttribute(NSBackgroundColorAttributeName, range: <#T##NSRange#>)
-//        
-//        self.urlTextView.string = "123"
-//        
-//        let a = self.urlTextView.attributedString().attributeKeys
-//        _=1
-//       // self.urlTextView.attributedString().
-    }
-    
-    
     
 }

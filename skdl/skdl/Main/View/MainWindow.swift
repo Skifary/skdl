@@ -21,9 +21,9 @@ fileprivate typealias C = Constant
 
 class MainWindow: NSWindow {
 
-    override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
         let frame = NSRect(x: 0, y: 0, width: C.windowDefaultWidth, height: C.windowDefaultHeight)
-        super.init(contentRect: frame, styleMask: [.borderless, .titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: true)
+        super.init(contentRect: frame, styleMask: [NSWindow.StyleMask.borderless, NSWindow.StyleMask.titled, NSWindow.StyleMask.closable, NSWindow.StyleMask.miniaturizable, NSWindow.StyleMask.resizable], backing: .buffered, defer: true)
         self.center()
         self.maxSize = frame.size
         self.minSize = frame.size

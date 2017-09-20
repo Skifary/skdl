@@ -17,6 +17,8 @@ fileprivate struct Constant {
     
     static let sizeTableColumn = "大小"
     
+    static let chooseStoragePathTitle = "选择下载路径"
+    
 }
 
 fileprivate typealias C = Constant
@@ -39,16 +41,26 @@ class FIWindowController: NSWindowController {
     let files: [DLFile]?
     
     //MARK:- life cycle
-    override var windowNibName: String? {
-        return "FIWindowController"
+//    override var windowNibName: String? {
+//        return "FIWindowController"
+//    }
+//    
+    override var windowNibName: NSNib.Name? {
+        return NSNib.Name.init("FIWindowController")
     }
     
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        setTableView()
         
+        basicSetting()
+
+    }
+    
+    func basicSetting() {
         setWindow()
+        setTableView()
+        setPopUpButton()
     }
     
     func setWindow() {
@@ -60,11 +72,19 @@ class FIWindowController: NSWindowController {
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
         nameTableColumn.title = C.nameTableColumnTitle
+        nameTableColumn.width = 400
         extTableColumn.title = C.extTableColumnTitle
+        extTableColumn.width = 80
         sizeTableColumn.title = C.sizeTableColumn
-        
+        sizeTableColumn.width = 80
+        tableView.wantsLayer = true
+        tableView.layer?.borderWidth = 0
+    }
+    
+    func setPopUpButton() {
+        popUpButton.addItems(withTitles: PV.historyStoragePaths!)
+        popUpButton.selectItem(withTitle: PV.localStoragePath!)
     }
     
     init(files: [DLFile]?) {
@@ -89,12 +109,26 @@ class FIWindowController: NSWindowController {
     //MARK:- IBAction
     
     @IBAction func selectPath(_ sender: Any) {
-        
+        let folderURL = FolderBrowser.chooseFolder(title: C.chooseStoragePathTitle)
+        if folderURL == nil {
+            return
+        }
+        if !popUpButton.itemTitles.contains(folderURL!) {
+            popUpButton.addItem(withTitle: folderURL!)
+        }
+        popUpButton.selectItem(withTitle: folderURL!)
     }
     
-    
     @IBAction func startDownload(_ sender: Any) {
+        let localFolder = (popUpButton.selectedItem?.title)!
+        PV.saveLocalStoragePath(path: localFolder)
+        PV.appendHistoryPath(path: localFolder)
         
+        for file in files! {
+            file.local = localFolder + "/" + file.name! + "." + file.ext!
+
+            DownloadManager.manager.download(with: file)
+        }
         
     }
 }
@@ -110,29 +144,21 @@ extension FIWindowController: NSWindowDelegate {
 
 extension FIWindowController: NSTableViewDelegate, NSTableViewDataSource {
     
-    
-    
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 50
-        //return (files?.count)!
+        return (files?.count)!
     }
     
-    
-    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        
         var cell: NSCell?
         if (tableColumn?.isEqual(nameTableColumn))! {
-            cell = NSTextFieldCell(textCell: (files?[0].name)!)
+            cell = NSTextFieldCell(textCell: (files?[row].name)!)
         } else if (tableColumn?.isEqual(extTableColumn))! {
-            cell = NSTextFieldCell(textCell: (files?[0].ext)!)
+            cell = NSTextFieldCell(textCell: (files?[row].ext)!)
         } else {
-            cell = NSTextFieldCell(textCell: (files?[0].sizeDescription)!)
+            cell = NSTextFieldCell(textCell: (files?[row].sizeDescription)!)
         }
         
         return cell
     }
-    
-    
     
 }

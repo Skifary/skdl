@@ -23,8 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        // 注册默认自定义偏好
+        UserDefaults.standard.register(defaults: Preference.defaultPreference)
+ 
         setMenu()
-        
+    
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -51,11 +54,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let viewControllers: [NSViewController] = [PGeneralViewController()]
         
-        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: Preference.kTitle)
+        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: PreferenceDefine.kTitle)
         
         prefecenceWindowController?.window?.delegate = self
         
         prefecenceWindowController?.showWindow(nil)
+        
+        prefecenceWindowController?.window?.center()
         
     }
     
@@ -85,8 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     fileprivate func newTaskMenuItem() -> NSMenuItem {
+        
+        
         let fmi = NSMenuItem(title: MT.kNewTaskTitle, action: #selector(newTaskAction), keyEquivalent: "n")
-        fmi.keyEquivalentModifierMask = [.command]
+        fmi.keyEquivalentModifierMask = [NSEvent.ModifierFlags.command]
         return fmi
     }
     
@@ -117,7 +124,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     fileprivate func closeMenuItem() -> NSMenuItem {
         let fmi = NSMenuItem(title: MT.kNewTaskTitle, action: #selector(closeAction), keyEquivalent: "w")
-        fmi.keyEquivalentModifierMask = [.command]
+        fmi.keyEquivalentModifierMask = [NSEvent.ModifierFlags.command]
         return fmi
     }
     

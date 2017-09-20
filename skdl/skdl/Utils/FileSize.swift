@@ -30,8 +30,11 @@ class FileSize {
         }
     }
 
-    static func format(size: uint64) -> String {
-        var formatSize: Double = Double(size)
+    static func format(size: uint64?) -> String {
+        if size == nil {
+            return "unkown size"
+        }
+        var formatSize: Double = Double(size!)
         var digits = -1
         while formatSize > 1 {
             formatSize /= 1000

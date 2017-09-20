@@ -14,7 +14,7 @@ let kMainToolbarIdentifier: String = "com.skdl.maintoolbar"
 
 class MainToolbar: NSToolbar {
 
-    override init(identifier: String) {
+    override init(identifier: NSToolbar.Identifier) {
         super.init(identifier: identifier)
 
         self.displayMode = .labelOnly

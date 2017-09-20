@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="analysisButton" destination="220-SM-jTA" id="DzS-BZ-uMr"/>
                 <outlet property="urlTextView" destination="Ltz-ac-y12" id="YQH-bf-xsB"/>
+                <outlet property="waitingIdicator" destination="DUY-dR-GPx" id="M2s-4g-54Y"/>
+                <outlet property="waitingView" destination="9hW-cy-xdX" id="tvi-pn-P9q"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -75,6 +77,31 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <visualEffectView appearanceType="vibrantDark" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-cy-xdX">
+                        <rect key="frame" x="161" y="156" width="128" height="90"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-dR-GPx">
+                                <rect key="frame" x="48" y="38" width="32" height="32"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-8d-Eyn">
+                                <rect key="frame" x="40" y="13" width="49" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="解析中" id="he8-PQ-XnI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="DUY-dR-GPx" firstAttribute="top" secondItem="9hW-cy-xdX" secondAttribute="top" constant="20" symbolic="YES" id="C8X-bU-4Su"/>
+                            <constraint firstAttribute="width" constant="128" id="FEL-MV-A1E"/>
+                            <constraint firstAttribute="height" constant="90" id="Hsg-fk-sqX"/>
+                            <constraint firstItem="DUY-dR-GPx" firstAttribute="centerX" secondItem="9hW-cy-xdX" secondAttribute="centerX" id="MGL-3a-Yuq"/>
+                            <constraint firstItem="DUY-dR-GPx" firstAttribute="centerX" secondItem="5qw-8d-Eyn" secondAttribute="centerX" id="fb0-yd-kNE"/>
+                            <constraint firstItem="5qw-8d-Eyn" firstAttribute="top" secondItem="DUY-dR-GPx" secondAttribute="bottom" constant="8" symbolic="YES" id="kKl-tO-DMh"/>
+                            <constraint firstItem="5qw-8d-Eyn" firstAttribute="leading" secondItem="9hW-cy-xdX" secondAttribute="leading" constant="42" id="mKU-b6-NTQ"/>
+                        </constraints>
+                    </visualEffectView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="220-SM-jTA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="191" id="1Tu-Nw-WfN"/>
@@ -83,9 +110,11 @@
                     <constraint firstItem="yY7-E6-1uR" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="BbQ-UJ-TO0"/>
                     <constraint firstItem="220-SM-jTA" firstAttribute="top" secondItem="DJI-nd-1fT" secondAttribute="bottom" constant="20" id="CId-9u-XUH"/>
                     <constraint firstItem="DJI-nd-1fT" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="IxX-4b-mH7"/>
+                    <constraint firstItem="9hW-cy-xdX" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="161" id="O7g-us-hye"/>
                     <constraint firstItem="yY7-E6-1uR" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="OSC-cV-igD"/>
                     <constraint firstAttribute="trailing" secondItem="DJI-nd-1fT" secondAttribute="trailing" constant="20" id="ppD-vb-KHs"/>
                     <constraint firstAttribute="bottom" secondItem="220-SM-jTA" secondAttribute="bottom" constant="20" id="qUp-F4-ZQu"/>
+                    <constraint firstItem="9hW-cy-xdX" firstAttribute="top" secondItem="yY7-E6-1uR" secondAttribute="bottom" constant="17" id="vnT-Lx-5I8"/>
                 </constraints>
             </view>
             <connections>
