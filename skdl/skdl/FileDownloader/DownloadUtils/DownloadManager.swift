@@ -11,47 +11,69 @@ import Foundation
 fileprivate let operationQueueName = "com.skifary.skdl.download"
 fileprivate let maxConcurrentOperationCount = 5
 
+typealias StartHandle = () -> Void
+typealias EndHandle = () -> Void
+
+
 class DownloadManager {
     
     //MARK:- property
     
-    var executingTask: SKQueue<DownloadTask>? = SKQueue<DownloadTask>()
+    var unfinishedFiles = [DLFile]()
     
-    var waitingTask: SKQueue<DownloadTask>? ///????待定 先不考虑
+    var executingQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = operationQueueName
+        queue.maxConcurrentOperationCount = maxConcurrentOperationCount
+        return queue
+    }()
     
-    var executingQueue: OperationQueue
+    fileprivate var startHandles = [StartHandle]()
+    
+    fileprivate var endHandles = [EndHandle]()
     
     //MARK:- singleton
     
     static let manager = DownloadManager()
     
     fileprivate init() {
-        executingQueue = OperationQueue()
-        executingQueue.name = operationQueueName
-        executingQueue.maxConcurrentOperationCount = maxConcurrentOperationCount
     }
     
     //MARK:- api
     
-    
-//    func download(with url: String, local: String, progressCallback: @escaping ProgressCallbackFunc) {
-//        let downloadTask = DownloadTask(with: url, local: local, progressCallback: progressCallback)
-//        self.executingTask?.push(element: downloadTask)
-//        downloadTask.start()
-//    }
-
     func download(with file: DLFile) {
-        let downloadTask = DownloadTask(with: file.url!, local: file.local!)
-        self.executingTask?.push(element: downloadTask)
+        let downloadTask = DownloadTask(with: file)
+        file.task = downloadTask
+        file.state = .downloading
+        self.unfinishedFiles.append(file)
         downloadTask.start()
+        startHandles.forEach { (handle) in
+            handle()
+        }
     }
     
-//    func download(with urls: [String], locals: String, progressCallbacks: [ProgressCallbackFunc]) {
-//        urls.forEach { (url) in
-//            downloadWith(url: url)
-//        }
-        
-        
- //   }
+    func addFile(file: DLFile) {
+        self.unfinishedFiles.append(file)
+    }
+    
+    func taskFinish(task: DownloadTask) {
+        task.file?.state = .completed
+        self.unfinishedFiles.remove(at: self.unfinishedFiles.index(of: task.file!)!)
+        let dlFileManager = DLFileManager.manager
+        dlFileManager.appendFinishedFile(file: task.file!)
+        self.endHandles.forEach { (handle) in
+            DispatchQueue.main.async {
+                handle()
+            }
+        }
+    }
+    
+    func registerStartHandle(handle: @escaping StartHandle) {
+        self.startHandles.append(handle)
+    }
+    
+    func registerEndHandle(handle: @escaping EndHandle) {
+        self.endHandles.append(handle)
+    }
     
 }

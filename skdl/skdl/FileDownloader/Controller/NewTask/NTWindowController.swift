@@ -40,9 +40,6 @@ class NTWindowController: NSWindowController {
     var fiWindowController: FIWindowController?
     
     //MARK:- life cycle
-//    override var windowNibName: String? {
-//        return "NTWindowController"
-//    }
     
     override var windowNibName: NSNib.Name? {
         return NSNib.Name("NTWindowController")
@@ -101,10 +98,9 @@ class NTWindowController: NSWindowController {
                 }
                 return ytdlController.shared.isUrlAvailable(url: str)
             })
-            
             if (urls.isEmpty) {
-                self.hideWaitingView()
                 DispatchQueue.main.async {
+                    self.hideWaitingView()
                     MessageAlert.show(title: C.warningTitle, message: C.warningMessage)
                 }
                 return

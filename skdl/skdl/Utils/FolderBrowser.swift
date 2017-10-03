@@ -24,11 +24,7 @@ class FolderBrowser {
             let urlstring = panel.url?.absoluteString
             let lower = (urlstring?.index((urlstring?.startIndex)!, offsetBy: 7))!
             let upper = (urlstring?.index((urlstring?.endIndex)!, offsetBy: -1))!
-            //let range = Range<String.Index>.init(uncheckedBounds: (lower: lower, upper: upper))
-            //urlstring
-            let res = String(urlstring![lower..<upper])
-            return res
-            //return urlstring?.substring(with: range)
+            return String(urlstring![lower..<upper])
         }
         return nil
     }

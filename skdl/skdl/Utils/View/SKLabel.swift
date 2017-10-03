@@ -33,14 +33,19 @@ class SKLabel: NSTextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init() {
+    convenience init(title: String) {
         self.init(frame: NSRect.zero)
+
+        stringValue = title
+        
     }
     
-    class func descriptionLabel(fontSize: CGFloat) -> SKLabel {
+    class func descriptionLabel(fontSize: CGFloat, title: String = "") -> SKLabel {
         
         let label = SKLabel(frame: NSRect.zero)
+        label.stringValue = title
         label.makeAsDescriptionLabel(fontSize: fontSize)
+        label.alignment = NSTextAlignment.center
         return label
     }
     

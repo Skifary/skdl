@@ -10,6 +10,12 @@ import Cocoa
 
 class DLFile: NSObject {
     
+    enum State {
+        case downloading
+        case uncompleted
+        case completed
+    }
+    
     var url: String? = ""
     
     var name: String? = ""
@@ -25,6 +31,13 @@ class DLFile: NSObject {
     var playlist: String? = ""
     
     var local: String? = ""
+    
+    var progress: String = "0.0%"
+    
+   // var isComplete: Bool = false
+    var state: State = .uncompleted
+    
+    var task: DownloadTask?
     
     var sizeDescription: String {
         get {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,14 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdz-dm-Mij">
-                    <rect key="frame" x="20" y="14" width="440" height="233"/>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="102" horizontalPageScroll="10" verticalLineScroll="102" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdz-dm-Mij">
+                    <rect key="frame" x="20" y="14" width="440" height="258"/>
                     <clipView key="contentView" id="CbW-1a-nYP">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="233"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="258"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="rZV-Ai-Hop">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="233"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" viewBased="YES" id="rZV-Ai-Hop">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -65,10 +65,10 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="vdz-dm-Mij" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="25" id="P2q-h5-YvW"/>
-                <constraint firstAttribute="bottom" secondItem="vdz-dm-Mij" secondAttribute="bottom" constant="14" id="TUP-RQ-7Mf"/>
-                <constraint firstItem="vdz-dm-Mij" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="mzm-S4-0bz"/>
-                <constraint firstAttribute="trailing" secondItem="vdz-dm-Mij" secondAttribute="trailing" constant="20" symbolic="YES" id="oWk-5e-CeR"/>
+                <constraint firstItem="vdz-dm-Mij" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="Uht-Fe-g0X"/>
+                <constraint firstItem="vdz-dm-Mij" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="a5Z-wk-jg1"/>
+                <constraint firstAttribute="trailing" secondItem="vdz-dm-Mij" secondAttribute="trailing" constant="20" symbolic="YES" id="fNz-eE-RgE"/>
+                <constraint firstAttribute="bottom" secondItem="vdz-dm-Mij" secondAttribute="bottom" constant="14" id="kJg-GS-DgF"/>
             </constraints>
         </customView>
     </objects>

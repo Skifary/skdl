@@ -39,12 +39,7 @@ class FIWindowController: NSWindowController {
     weak var parent: NTWindowController?
     
     let files: [DLFile]?
-    
-    //MARK:- life cycle
-//    override var windowNibName: String? {
-//        return "FIWindowController"
-//    }
-//    
+
     override var windowNibName: NSNib.Name? {
         return NSNib.Name.init("FIWindowController")
     }
@@ -52,7 +47,6 @@ class FIWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        
         basicSetting()
 
     }
@@ -90,7 +84,6 @@ class FIWindowController: NSWindowController {
     init(files: [DLFile]?) {
         self.files = files
         super.init(window: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -123,13 +116,12 @@ class FIWindowController: NSWindowController {
         let localFolder = (popUpButton.selectedItem?.title)!
         PV.saveLocalStoragePath(path: localFolder)
         PV.appendHistoryPath(path: localFolder)
-        
         for file in files! {
             file.local = localFolder + "/" + file.name! + "." + file.ext!
-
             DownloadManager.manager.download(with: file)
         }
-        
+        self.close()
+        self.parent?.close()
     }
 }
 
@@ -149,15 +141,15 @@ extension FIWindowController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        var cell: NSCell?
+        var text: String?
         if (tableColumn?.isEqual(nameTableColumn))! {
-            cell = NSTextFieldCell(textCell: (files?[row].name)!)
+            text = files?[row].name
         } else if (tableColumn?.isEqual(extTableColumn))! {
-            cell = NSTextFieldCell(textCell: (files?[row].ext)!)
+            text = files?[row].ext
         } else {
-            cell = NSTextFieldCell(textCell: (files?[row].sizeDescription)!)
+            text = files?[row].sizeDescription
         }
-        
+        let cell = NSTextFieldCell(textCell: text!)
         return cell
     }
     

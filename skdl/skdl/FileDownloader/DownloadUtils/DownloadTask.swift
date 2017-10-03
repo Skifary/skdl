@@ -8,15 +8,29 @@
 
 import Foundation
 
-typealias ProgressEvent = () -> Void
+typealias ProgressEvent = (_ progress: String,_ speed: String,_ eta: String) -> Void
 
 
 
-class DownloadTask {
+class DownloadTask: NSObject {
     
-    private var url: String?
+    //MARK:- property
     
-    private var local: String?
+    weak var file: DLFile?
+    
+    var progressEvent: ProgressEvent?
+
+    private var url: String? {
+        get {
+            return file?.url
+        }
+    }
+    
+    private var local: String? {
+        get {
+            return file?.local
+        }
+    }
     
     private var task: Process?
     
@@ -32,22 +46,15 @@ class DownloadTask {
     
     private var timer: Timer?
     
-    
-    private lazy var events: [ProgressEvent] = []
+   // private lazy var events: [ProgressEvent] = []
     
     //MARK:- life cycle
     
-    convenience init(with url: String, local: String) {
+    convenience init(with file: DLFile) {
         self.init()
-        self.url = url
-        self.local = local
-    //    self.progressCallback = progressCallback
+        self.file = file
     }
-    
-    fileprivate init() {
-        
-    }
-    
+  
     deinit {
         
     }
@@ -61,38 +68,64 @@ class DownloadTask {
         self.task = res.task
         self.task?.launch()
         DownloadManager.manager.executingQueue.addOperation {
+            
+            print("start")
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.readLoop), userInfo: nil, repeats: true)
+        //    RunLoop.current.add(self.timer!, forMode: RunLoopMode.defaultRunLoopMode)
             RunLoop.current.run()
+            
+            print("stop")
+            
         }
     }
     
      @objc fileprivate func readLoop() {
         
+        
+        if self.task?.isRunning == false {
+            finish()
+        }
+        
         let readingStr = String(data: (self.out?.fileHandleForReading.availableData)!, encoding: .utf8)
+        let lastLine = readingStr?.components(separatedBy: "[download]").last
+        let ret = lastLine?.components(separatedBy: " ").filter({ (str) -> Bool in
+            if str == "" {
+                return false
+            }
+            return true
+        })
         
-        let lastLine = readingStr?.components(separatedBy: "\n").last
-        
-        print("lastline ", lastLine)
-        
-        events.forEach { (event) in
-            event()
+        // 有点硬
+        if ret?.count == 7 {
+            let progress = ret![0]
+            let speed = ret![4]
+            let eta = ret![6]
+            DispatchQueue.main.async {
+                self.progressEvent?(progress ,speed ,eta)
+            }
         }
         
     }
-    
-    func appendEvent(event: @escaping ProgressEvent)  {
-        events.append(event)
-    }
-    
+
     func stop() {
-       //  thread?.cancel()
-    }
-    
-    func pause() {
-        //self.timer
         
     }
     
+    func suspend() {
+        file?.state = .uncompleted
+        self.task?.suspend()
+    }
+    
+    func resume() {
+        file?.state = .downloading
+        self.task?.resume()
+    }
 
+    func finish() {
+        let manager = DownloadManager.manager
+        manager.taskFinish(task: self)
+        self.timer?.invalidate()
+        self.timer = nil
+    }
     
 }

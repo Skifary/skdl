@@ -11,26 +11,52 @@ import Cocoa
 /* mdcv: main download cell view */
 let MDCVIdentifier = "com.skifary.skdl.MDCVIdentifier"
 
-//fileprivate struct Constant {
-//    
-//    static let nameTableColumnTitle = "名称"
-//    
-//}
-//
-//fileprivate typealias C = Constant
+fileprivate struct Constant {
+    
+    static let nameLabelTitle = "name"
+    static let sizeLabelTitle = "000.00Kib"
+    static let progressLabelTitle = "00.00%"
+    static let etaLabelTitle = "00:00:00"
+    static let speedLabelTitle = "000.00Kib/s"
+    
+    static let continueImageName = "download_continue"
+    static let pauseImageName = "download_pause"
+}
+
+fileprivate typealias C = Constant
 
 class MainDownloadCellView: NSTableCellView {
 
+    let nameLabel = SKLabel(title: C.nameLabelTitle)
     
-    let nameLabel = SKLabel()
+    let sizeLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.sizeLabelTitle)
     
-    let sizeLabel = SKLabel.descriptionLabel(fontSize: 13)
+    let progressLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.progressLabelTitle)
     
-    let progressLabel = SKLabel.descriptionLabel(fontSize: 13)
+    let etaLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.etaLabelTitle)
     
-    let etaLabel = SKLabel.descriptionLabel(fontSize: 13)
+    let speedLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.speedLabelTitle)
     
-    let speedLabel = SKLabel.descriptionLabel(fontSize: 13)
+    let pauseButton: NSButton = {
+        let button = NSButton()
+        button.bezelStyle = NSButton.BezelStyle.circular
+        button.title = ""
+        button.image = NSImage(named: NSImage.Name(rawValue: C.pauseImageName))
+        button.isBordered = false
+        button.imageScaling = NSImageScaling.scaleProportionallyDown
+        return button
+    }()
+    
+    let horizontalLine: NSBox = {
+        let line = NSBox()
+        line.borderType = NSBorderType.grooveBorder
+        line.boxType = NSBox.BoxType.separator
+        line.fillColor = NSColor.gray
+        return line
+    }()
+    
+   // weak var task: DownloadTask?
+    weak var file: DLFile?
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -40,9 +66,7 @@ class MainDownloadCellView: NSTableCellView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
-        
         setSubview()
-        
         
     }
     
@@ -53,7 +77,7 @@ class MainDownloadCellView: NSTableCellView {
     func setSubviewLayout() {
         
         nameLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(8)
+            make.left.top.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-8)
             make.height.equalTo(17)
         }
@@ -76,14 +100,32 @@ class MainDownloadCellView: NSTableCellView {
             make.left.equalTo(self.progressLabel.snp.right).offset(8)
             make.bottom.equalToSuperview().offset(-8)
             make.height.equalTo(17)
-            make.width.equalTo(57)
+            make.width.equalTo(61)
+        }
+        
+        speedLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-8)
+            make.bottom.equalToSuperview().offset(-8)
+            make.height.equalTo(17)
+            make.width.equalTo(79)
+        }
+        
+        horizontalLine.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        pauseButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(speedLabel)
+            make.bottom.equalTo(speedLabel.snp.top).offset(-8)
+            make.height.width.equalTo(20)
         }
         
     }
     
     func setSubview() {
         
-        let views = [nameLabel, sizeLabel, progressLabel, etaLabel, speedLabel]
+        let views = [nameLabel, sizeLabel, progressLabel, etaLabel, speedLabel, horizontalLine, pauseButton]
         for view in views {
             addSubview(view)
         }
@@ -92,4 +134,16 @@ class MainDownloadCellView: NSTableCellView {
         
     }
     
+    func addButton(target: AnyObject?, selector: Selector?) {
+        pauseButton.target = target
+        pauseButton.action = selector
+    }
+    
+//    func setButtonImage(isDownloading: Bool) {
+//        self.pauseButton.image = NSImage(named: NSImage.Name(isDownloading ? C.pauseImageName : C.continueImageName))
+//    }
+    
+    func setButtonImage(state: DLFile.State) {
+        self.pauseButton.image = NSImage(named: NSImage.Name(state == DLFile.State.downloading ? C.pauseImageName : C.continueImageName))
+    }
 }

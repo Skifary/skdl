@@ -11,6 +11,7 @@
 		D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */; };
 		D5067AF91F4E7FEB00B93ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF71F4E7FEB00B93ED4 /* Main.storyboard */; };
 		D53EE2191F657A1A002D0D28 /* FolderBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */; };
+		D5404A0A1F794D74007E99A1 /* DLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5404A091F794D74007E99A1 /* DLFileManager.swift */; };
 		D554C4BA1F6006AF002D4BF9 /* NTWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4B81F6006AF002D4BF9 /* NTWindowController.swift */; };
 		D554C4BB1F6006AF002D4BF9 /* NTWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D554C4B91F6006AF002D4BF9 /* NTWindowController.xib */; };
 		D554C4BF1F6029C4002D4BF9 /* FIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4BD1F6029C4002D4BF9 /* FIWindowController.swift */; };
@@ -91,6 +92,7 @@
 		D5067AF81F4E7FEB00B93ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5067AFA1F4E7FEB00B93ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderBrowser.swift; path = Utils/FolderBrowser.swift; sourceTree = "<group>"; };
+		D5404A091F794D74007E99A1 /* DLFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DLFileManager.swift; path = FileManager/FilemanagerUtils/DLFileManager.swift; sourceTree = "<group>"; };
 		D554C4B81F6006AF002D4BF9 /* NTWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTWindowController.swift; path = FileDownloader/Controller/NewTask/NTWindowController.swift; sourceTree = "<group>"; };
 		D554C4B91F6006AF002D4BF9 /* NTWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTWindowController.xib; path = FileDownloader/Controller/NewTask/NTWindowController.xib; sourceTree = "<group>"; };
 		D554C4BD1F6029C4002D4BF9 /* FIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FIWindowController.swift; path = FileDownloader/Controller/FileInfo/FIWindowController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,14 @@
 			name = SurportFiles;
 			sourceTree = "<group>";
 		};
+		D5404A061F794CFD007E99A1 /* FileManagerUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D5404A091F794D74007E99A1 /* DLFileManager.swift */,
+			);
+			name = FileManagerUtils;
+			sourceTree = "<group>";
+		};
 		D554C4B71F60068B002D4BF9 /* NewTask */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,14 +362,14 @@
 		D5D10DC51F5140E400044739 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D56771121F70BC9B003421BF /* View */,
-				D554C4C11F6029E5002D4BF9 /* Model */,
-				D5C72ABE1F62951D004CB147 /* JSONHelper.swift */,
+				D561A8401F6A31CF00BEE709 /* ConstCharacter.swift */,
 				D5C6B22C1F64F0FE00BC2D04 /* FileSize.swift */,
 				D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */,
-				D5AAD19D1F678B78001B84C0 /* SKQueue.swift */,
+				D5C72ABE1F62951D004CB147 /* JSONHelper.swift */,
 				D571714B1F69613700EFBB65 /* MessageAlert.swift */,
-				D561A8401F6A31CF00BEE709 /* ConstCharacter.swift */,
+				D554C4C11F6029E5002D4BF9 /* Model */,
+				D5AAD19D1F678B78001B84C0 /* SKQueue.swift */,
+				D56771121F70BC9B003421BF /* View */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -378,6 +388,7 @@
 		D5D10DC71F5140F700044739 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
+				D5404A061F794CFD007E99A1 /* FileManagerUtils */,
 				D561A84E1F6A620500BEE709 /* Controller */,
 			);
 			name = FileManager;
@@ -613,6 +624,7 @@
 				D571714C1F69613700EFBB65 /* MessageAlert.swift in Sources */,
 				D53EE2191F657A1A002D0D28 /* FolderBrowser.swift in Sources */,
 				D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */,
+				D5404A0A1F794D74007E99A1 /* DLFileManager.swift in Sources */,
 				D5C6B2391F650ACD00BC2D04 /* PGeneralViewController.swift in Sources */,
 				D5D9B1F41F721161008E5991 /* ConstraintLayoutSupport.swift in Sources */,
 				D5EC7FD21F5ECC8C009DD3D5 /* MenuConstant.swift in Sources */,

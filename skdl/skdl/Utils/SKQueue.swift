@@ -13,7 +13,6 @@ struct SKQueue<T> {
     
     fileprivate var _data: [T] = []
     
-    
     var array: [T] {
         get {
             return _data
