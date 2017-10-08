@@ -30,7 +30,7 @@ class FileSize {
         }
     }
 
-    static func format(size: uint64?) -> String {
+    static func format(size: Int64?) -> String {
         if size == nil {
             return "unkown size"
         }

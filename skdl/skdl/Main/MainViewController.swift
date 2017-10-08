@@ -11,18 +11,18 @@ import Cocoa
 class MainViewController: NSViewController {
 
     var downloadViewController = MainDownloaderViewController()
-    var fileManagerViewController = FileManagerViewController()
+    var localManagerViewController = LocalManagerViewController()
     
     
     //MARK:- api
     
     func showFileDownloadView() {
-        fileManagerViewController.view.isHidden = true
+        localManagerViewController.view.isHidden = true
         downloadViewController.view.isHidden = false
     }
     
     func showFileManagerView() {
-        fileManagerViewController.view.isHidden = false
+        localManagerViewController.view.isHidden = false
         downloadViewController.view.isHidden = true
     }
     
@@ -42,13 +42,13 @@ class MainViewController: NSViewController {
     
     fileprivate func addSubViewControllers() {
         addChildViewController(downloadViewController)
-        addChildViewController(fileManagerViewController)
+        addChildViewController(localManagerViewController)
         self.view.addSubview(downloadViewController.view)
         downloadViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
-        self.view.addSubview(fileManagerViewController.view)
-        fileManagerViewController.view.snp.makeConstraints { (make) in
+        self.view.addSubview(localManagerViewController.view)
+        localManagerViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
     }

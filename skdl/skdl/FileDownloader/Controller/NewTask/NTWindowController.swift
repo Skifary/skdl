@@ -117,10 +117,11 @@ class NTWindowController: NSWindowController {
                     file.url = item
                     file.name = dics?[index][YDJKey.kTitle] as? String
                     file.ext = dics?[index][YDJKey.kExt] as? String
-                    file.size = dics?[index][YDJKey.kFileSize] as? uint64
-                    file.duration = dics?[index][YDJKey.kDuration] as? uint64
+                    file.size = dics?[index][YDJKey.kFileSize] as? Int64
+                    file.duration = dics?[index][YDJKey.kDuration] as? Int64
                     file.format = dics?[index][YDJKey.kFormat] as? String
                     file.playlist = dics?[index][YDJKey.kPlayList] as? String
+                    file.id = dics?[index][YDJKey.kID] as? String
                     files.append(file)
                 }
                 self.fiWindowController = FIWindowController(files: files)

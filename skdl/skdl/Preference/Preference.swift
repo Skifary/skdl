@@ -19,7 +19,7 @@ struct Preference {
     static let defaultPreference:[String : Any] = [
         Key.localStorageFolder : docDir,
         Key.historyStorageFolders : [docDir],
-    
+        Key.defaultPlayer : "",
     ]
     
     struct Key {
@@ -28,6 +28,7 @@ struct Preference {
         
         static let historyStorageFolders = "historyStorageFolders"
         
+        static let defaultPlayer = "defaultPlayer"
     }
     
     
@@ -57,8 +58,18 @@ struct Preference {
             }
             hsp?.insert(path, at: 0)
             standardUD.set(hsp, forKey: Key.historyStorageFolders)
-
         }
+        
+        static var defaultPlayer: String? {
+            get {
+                return standardUD.string(forKey: Key.defaultPlayer)
+            }
+        }
+        
+        static func setDefaultPlayer(name: String) {
+             standardUD.set(name, forKey: Key.defaultPlayer)
+        }
+        
     }
     
 

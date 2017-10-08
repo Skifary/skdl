@@ -46,6 +46,13 @@ class MainDownloaderViewController: NSViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.menu = menuForRightClick()
+    }
+    
+    func menuForRightClick() -> NSMenu {
+        let menu = NSMenu()
+        menu.delegate = self
+        return menu
     }
     
 }
@@ -91,5 +98,59 @@ extension MainDownloaderViewController: NSTableViewDelegate, NSTableViewDataSour
         }
         cellView.setButtonImage(state: (cellView.file?.state)!)
     }
+    
+    
+}
 
+extension MainDownloaderViewController: NSMenuDelegate {
+    
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        menu.removeAllItems()
+        // -1的时候表示没有选中行
+        if tableView.clickedRow == -1 {
+            return
+        }
+        let items = [startDownloadMenuItem(), suspendDownloadMenuItem(), removeDownloadMenuItem(), showInTheFinderMenuItem()]
+        
+        items.forEach { (item) in
+            menu.addItem(item)
+        }
+    }
+    
+    func startDownloadMenuItem() -> NSMenuItem {
+        return NSMenuItem(title: "开始下载", action: #selector(self.startDownloadAction), keyEquivalent: "s")
+    }
+    
+    @objc func startDownloadAction() {
+        print(tableView.clickedRow)
+        print("start download")
+    }
+    
+    func suspendDownloadMenuItem() -> NSMenuItem {
+        return NSMenuItem(title: "暂停下载", action: #selector(self.suspendDownloadAction), keyEquivalent: "p")
+    }
+    
+    @objc func suspendDownloadAction() {
+         print(tableView.clickedRow)
+        print("suspend download")
+    }
+    
+    func removeDownloadMenuItem() -> NSMenuItem {
+        return NSMenuItem(title: "删除任务", action: #selector(self.removeDownloadAction), keyEquivalent: "d")
+    }
+    
+    @objc func removeDownloadAction() {
+         print(tableView.clickedRow)
+        print("remove download")
+    }
+    
+    func showInTheFinderMenuItem() -> NSMenuItem {
+        return NSMenuItem(title: "在Finder中显示", action: #selector(self.showInTheFinderAction), keyEquivalent: "f")
+    }
+    
+    @objc func showInTheFinderAction() {
+         print(tableView.clickedRow)
+        print("show in the finder")
+    }
+    
 }

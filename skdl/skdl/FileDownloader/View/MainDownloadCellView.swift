@@ -14,10 +14,10 @@ let MDCVIdentifier = "com.skifary.skdl.MDCVIdentifier"
 fileprivate struct Constant {
     
     static let nameLabelTitle = "name"
-    static let sizeLabelTitle = "000.00Kib"
+    static let sizeLabelTitle = "000.00KiB"
     static let progressLabelTitle = "00.00%"
     static let etaLabelTitle = "00:00:00"
-    static let speedLabelTitle = "000.00Kib/s"
+    static let speedLabelTitle = "000.00KiB/s"
     
     static let continueImageName = "download_continue"
     static let pauseImageName = "download_pause"
@@ -37,15 +37,7 @@ class MainDownloadCellView: NSTableCellView {
     
     let speedLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.speedLabelTitle)
     
-    let pauseButton: NSButton = {
-        let button = NSButton()
-        button.bezelStyle = NSButton.BezelStyle.circular
-        button.title = ""
-        button.image = NSImage(named: NSImage.Name(rawValue: C.pauseImageName))
-        button.isBordered = false
-        button.imageScaling = NSImageScaling.scaleProportionallyDown
-        return button
-    }()
+    let pauseButton: NSButton = NSButton.button(with: NSImage(named: NSImage.Name(rawValue: C.pauseImageName)))
     
     let horizontalLine: NSBox = {
         let line = NSBox()
@@ -77,8 +69,9 @@ class MainDownloadCellView: NSTableCellView {
     func setSubviewLayout() {
         
         nameLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-8)
+            make.left.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(24)
+            make.right.equalToSuperview().offset(-108)
             make.height.equalTo(17)
         }
         
@@ -107,7 +100,7 @@ class MainDownloadCellView: NSTableCellView {
             make.right.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().offset(-8)
             make.height.equalTo(17)
-            make.width.equalTo(79)
+            make.width.equalTo(100)
         }
         
         horizontalLine.snp.makeConstraints { (make) in

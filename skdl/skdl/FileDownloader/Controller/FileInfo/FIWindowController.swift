@@ -106,10 +106,11 @@ class FIWindowController: NSWindowController {
         if folderURL == nil {
             return
         }
-        if !popUpButton.itemTitles.contains(folderURL!) {
-            popUpButton.addItem(withTitle: folderURL!)
+        
+        if !popUpButton.itemTitles.contains(folderURL!.path) {
+            popUpButton.addItem(withTitle: folderURL!.path)
         }
-        popUpButton.selectItem(withTitle: folderURL!)
+        popUpButton.selectItem(withTitle: folderURL!.path)
     }
     
     @IBAction func startDownload(_ sender: Any) {
@@ -117,7 +118,7 @@ class FIWindowController: NSWindowController {
         PV.saveLocalStoragePath(path: localFolder)
         PV.appendHistoryPath(path: localFolder)
         for file in files! {
-            file.local = localFolder + "/" + file.name! + "." + file.ext!
+            file.localFolder = URL(string: "file://" + localFolder)
             DownloadManager.manager.download(with: file)
         }
         self.close()
@@ -131,7 +132,7 @@ extension FIWindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         self.parent?.fiWindowController = nil
     }
-    
+
 }
 
 extension FIWindowController: NSTableViewDelegate, NSTableViewDataSource {

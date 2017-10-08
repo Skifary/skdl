@@ -28,7 +28,7 @@ class DownloadTask: NSObject {
     
     private var local: String? {
         get {
-            return file?.local
+            return file?.tmpFilePath.path
         }
     }
     
@@ -81,7 +81,6 @@ class DownloadTask: NSObject {
     
      @objc fileprivate func readLoop() {
         
-        
         if self.task?.isRunning == false {
             finish()
         }
@@ -107,8 +106,8 @@ class DownloadTask: NSObject {
         
     }
 
-    func stop() {
-        
+    func interrupt() {
+        self.task?.interrupt()
     }
     
     func suspend() {

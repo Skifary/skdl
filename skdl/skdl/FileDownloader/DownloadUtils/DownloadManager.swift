@@ -19,7 +19,11 @@ class DownloadManager {
     
     //MARK:- property
     
-    var unfinishedFiles = [DLFile]()
+    var unfinishedFiles: [DLFile] {
+        get {
+           return DLFileManager.manager.unfinishedFiles
+        }
+    }
     
     var executingQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -37,6 +41,7 @@ class DownloadManager {
     static let manager = DownloadManager()
     
     fileprivate init() {
+        
     }
     
     //MARK:- api
@@ -45,24 +50,19 @@ class DownloadManager {
         let downloadTask = DownloadTask(with: file)
         file.task = downloadTask
         file.state = .downloading
-        self.unfinishedFiles.append(file)
+        DLFileManager.manager.add(file)
         downloadTask.start()
         startHandles.forEach { (handle) in
             handle()
         }
     }
     
-    func addFile(file: DLFile) {
-        self.unfinishedFiles.append(file)
-    }
-    
     func taskFinish(task: DownloadTask) {
-        task.file?.state = .completed
-        self.unfinishedFiles.remove(at: self.unfinishedFiles.index(of: task.file!)!)
-        let dlFileManager = DLFileManager.manager
-        dlFileManager.appendFinishedFile(file: task.file!)
-        self.endHandles.forEach { (handle) in
-            DispatchQueue.main.async {
+        let file = task.file!
+        file.state = .completed
+        DispatchQueue.main.async {
+            PathUtility.renameFileIfExist(old: file.tmpFilePath, new: file.filePath)
+            self.endHandles.forEach { (handle) in
                 handle()
             }
         }

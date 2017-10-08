@@ -10,8 +10,9 @@
 		D5067AF21F4E7FEB00B93ED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */; };
 		D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */; };
 		D5067AF91F4E7FEB00B93ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF71F4E7FEB00B93ED4 /* Main.storyboard */; };
+		D50A0F1E1F88B53A00FE6F32 /* LocalTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50A0F1D1F88B53A00FE6F32 /* LocalTableCellView.swift */; };
+		D50A0F201F88B60400FE6F32 /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50A0F1F1F88B60400FE6F32 /* NSButtonExtension.swift */; };
 		D53EE2191F657A1A002D0D28 /* FolderBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */; };
-		D5404A0A1F794D74007E99A1 /* DLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5404A091F794D74007E99A1 /* DLFileManager.swift */; };
 		D554C4BA1F6006AF002D4BF9 /* NTWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4B81F6006AF002D4BF9 /* NTWindowController.swift */; };
 		D554C4BB1F6006AF002D4BF9 /* NTWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D554C4B91F6006AF002D4BF9 /* NTWindowController.xib */; };
 		D554C4BF1F6029C4002D4BF9 /* FIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4BD1F6029C4002D4BF9 /* FIWindowController.swift */; };
@@ -22,17 +23,18 @@
 		D557A0281F668B8300197568 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A0271F668B8300197568 /* DownloadManager.swift */; };
 		D557A02A1F66B4A200197568 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A0291F66B4A200197568 /* DownloadTask.swift */; };
 		D561A83F1F6A304A00BEE709 /* ytdlDumpJsonKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A83E1F6A304A00BEE709 /* ytdlDumpJsonKey.swift */; };
-		D561A8411F6A31CF00BEE709 /* ConstCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A8401F6A31CF00BEE709 /* ConstCharacter.swift */; };
 		D561A8441F6A535200BEE709 /* MainDownloaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A8421F6A535200BEE709 /* MainDownloaderViewController.swift */; };
 		D561A8451F6A535200BEE709 /* MainDownloaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D561A8431F6A535200BEE709 /* MainDownloaderViewController.xib */; };
 		D561A84C1F6A566800BEE709 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A84A1F6A566800BEE709 /* MainViewController.swift */; };
 		D561A84D1F6A566800BEE709 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D561A84B1F6A566800BEE709 /* MainViewController.xib */; };
-		D561A8511F6A622F00BEE709 /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A84F1F6A622F00BEE709 /* FileManagerViewController.swift */; };
-		D561A8521F6A622F00BEE709 /* FileManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D561A8501F6A622F00BEE709 /* FileManagerViewController.xib */; };
 		D56771141F70BCBE003421BF /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56771131F70BCBE003421BF /* SKLabel.swift */; };
 		D56AFB321F612B5000131348 /* youtube-dl in Resources */ = {isa = PBXBuildFile; fileRef = D56AFB311F612B5000131348 /* youtube-dl */; };
 		D56AFB341F616E1300131348 /* ytdlOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AFB331F616E1300131348 /* ytdlOptions.swift */; };
 		D571714C1F69613700EFBB65 /* MessageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571714B1F69613700EFBB65 /* MessageAlert.swift */; };
+		D571F9A01F83BBB300FD15D3 /* LocalManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571F99E1F83BBB300FD15D3 /* LocalManagerViewController.swift */; };
+		D571F9A11F83BBB300FD15D3 /* LocalManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D571F99F1F83BBB300FD15D3 /* LocalManagerViewController.xib */; };
+		D571F9A31F83BBD200FD15D3 /* LocalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571F9A21F83BBD200FD15D3 /* LocalManager.swift */; };
+		D571F9A61F83BD6800FD15D3 /* DLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571F9A51F83BD6800FD15D3 /* DLFileManager.swift */; };
 		D597B8AD1F72C3E9008C96AA /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D597B8A91F72C3E9008C96AA /* MASPreferencesWindow.xib */; };
 		D597B8AE1F72C3E9008C96AA /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D597B8AC1F72C3E9008C96AA /* MASPreferencesWindowController.m */; };
 		D5AAD19E1F678B78001B84C0 /* SKQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAD19D1F678B78001B84C0 /* SKQueue.swift */; };
@@ -83,6 +85,8 @@
 		D5D9B20A1F721162008E5991 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9B1E71F721161008E5991 /* UILayoutSupport+Extensions.swift */; };
 		D5E3F94C1F6F67A900912757 /* MainDownloadCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3F94B1F6F67A900912757 /* MainDownloadCellView.swift */; };
 		D5EC7FD21F5ECC8C009DD3D5 /* MenuConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC7FD11F5ECC8C009DD3D5 /* MenuConstant.swift */; };
+		D5FD95A41F8518AF008D17E4 /* PathUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD95A31F8518AF008D17E4 /* PathUtility.swift */; };
+		D5FD95A61F851E65008D17E4 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD95A51F851E65008D17E4 /* AppData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,8 +95,9 @@
 		D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5067AF81F4E7FEB00B93ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5067AFA1F4E7FEB00B93ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D50A0F1D1F88B53A00FE6F32 /* LocalTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalTableCellView.swift; path = LocalManager/View/LocalTableCellView.swift; sourceTree = "<group>"; };
+		D50A0F1F1F88B60400FE6F32 /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSButtonExtension.swift; path = Utils/View/NSButtonExtension.swift; sourceTree = "<group>"; };
 		D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderBrowser.swift; path = Utils/FolderBrowser.swift; sourceTree = "<group>"; };
-		D5404A091F794D74007E99A1 /* DLFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DLFileManager.swift; path = FileManager/FilemanagerUtils/DLFileManager.swift; sourceTree = "<group>"; };
 		D554C4B81F6006AF002D4BF9 /* NTWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NTWindowController.swift; path = FileDownloader/Controller/NewTask/NTWindowController.swift; sourceTree = "<group>"; };
 		D554C4B91F6006AF002D4BF9 /* NTWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTWindowController.xib; path = FileDownloader/Controller/NewTask/NTWindowController.xib; sourceTree = "<group>"; };
 		D554C4BD1F6029C4002D4BF9 /* FIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FIWindowController.swift; path = FileDownloader/Controller/FileInfo/FIWindowController.swift; sourceTree = "<group>"; };
@@ -103,17 +108,18 @@
 		D557A0271F668B8300197568 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadManager.swift; path = FileDownloader/DownloadUtils/DownloadManager.swift; sourceTree = "<group>"; };
 		D557A0291F66B4A200197568 /* DownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = DownloadTask.swift; path = FileDownloader/DownloadUtils/DownloadTask.swift; sourceTree = "<group>"; };
 		D561A83E1F6A304A00BEE709 /* ytdlDumpJsonKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlDumpJsonKey.swift; path = ytdlCommand/ytdlDumpJsonKey.swift; sourceTree = "<group>"; };
-		D561A8401F6A31CF00BEE709 /* ConstCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstCharacter.swift; path = Utils/ConstCharacter.swift; sourceTree = "<group>"; };
 		D561A8421F6A535200BEE709 /* MainDownloaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainDownloaderViewController.swift; path = FileDownloader/MainDownloaderViewController.swift; sourceTree = "<group>"; };
 		D561A8431F6A535200BEE709 /* MainDownloaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainDownloaderViewController.xib; path = FileDownloader/MainDownloaderViewController.xib; sourceTree = "<group>"; };
 		D561A84A1F6A566800BEE709 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Main/MainViewController.swift; sourceTree = "<group>"; };
 		D561A84B1F6A566800BEE709 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = Main/MainViewController.xib; sourceTree = "<group>"; };
-		D561A84F1F6A622F00BEE709 /* FileManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileManagerViewController.swift; path = FileManager/Controller/FileManagerViewController.swift; sourceTree = "<group>"; };
-		D561A8501F6A622F00BEE709 /* FileManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileManagerViewController.xib; path = FileManager/Controller/FileManagerViewController.xib; sourceTree = "<group>"; };
 		D56771131F70BCBE003421BF /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKLabel.swift; path = Utils/View/SKLabel.swift; sourceTree = "<group>"; };
 		D56AFB311F612B5000131348 /* youtube-dl */ = {isa = PBXFileReference; lastKnownFileType = file; name = "youtube-dl"; path = "Vendor/youtube-dl/youtube-dl"; sourceTree = "<group>"; };
 		D56AFB331F616E1300131348 /* ytdlOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlOptions.swift; path = ytdlCommand/ytdlOptions.swift; sourceTree = "<group>"; };
 		D571714B1F69613700EFBB65 /* MessageAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageAlert.swift; path = Utils/MessageAlert.swift; sourceTree = "<group>"; };
+		D571F99E1F83BBB300FD15D3 /* LocalManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalManagerViewController.swift; path = LocalManager/Controller/LocalManagerViewController.swift; sourceTree = "<group>"; };
+		D571F99F1F83BBB300FD15D3 /* LocalManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LocalManagerViewController.xib; path = LocalManager/Controller/LocalManagerViewController.xib; sourceTree = "<group>"; };
+		D571F9A21F83BBD200FD15D3 /* LocalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalManager.swift; path = LocalManager/LocalmanagerUtils/LocalManager.swift; sourceTree = "<group>"; };
+		D571F9A51F83BD6800FD15D3 /* DLFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DLFileManager.swift; path = Utils/Controller/DLFileManager.swift; sourceTree = "<group>"; };
 		D597B8A81F72C3E9008C96AA /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		D597B8A91F72C3E9008C96AA /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		D597B8AA1F72C3E9008C96AA /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 		D5D9B1E71F721161008E5991 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		D5E3F94B1F6F67A900912757 /* MainDownloadCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainDownloadCellView.swift; path = FileDownloader/View/MainDownloadCellView.swift; sourceTree = "<group>"; };
 		D5EC7FD11F5ECC8C009DD3D5 /* MenuConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuConstant.swift; path = Main/Menu/MenuConstant.swift; sourceTree = "<group>"; };
+		D5FD95A31F8518AF008D17E4 /* PathUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PathUtility.swift; path = Utils/Controller/PathUtility.swift; sourceTree = "<group>"; };
+		D5FD95A51F851E65008D17E4 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppData.swift; path = Utils/AppData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +211,7 @@
 			children = (
 				D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */,
 				D5D10DC61F5140EE00044739 /* FileDownloader */,
-				D5D10DC71F5140F700044739 /* FileManager */,
+				D5D10DC71F5140F700044739 /* LocalManager */,
 				D5D10DC21F513A7900044739 /* Main */,
 				D5067B021F4E80A000B93ED4 /* Preference */,
 				D5067B041F4E819900B93ED4 /* SurportFiles */,
@@ -263,12 +271,20 @@
 			name = SurportFiles;
 			sourceTree = "<group>";
 		};
-		D5404A061F794CFD007E99A1 /* FileManagerUtils */ = {
+		D50A0F1C1F88B50600FE6F32 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D5404A091F794D74007E99A1 /* DLFileManager.swift */,
+				D50A0F1D1F88B53A00FE6F32 /* LocalTableCellView.swift */,
 			);
-			name = FileManagerUtils;
+			name = View;
+			sourceTree = "<group>";
+		};
+		D5404A061F794CFD007E99A1 /* LocalManagerUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D571F9A21F83BBD200FD15D3 /* LocalManager.swift */,
+			);
+			name = LocalManagerUtils;
 			sourceTree = "<group>";
 		};
 		D554C4B71F60068B002D4BF9 /* NewTask */ = {
@@ -309,8 +325,8 @@
 		D561A84E1F6A620500BEE709 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D561A84F1F6A622F00BEE709 /* FileManagerViewController.swift */,
-				D561A8501F6A622F00BEE709 /* FileManagerViewController.xib */,
+				D571F99E1F83BBB300FD15D3 /* LocalManagerViewController.swift */,
+				D571F99F1F83BBB300FD15D3 /* LocalManagerViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -319,8 +335,17 @@
 			isa = PBXGroup;
 			children = (
 				D56771131F70BCBE003421BF /* SKLabel.swift */,
+				D50A0F1F1F88B60400FE6F32 /* NSButtonExtension.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D571F9A41F83BC8600FD15D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D571F9A51F83BD6800FD15D3 /* DLFileManager.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		D5C6B22E1F6509C600BC2D04 /* MASPreferences */ = {
@@ -362,14 +387,16 @@
 		D5D10DC51F5140E400044739 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D561A8401F6A31CF00BEE709 /* ConstCharacter.swift */,
+				D571F9A41F83BC8600FD15D3 /* Controller */,
+				D56771121F70BC9B003421BF /* View */,
+				D554C4C11F6029E5002D4BF9 /* Model */,
 				D5C6B22C1F64F0FE00BC2D04 /* FileSize.swift */,
 				D53EE2181F657A1A002D0D28 /* FolderBrowser.swift */,
 				D5C72ABE1F62951D004CB147 /* JSONHelper.swift */,
 				D571714B1F69613700EFBB65 /* MessageAlert.swift */,
-				D554C4C11F6029E5002D4BF9 /* Model */,
+				D5FD95A31F8518AF008D17E4 /* PathUtility.swift */,
 				D5AAD19D1F678B78001B84C0 /* SKQueue.swift */,
-				D56771121F70BC9B003421BF /* View */,
+				D5FD95A51F851E65008D17E4 /* AppData.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -385,13 +412,14 @@
 			name = FileDownloader;
 			sourceTree = "<group>";
 		};
-		D5D10DC71F5140F700044739 /* FileManager */ = {
+		D5D10DC71F5140F700044739 /* LocalManager */ = {
 			isa = PBXGroup;
 			children = (
-				D5404A061F794CFD007E99A1 /* FileManagerUtils */,
+				D50A0F1C1F88B50600FE6F32 /* View */,
+				D5404A061F794CFD007E99A1 /* LocalManagerUtils */,
 				D561A84E1F6A620500BEE709 /* Controller */,
 			);
-			name = FileManager;
+			name = LocalManager;
 			sourceTree = "<group>";
 		};
 		D5D10DCA1F51483B00044739 /* View */ = {
@@ -556,11 +584,11 @@
 				D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */,
 				D554C4BB1F6006AF002D4BF9 /* NTWindowController.xib in Resources */,
 				D554C4C01F6029C4002D4BF9 /* FIWindowController.xib in Resources */,
+				D571F9A11F83BBB300FD15D3 /* LocalManagerViewController.xib in Resources */,
 				D5067AF91F4E7FEB00B93ED4 /* Main.storyboard in Resources */,
 				D56AFB321F612B5000131348 /* youtube-dl in Resources */,
 				D561A84D1F6A566800BEE709 /* MainViewController.xib in Resources */,
 				D5D9B2061F721161008E5991 /* Info.plist in Resources */,
-				D561A8521F6A622F00BEE709 /* FileManagerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +599,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D571F9A01F83BBB300FD15D3 /* LocalManagerViewController.swift in Sources */,
+				D50A0F1E1F88B53A00FE6F32 /* LocalTableCellView.swift in Sources */,
+				D571F9A61F83BD6800FD15D3 /* DLFileManager.swift in Sources */,
 				D5AAD19E1F678B78001B84C0 /* SKQueue.swift in Sources */,
 				D5D9B1F81F721161008E5991 /* ConstraintMakerExtendable.swift in Sources */,
 				D5D9B1E91F721161008E5991 /* ConstraintAttributes.swift in Sources */,
@@ -591,6 +622,7 @@
 				D5D9B2041F721161008E5991 /* ConstraintViewDSL.swift in Sources */,
 				D5D9B2001F721161008E5991 /* ConstraintRelatableTarget.swift in Sources */,
 				D5D10DD31F51672900044739 /* MainWindow.swift in Sources */,
+				D5FD95A41F8518AF008D17E4 /* PathUtility.swift in Sources */,
 				D597B8AE1F72C3E9008C96AA /* MASPreferencesWindowController.m in Sources */,
 				D5C6B22D1F64F0FE00BC2D04 /* FileSize.swift in Sources */,
 				D5D9B2051F721161008E5991 /* Debugging.swift in Sources */,
@@ -605,13 +637,15 @@
 				D5C72ABF1F62951D004CB147 /* JSONHelper.swift in Sources */,
 				D5E3F94C1F6F67A900912757 /* MainDownloadCellView.swift in Sources */,
 				D5D9B2071F721161008E5991 /* LayoutConstraint.swift in Sources */,
+				D5FD95A61F851E65008D17E4 /* AppData.swift in Sources */,
 				D5C72ABD1F6286A5004CB147 /* ytdlController.swift in Sources */,
+				D50A0F201F88B60400FE6F32 /* NSButtonExtension.swift in Sources */,
 				D5D9B1F11F721161008E5991 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				D554C4C31F602A1D002D4BF9 /* DLFile.swift in Sources */,
 				D5D9B1FD1F721161008E5991 /* ConstraintOffsetTarget.swift in Sources */,
 				D5D9B1EC1F721161008E5991 /* ConstraintDescription.swift in Sources */,
+				D571F9A31F83BBD200FD15D3 /* LocalManager.swift in Sources */,
 				D5D10DCF1F515ED800044739 /* MainToolbar.swift in Sources */,
-				D561A8511F6A622F00BEE709 /* FileManagerViewController.swift in Sources */,
 				D554C4BF1F6029C4002D4BF9 /* FIWindowController.swift in Sources */,
 				D5D9B1FE1F721161008E5991 /* ConstraintPriority.swift in Sources */,
 				D5D9B2011F721161008E5991 /* ConstraintRelation.swift in Sources */,
@@ -624,12 +658,10 @@
 				D571714C1F69613700EFBB65 /* MessageAlert.swift in Sources */,
 				D53EE2191F657A1A002D0D28 /* FolderBrowser.swift in Sources */,
 				D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */,
-				D5404A0A1F794D74007E99A1 /* DLFileManager.swift in Sources */,
 				D5C6B2391F650ACD00BC2D04 /* PGeneralViewController.swift in Sources */,
 				D5D9B1F41F721161008E5991 /* ConstraintLayoutSupport.swift in Sources */,
 				D5EC7FD21F5ECC8C009DD3D5 /* MenuConstant.swift in Sources */,
 				D5D9B1F71F721161008E5991 /* ConstraintMakerEditable.swift in Sources */,
-				D561A8411F6A31CF00BEE709 /* ConstCharacter.swift in Sources */,
 				D5D10DD11F515EF400044739 /* MainToolbarItem.swift in Sources */,
 				D5C6B2421F65100D00BC2D04 /* PreferenceDefine.swift in Sources */,
 				D5D9B1F21F721161008E5991 /* ConstraintLayoutGuide.swift in Sources */,
@@ -765,7 +797,7 @@
 				DEVELOPMENT_TEAM = HCGGZBEBSU;
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl.skdl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -781,7 +813,7 @@
 				DEVELOPMENT_TEAM = HCGGZBEBSU;
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl.skdl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

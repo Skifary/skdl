@@ -25,4 +25,5 @@ struct ytdlDumpJsonKey {
     
     static let kPlayList = "playlist"
     
+    static let kID = "id"
 }

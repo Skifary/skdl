@@ -12,7 +12,6 @@ import Foundation
 class MessageAlert {
     
     static func show(title: String, message: String) {
-        
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = message;
@@ -20,4 +19,25 @@ class MessageAlert {
         alert.runModal()
     }
     
+    static func assert(_ expr: Bool, _ errorMessage: String, _ block: () -> Void = {}) {
+        if !expr {
+            NSLog("%@", errorMessage)
+            show(title: "fatal_error", message: errorMessage)
+            block()
+            exit(1)
+        }
+    }
+    
+    static func fatal(_ message: String, _ block: () -> Void = {}) -> Never {
+        NSLog("%@\n", message)
+        NSLog(Thread.callStackSymbols.joined(separator: "\n"))
+        show(title: "fatal_error", message: message)
+        block()
+        // Exit without crash since it's not uncatched/unhandled
+        exit(1)
+    }
+    
+    static func log(_ message: String) {
+        NSLog("%@", message)
+    }
 }

@@ -12,7 +12,7 @@ import Foundation
 
 class FolderBrowser {
     
-    static func chooseFolder(title: String?) -> String? {
+    static func chooseFolder(title: String?) -> URL? {
         let panel = NSOpenPanel()
         panel.title = title
         panel.canCreateDirectories = true
@@ -21,11 +21,23 @@ class FolderBrowser {
         panel.resolvesAliases = true
         panel.allowsMultipleSelection = false
         if panel.runModal().rawValue == NSFileHandlingPanelOKButton {
-            let urlstring = panel.url?.absoluteString
-            let lower = (urlstring?.index((urlstring?.startIndex)!, offsetBy: 7))!
-            let upper = (urlstring?.index((urlstring?.endIndex)!, offsetBy: -1))!
-            return String(urlstring![lower..<upper])
+            return panel.url
         }
         return nil
     }
+    
+    static func chooseFile(title: String?) -> URL? {
+        let panel = NSOpenPanel()
+        panel.title = title
+        panel.canCreateDirectories = false
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.resolvesAliases = false
+        panel.allowsMultipleSelection = false
+        if panel.runModal().rawValue == NSFileHandlingPanelOKButton {
+            return panel.url
+        }
+        return nil
+    }
+    
 }
