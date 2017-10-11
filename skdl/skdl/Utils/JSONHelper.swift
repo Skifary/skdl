@@ -15,7 +15,7 @@ import Foundation
 class JSONHelper {
     
     
-    class func convertJSONToDictionary(jsons: [String]) -> [Dictionary<String, Any>]? {
+    static func convertJSONToDictionary(jsons: [String]) -> [Dictionary<String, Any>]? {
         var dics: [Dictionary<String, Any>] = []
         jsons.forEach { (json) in
             let data = json.data(using: .utf8)

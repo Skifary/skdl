@@ -78,6 +78,8 @@ extension LocalManagerViewController: NSTableViewDataSource, NSTableViewDelegate
         NSWorkspace.shared.selectFile(file?.filePath.path, inFileViewerRootedAtPath: (file?.localFolder?.path)!)
     }
     
+    
+    
 }
 
 
@@ -101,7 +103,9 @@ extension LocalManagerViewController: NSMenuDelegate {
     }
     
     @objc func removeDownloadAction() {
-        print(tableView.clickedRow)
+        
+        let file = localManager?.localFiles[tableView.clickedRow]
+        
         print("remove download")
     }
     
@@ -110,7 +114,12 @@ extension LocalManagerViewController: NSMenuDelegate {
     }
     
     @objc func showInTheFinderAction() {
-        print(tableView.clickedRow)
+        
+        let file = localManager?.localFiles[tableView.clickedRow]
+        
+        
+        NSWorkspace.shared.selectFile(file?.filePath.path, inFileViewerRootedAtPath: (file?.localFolder?.path)!)
+        
         print("show in the finder")
     }
     

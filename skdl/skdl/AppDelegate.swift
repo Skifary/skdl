@@ -39,13 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if (!flag) {
             NSApp.activate(ignoringOtherApps: false)
-//            for window in NSApp.windows {
-//                if window is MainWindow {
-//                    window.windowController?.showWindow(nil)
-//                    window.center()
-//                    break;
-//                }
-//            }
             NSApp.windows.last?.windowController?.showWindow(nil)
             NSApp.windows.last?.center()
         }

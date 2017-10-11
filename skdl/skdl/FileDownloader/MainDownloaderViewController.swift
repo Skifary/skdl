@@ -87,31 +87,50 @@ extension MainDownloaderViewController: NSTableViewDelegate, NSTableViewDataSour
     
     @objc func cellButtonClick(sender: NSButton) {
         let cellView = sender.superview as! MainDownloadCellView
+        
+        
         if cellView.file?.state == DLFile.State.downloading {
-            cellView.file?.task?.suspend()
+          //  cellView.file?.task?.suspend()
+            suspendDownload(file: cellView.file!)
         } else {
-            if cellView.file?.task == nil {
-                dManager?.download(with: cellView.file!)
-            } else {
-                cellView.file?.task?.resume()
-            }
+//            if cellView.file?.task == nil {
+//                dManager?.download(with: cellView.file!)
+//            } else {
+//                cellView.file?.task?.resume()
+//            }
+            
+            startDownload(file: cellView.file!)
+            
         }
         cellView.setButtonImage(state: (cellView.file?.state)!)
     }
     
+    func suspendDownload(file: DLFile) {
+        file.task?.suspend()
+    }
     
+    func startDownload(file: DLFile) {
+        if file.task == nil {
+            dManager?.download(with: file)
+        } else {
+            file.task?.resume()
+        }
+    }
 }
 
 extension MainDownloaderViewController: NSMenuDelegate {
     
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
+        
+        let row = tableView.clickedRow
         // -1的时候表示没有选中行
-        if tableView.clickedRow == -1 {
+        if row  == -1 {
             return
         }
-        let items = [startDownloadMenuItem(), suspendDownloadMenuItem(), removeDownloadMenuItem(), showInTheFinderMenuItem()]
-        
+        let file = dManager?.unfinishedFiles[row]
+        let item = file?.state == DLFile.State.downloading ? suspendDownloadMenuItem() : startDownloadMenuItem()
+        let items = [item , removeDownloadMenuItem(), showInTheFinderMenuItem()]
         items.forEach { (item) in
             menu.addItem(item)
         }
@@ -122,16 +141,36 @@ extension MainDownloaderViewController: NSMenuDelegate {
     }
     
     @objc func startDownloadAction() {
-        print(tableView.clickedRow)
+
+        let row = tableView.clickedRow
+        let cellView = tableView.view(atColumn: 0, row: row, makeIfNecessary: false) as! MainDownloadCellView
+        let file = dManager?.unfinishedFiles[row]
+        
+        startDownload(file: file!)
+        
+        cellView.setButtonImage(state: (file?.state)!)
+        
         print("start download")
     }
     
     func suspendDownloadMenuItem() -> NSMenuItem {
+        
+      
+        
+        
         return NSMenuItem(title: "暂停下载", action: #selector(self.suspendDownloadAction), keyEquivalent: "p")
     }
     
     @objc func suspendDownloadAction() {
-         print(tableView.clickedRow)
+        
+        let row = tableView.clickedRow
+        let cellView = tableView.view(atColumn: 0, row: row, makeIfNecessary: false) as! MainDownloadCellView
+        let file = dManager?.unfinishedFiles[row]
+        
+        suspendDownload(file: file!)
+        
+        cellView.setButtonImage(state: (file?.state)!)
+        
         print("suspend download")
     }
     
@@ -140,16 +179,34 @@ extension MainDownloaderViewController: NSMenuDelegate {
     }
     
     @objc func removeDownloadAction() {
-         print(tableView.clickedRow)
+        
+        let row = tableView.clickedRow
+        
+        let file = dManager?.unfinishedFiles[row]
+        
+        dManager?.remove(file: file!)
+        
+        tableView.reloadData()
         print("remove download")
     }
     
     func showInTheFinderMenuItem() -> NSMenuItem {
+        
+    
         return NSMenuItem(title: "在Finder中显示", action: #selector(self.showInTheFinderAction), keyEquivalent: "f")
     }
     
     @objc func showInTheFinderAction() {
-         print(tableView.clickedRow)
+        
+        
+        let row = tableView.clickedRow
+        
+        let file = dManager?.unfinishedFiles[row]
+        
+        NSWorkspace.shared.selectFile((file?.tmpFilePath.path)!+".part", inFileViewerRootedAtPath: (file?.localFolder?.path)!)
+        
+
+        
         print("show in the finder")
     }
     

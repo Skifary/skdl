@@ -68,6 +68,15 @@ class DownloadManager {
         }
     }
     
+    func remove(file: DLFile) {
+        let task = file.task
+        
+        task?.stop()
+        
+        DLFileManager.manager.remove(file)
+        
+    }
+    
     func registerStartHandle(handle: @escaping StartHandle) {
         self.startHandles.append(handle)
     }

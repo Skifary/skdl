@@ -127,4 +127,12 @@ class DownloadTask: NSObject {
         self.timer = nil
     }
     
+    func stop() {
+        self.timer?.invalidate()
+        self.timer = nil
+        
+        interrupt()
+        
+    }
+    
 }
