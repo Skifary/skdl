@@ -8,13 +8,10 @@
 
 import Foundation
 
-
-
-
-class ytdlController {
+internal class ytdlController {
     
     //MARK:- singleton
-    static let shared = ytdlController()
+    internal static let shared = ytdlController()
     
     fileprivate init() {
         
@@ -22,24 +19,25 @@ class ytdlController {
     
     //MARK:- api
     
-    func isUrlAvailable(url: String) -> Bool {
+    internal func isURLAvailable(url: String) -> Bool {
         let args = [YOS.kGetUrl, url]
-        let res = ytdlCommand.singleCommand(args: args)
+        let res = ytdlCommand.resultFromCommand(args: args)
         if res.result == "" {
+            Log.logWithCallStack(res.errorMessage)
             return false
         }
         return true
     }
     
-    func dumpJson(urls: [String]) -> [String]? {
+    internal func dumpJson(from urls: [String]) -> [String]? {
         var args = [YOS.kDumpJson]
         args.append(contentsOf: urls)
-        let res = ytdlCommand.singleCommand(args: args)
+        let res = ytdlCommand.resultFromCommand(args: args)
         let jsons = res.result?.components(separatedBy: "\n")
         return jsons
     }
     
-    func download(url: String, localPath: String) -> (task: Process, out: Pipe, error: Pipe) {
+    internal func download(with url: String, localPath: String) -> (process: Process, out: Pipe, error: Pipe) {
        return ytdlCommand.command(args: [YOF.kOutput, localPath, url])
     }
     

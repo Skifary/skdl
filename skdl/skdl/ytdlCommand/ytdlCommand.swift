@@ -8,31 +8,29 @@
 
 import Foundation
 
-
-
-class ytdlCommand {
+internal class ytdlCommand {
     
-    static func singleCommand(args: [String]?) -> (result: String?,errorMessage: String?) {
+    internal static func resultFromCommand(args: [String]?) -> (result: String?,errorMessage: String?) {
         let res = command(args: args)
-        res.task.launch()
+        res.process.launch()
         let errorMessage = String(data: res.error.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
         let result = String(data: res.out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
         return (result,errorMessage)
     }
     
-    static func command(args: [String]?) -> (task: Process, out: Pipe, error: Pipe) {
+    internal static func command(args: [String]?) -> (process: Process, out: Pipe, error: Pipe) {
         let ytdlPath = getYTDLPathFromSKDL()
-        let task = Process()
-        task.launchPath = ytdlPath
-        task.arguments = args
+        let process = Process()
+        process.launchPath = ytdlPath
+        process.arguments = args
         let out = Pipe()
-        task.standardOutput = out
+        process.standardOutput = out
         let error = Pipe()
-        task.standardError = error
-        return (task, out, error)
+        process.standardError = error
+        return (process, out, error)
     }
     
-    static fileprivate func getYTDLPathFromSKDL() -> String? {
+    fileprivate static func getYTDLPathFromSKDL() -> String? {
         return Bundle.main.path(forResource: "youtube-dl", ofType: "")
     }
     

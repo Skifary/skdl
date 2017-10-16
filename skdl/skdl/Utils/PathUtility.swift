@@ -8,30 +8,29 @@
 
 import Foundation
 
-
-class PathUtility {
+public class PathUtility {
     
-    static func createDirIfNotExist(url: URL) {
+    public static func createDirectoryIfNotExist(url: URL) {
         let path = url.path
         // check exist
         if !FileManager.default.fileExists(atPath: path) {
             do {
                 try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
             } catch {
-                print(error.localizedDescription)
-                MessageAlert.fatal("Cannot create folder in Application Support directory")
+                Log.log(error.localizedDescription)
+                ErrorReport.fatal("Cannot create folder in Application Support directory")
             }
         }
     }
     
-    static let appSupportDirURL: URL = {
+    public static let appSupportDirectoryURL: URL = {
         // get path
         let asPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        MessageAlert.assert(asPath.count >= 1, "Cannot get path to Application Support directory")
+        Assert.assert(asPath.count >= 1, "Cannot get path to Application Support directory")
         let bundleID = Bundle.main.bundleIdentifier!
-        let appAsUrl = asPath.first!.appendingPathComponent(bundleID)
-        createDirIfNotExist(url: appAsUrl)
-        return appAsUrl
+        let appASURL = asPath.first!.appendingPathComponent(bundleID)
+        createDirectoryIfNotExist(url: appASURL)
+        return appASURL
     }()
     
     static func deleteFileIfExist(url: URL) {
@@ -40,7 +39,8 @@ class PathUtility {
             do {
                 try FileManager.default.removeItem(atPath: path)
             } catch {
-                MessageAlert.fatal("Cannot delete file in Application Support directory")
+                Log.log(error.localizedDescription)
+                ErrorReport.fatal("Cannot delete file in Application Support directory")
             }
         }
     }
@@ -50,15 +50,26 @@ class PathUtility {
             do {
                 try FileManager.default.moveItem(at: old, to: new)
             } catch {
-                print(error.localizedDescription)
-                MessageAlert.fatal("Cannot rename file")
+                Log.log(error.localizedDescription)
+                ErrorReport.fatal("Cannot rename file")
             }
         }
     }
 
-    static func getURLFromString(_ urlString: String) -> URL {
-        let allowedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-        return URL(string: allowedString!)!
-    }
+    
+    // 不确定这个函数到底用了没 先留着
+    
+//    static func getURLFromString(_ urlString: String) -> URL {
+//
+//        guard let allowedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+//
+//            Log.logWithCallStack("")
+//
+//            return URL(
+//        }
+//
+//
+//        return URL(string: allowedString)
+//    }
     
 }

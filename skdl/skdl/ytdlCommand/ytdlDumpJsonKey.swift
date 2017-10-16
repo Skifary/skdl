@@ -8,22 +8,21 @@
 
 import Foundation
 
-typealias YDJKey = ytdlDumpJsonKey
+internal typealias YDJKey = ytdlDumpJsonKey
 
-struct ytdlDumpJsonKey {
+internal struct ytdlDumpJsonKey {
     
+    internal static let kTitle = "title"
     
-    static let kTitle = "title"
+    internal static let kExt = "ext"
     
-    static let kExt = "ext"
+    internal static let kFileSize = "filesize"
     
-    static let kFileSize = "filesize"
+    internal static let kDuration = "duration"
     
-    static let kDuration = "duration"
+    internal static let kFormat = "format"
     
-    static let kFormat = "format"
+    internal static let kPlayList = "playlist"
     
-    static let kPlayList = "playlist"
-    
-    static let kID = "id"
+    internal static let kID = "id"
 }

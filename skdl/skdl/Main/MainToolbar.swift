@@ -9,10 +9,7 @@
 import Cocoa
 
 
-let kMainToolbarIdentifier: String = "com.skdl.maintoolbar"
-
-
-class MainToolbar: NSToolbar {
+internal class MainToolbar: NSToolbar {
 
     override init(identifier: NSToolbar.Identifier) {
         super.init(identifier: identifier)

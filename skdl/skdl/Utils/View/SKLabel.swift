@@ -8,48 +8,36 @@
 
 import Cocoa
 
-fileprivate let defaultTitle = "Label"
+fileprivate let DefaultTitle = "Label"
 
-class SKLabel: NSTextField {
+public class SKLabel: NSTextField {
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
-    }
-    
-    override init(frame frameRect: NSRect) {
+    public override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        
-        self.isEditable = false
-        self.isBordered = false
-        
-        self.stringValue = defaultTitle
-        
+        isEditable = false
+        isBordered = false
+        stringValue = DefaultTitle
         sizeToFit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String) {
+    public convenience init(title: String) {
         self.init(frame: NSRect.zero)
-
         stringValue = title
-        
+        sizeToFit()
     }
     
-    class func descriptionLabel(fontSize: CGFloat, title: String = "") -> SKLabel {
-        
-        let label = SKLabel(frame: NSRect.zero)
-        label.stringValue = title
+    public class func descriptionLabel(fontSize: CGFloat, title: String = "") -> SKLabel {
+        let label = SKLabel(title: title)
         label.makeAsDescriptionLabel(fontSize: fontSize)
         label.alignment = NSTextAlignment.center
         return label
     }
     
-    func makeAsDescriptionLabel(fontSize: CGFloat) {
+    public func makeAsDescriptionLabel(fontSize: CGFloat) {
         font = NSFont.monospacedDigitSystemFont(ofSize: fontSize, weight: NSFont.Weight.thin)
     }
     

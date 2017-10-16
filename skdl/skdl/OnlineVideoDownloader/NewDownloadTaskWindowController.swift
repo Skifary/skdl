@@ -1,5 +1,5 @@
 //
-//  NTWindowController.swift
+//  NewDownloadTaskWindowController.swift
 //  skdl
 //
 //  Created by Skifary on 06/09/2017.
@@ -8,23 +8,16 @@
 
 import Cocoa
 
-fileprivate struct Constant {
-    
-    static let windowDefaultWidth: Int = 450
-    static let windowDefaultHeight: Int = 300
-    
-    static let windowTitle = "新建下载任务"
-    
-    static let warningTitle = "无效的链接"
-    
-    static let warningMessage = "下载链接无效"
-    
-}
+fileprivate let DefaultWindowWidth: Int = 450
+fileprivate let DefaultWindowHeight: Int = 300
 
-fileprivate typealias C = Constant
+fileprivate let WindowTitle = "新建下载任务"
 
+fileprivate let WarningTitle = "无效的链接"
 
-class NTWindowController: NSWindowController {
+fileprivate let WarningMessage = "下载链接无效"
+
+class NewDownloadTaskWindowController: NSWindowController {
 
     //MARK:- IBOutlet
     @IBOutlet var urlTextView: NSTextView!
@@ -37,35 +30,33 @@ class NTWindowController: NSWindowController {
     
     //MARK:- var
     
-    var fiWindowController: FIWindowController?
+    var detailWindowController: OnlineVideoDetailInfoWindowController?
     
     //MARK:- life cycle
     
     override var windowNibName: NSNib.Name? {
-        return NSNib.Name("NTWindowController")
+        return NSNib.Name("NewDownloadTaskWindowController")
     }
     
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        basicSetting()
+        setWindow()
+        hideWaitingView()
+        urlTextView.isRichText = false
         
     }
     
     //MARK:- file private
     
-    fileprivate func basicSetting() {
-        setWindow()
-        hideWaitingView()
-        urlTextView.isRichText = false
-    }
+
     
     fileprivate func setWindow() {
-        self.window?.delegate = self
+        window?.delegate = self
         window?.styleMask = [NSWindow.StyleMask.borderless, NSWindow.StyleMask.titled, NSWindow.StyleMask.closable]
         window?.backingType = .buffered
-        window?.title = C.windowTitle
-        let frame = NSRect(x: 0, y: 0, width: C.windowDefaultWidth, height: C.windowDefaultHeight)
+        window?.title = WindowTitle
+        let frame = NSRect(x: 0, y: 0, width: DefaultWindowWidth, height: DefaultWindowHeight)
         window?.setFrame(frame, display: true)
         window?.maxSize = frame.size
         window?.minSize = frame.size
@@ -96,36 +87,45 @@ class NTWindowController: NSWindowController {
                 if str == "" {
                     return false
                 }
-                return ytdlController.shared.isUrlAvailable(url: str)
+                return ytdlController.shared.isURLAvailable(url: str)
             })
             if (urls.isEmpty) {
                 DispatchQueue.main.async {
                     self.hideWaitingView()
-                    MessageAlert.show(title: C.warningTitle, message: C.warningMessage)
+                    Alert.warn(WarningTitle, WarningMessage)
                 }
                 return
             }
         
-            let jsons = ytdlController.shared.dumpJson(urls: urls)
-            let dics = JSONHelper.convertJSONToDictionary(jsons: jsons!)
+            let jsons = ytdlController.shared.dumpJson(from: urls)
+            
+            var dumps: [[String : Any]] = []
+            
+            jsons?.forEach({ (json) in
+                if json == "" {
+                    return
+                }
+                let dump = JSONHelper.getDictionary(from: json)
+                dumps.append(dump)
+            })
             
             DispatchQueue.main.async {
                 self.hideWaitingView()
-                var files: [DLFile] = []
+                var videos: [Video] = []
                 for (index,item) in urls.enumerated() {
-                    let file = DLFile()
-                    file.url = item
-                    file.name = dics?[index][YDJKey.kTitle] as? String
-                    file.ext = dics?[index][YDJKey.kExt] as? String
-                    file.size = dics?[index][YDJKey.kFileSize] as? Int64
-                    file.duration = dics?[index][YDJKey.kDuration] as? Int64
-                    file.format = dics?[index][YDJKey.kFormat] as? String
-                    file.playlist = dics?[index][YDJKey.kPlayList] as? String
-                    file.id = dics?[index][YDJKey.kID] as? String
-                    files.append(file)
+                    let video = Video()
+                    video.url = item
+                    video.name = dumps[index][YDJKey.kTitle] as? String ?? ""
+                    video.ext = dumps[index][YDJKey.kExt] as? String ?? ""
+                    video.size = dumps[index][YDJKey.kFileSize] as? Int64 ?? 0
+                    video.duration = dumps[index][YDJKey.kDuration] as? Int64 ?? 0
+                    video.format = dumps[index][YDJKey.kFormat] as? String ?? ""
+                    video.playlist = dumps[index][YDJKey.kPlayList] as? String ?? ""
+                    video.id = dumps[index][YDJKey.kID] as? String ?? ""
+                    videos.append(video)
                 }
-                self.fiWindowController = FIWindowController(files: files)
-                self.fiWindowController?.showWindow(self)
+                self.detailWindowController = OnlineVideoDetailInfoWindowController(with: videos)
+                self.detailWindowController?.showWindow(self)
             }
 
         }
@@ -133,7 +133,7 @@ class NTWindowController: NSWindowController {
     
 }
 
-extension NTWindowController: NSWindowDelegate {
+extension NewDownloadTaskWindowController: NSWindowDelegate {
  
     func windowWillClose(_ notification: Notification) {
         let appDelegate = NSApp.delegate as! AppDelegate

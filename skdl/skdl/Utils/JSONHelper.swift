@@ -8,25 +8,21 @@
 
 import Foundation
 
-
-
-
-
-class JSONHelper {
+public class JSONHelper {
     
-    
-    static func convertJSONToDictionary(jsons: [String]) -> [Dictionary<String, Any>]? {
-        var dics: [Dictionary<String, Any>] = []
-        jsons.forEach { (json) in
-            let data = json.data(using: .utf8)
-            let dic = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-            if dic != nil {
-                dics.append((dic as? [String : Any])!)
-            }
+    public static func getDictionary(from json: String) -> [String : Any] {
+        guard let data = json.data(using: .utf8) else {
+                Log.logWithCallStack("json.data() failed, json: \(json)")
+                return [:]
         }
-        return dics
+        do {
+            let object = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            let dictionary = object as? [String : Any] ?? [:]
+            return dictionary
+        } catch {
+            Log.logWithCallStack("JSONSerialization failed, json: \(json)")
+        }
+        return [:]
     }
-    
-    
     
 }

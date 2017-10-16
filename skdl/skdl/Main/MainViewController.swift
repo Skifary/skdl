@@ -8,21 +8,22 @@
 
 import Cocoa
 
-class MainViewController: NSViewController {
+internal class MainViewController: NSViewController {
 
-    var downloadViewController = MainDownloaderViewController()
-    var localManagerViewController = LocalManagerViewController()
+    fileprivate var downloadViewController = OnlineVideoDownloaderViewController()
+    
+    fileprivate var localViewController = OfflineVideoManagerViewController()
     
     
     //MARK:- api
     
-    func showFileDownloadView() {
-        localManagerViewController.view.isHidden = true
+    internal func showDownloadView() {
+        localViewController.view.isHidden = true
         downloadViewController.view.isHidden = false
     }
     
-    func showFileManagerView() {
-        localManagerViewController.view.isHidden = false
+    internal func showManagerView() {
+        localViewController.view.isHidden = false
         downloadViewController.view.isHidden = true
     }
     
@@ -34,7 +35,7 @@ class MainViewController: NSViewController {
         
         
         addSubViewControllers()
-        showFileDownloadView()
+        showDownloadView()
     }
     
     
@@ -42,13 +43,13 @@ class MainViewController: NSViewController {
     
     fileprivate func addSubViewControllers() {
         addChildViewController(downloadViewController)
-        addChildViewController(localManagerViewController)
+        addChildViewController(localViewController)
         self.view.addSubview(downloadViewController.view)
         downloadViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
-        self.view.addSubview(localManagerViewController.view)
-        localManagerViewController.view.snp.makeConstraints { (make) in
+        self.view.addSubview(localViewController.view)
+        localViewController.view.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }
     }

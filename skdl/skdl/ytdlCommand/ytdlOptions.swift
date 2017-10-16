@@ -8,24 +8,22 @@
 
 import Foundation
 
+internal typealias YOS = ytdlOptions.Simulate
+internal typealias YOF = ytdlOptions.Filesystem
 
-typealias YOS = ytdlOptions.Simulate
-typealias YOF = ytdlOptions.Filesystem
-
-struct ytdlOptions {
+internal struct ytdlOptions {
     
-    struct Simulate {
+    internal struct Simulate {
         
-        static let kGetUrl: String = "-g" //Simulate, quiet but print URL
+        internal static let kGetUrl: String = "-g" //Simulate, quiet but print URL
         
-        static let kDumpJson: String = "-j" //Simulate, quiet but print JSON information.
-        
+        internal static let kDumpJson: String = "-j" //Simulate, quiet but print JSON information.
         
     }
     
-    struct Filesystem {
+    internal struct Filesystem {
         
-        static let kOutput: String = "-o"  //Output filename template
+       internal static let kOutput: String = "-o"  //Output filename template
         
     }
     

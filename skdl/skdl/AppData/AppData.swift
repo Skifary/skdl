@@ -9,6 +9,11 @@
 import Foundation
 
 
-struct AppData {
-    static let historyFile = "history.plist"
+internal struct AppData {
+    
+   
+    internal static let HistoryFileName = "history.plist"
+    
+    internal static let PreferenceTitle = ""
+    
 }

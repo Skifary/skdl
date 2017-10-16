@@ -1,5 +1,5 @@
 //
-//  MainDownloadCellView.swift
+//  OnlineVideoDownloaderCellView.swift
 //  skdl
 //
 //  Created by Skifary on 18/09/2017.
@@ -8,38 +8,32 @@
 
 import Cocoa
 
-/* mdcv: main download cell view */
-let MDCVIdentifier = "com.skifary.skdl.MDCVIdentifier"
-
-fileprivate struct Constant {
-    
-    static let nameLabelTitle = "name"
-    static let sizeLabelTitle = "000.00KiB"
-    static let progressLabelTitle = "00.00%"
-    static let etaLabelTitle = "00:00:00"
-    static let speedLabelTitle = "000.00KiB/s"
-    
-    static let continueImageName = "download_continue"
-    static let pauseImageName = "download_pause"
+fileprivate struct DefaultValue {
+    static let Name = "name"
+    static let Size = "000.00KiB"
+    static let Progress = "00.00%"
+    static let Eta = "00:00:00"
+    static let Speed = "000.00KiB/s"
 }
 
-fileprivate typealias C = Constant
+fileprivate let ContinueImageName = "download_continue"
+fileprivate let PauseImageName = "download_pause"
 
-class MainDownloadCellView: NSTableCellView {
+internal class MainDownloadCellView: NSTableCellView {
 
-    let nameLabel = SKLabel(title: C.nameLabelTitle)
+    internal let nameLabel = SKLabel(title: DefaultValue.Name)
     
-    let sizeLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.sizeLabelTitle)
+    internal let sizeLabel = SKLabel.descriptionLabel(fontSize: 13, title: DefaultValue.Size)
     
-    let progressLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.progressLabelTitle)
+    internal let progressLabel = SKLabel.descriptionLabel(fontSize: 13, title: DefaultValue.Progress)
     
-    let etaLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.etaLabelTitle)
+    internal let etaLabel = SKLabel.descriptionLabel(fontSize: 13, title: DefaultValue.Eta)
     
-    let speedLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.speedLabelTitle)
+    internal let speedLabel = SKLabel.descriptionLabel(fontSize: 13, title: DefaultValue.Speed)
     
-    let pauseButton: NSButton = NSButton.button(with: NSImage(named: NSImage.Name(rawValue: C.pauseImageName)))
+    internal let pauseButton: NSButton = NSButton.button(with: NSImage(named: NSImage.Name(rawValue: PauseImageName)))
     
-    let horizontalLine: NSBox = {
+    internal let horizontalLine: NSBox = {
         let line = NSBox()
         line.borderType = NSBorderType.grooveBorder
         line.boxType = NSBox.BoxType.separator
@@ -47,13 +41,7 @@ class MainDownloadCellView: NSTableCellView {
         return line
     }()
     
-   // weak var task: DownloadTask?
-    weak var file: DLFile?
-    
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-    }
+    internal weak var video: Video!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -66,7 +54,7 @@ class MainDownloadCellView: NSTableCellView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setSubviewLayout() {
+    fileprivate func setSubviewLayout() {
         
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
@@ -116,27 +104,20 @@ class MainDownloadCellView: NSTableCellView {
         
     }
     
-    func setSubview() {
-        
+    fileprivate func setSubview() {
         let views = [nameLabel, sizeLabel, progressLabel, etaLabel, speedLabel, horizontalLine, pauseButton]
         for view in views {
             addSubview(view)
         }
-        
         setSubviewLayout()
-        
     }
     
-    func addButton(target: AnyObject?, selector: Selector?) {
+    internal func addButton(target: AnyObject?, selector: Selector?) {
         pauseButton.target = target
         pauseButton.action = selector
     }
     
-//    func setButtonImage(isDownloading: Bool) {
-//        self.pauseButton.image = NSImage(named: NSImage.Name(isDownloading ? C.pauseImageName : C.continueImageName))
-//    }
-    
-    func setButtonImage(state: DLFile.State) {
-        self.pauseButton.image = NSImage(named: NSImage.Name(state == DLFile.State.downloading ? C.pauseImageName : C.continueImageName))
+    internal func setButtonImage(state: Video.State) {
+        self.pauseButton.image = NSImage(named: NSImage.Name(state == Video.State.downloading ? PauseImageName : ContinueImageName))
     }
 }

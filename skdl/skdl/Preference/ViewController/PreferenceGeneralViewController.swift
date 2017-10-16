@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PGeneralViewController: NSViewController, MASPreferencesViewController {
+class PreferenceGeneralViewController: NSViewController, MASPreferencesViewController {
     
     var viewIdentifier: String {
         get {
@@ -21,7 +21,7 @@ class PGeneralViewController: NSViewController, MASPreferencesViewController {
 
     override var nibName: NSNib.Name? {
         get {
-            return NSNib.Name("PGeneralViewController")
+            return NSNib.Name("PreferenceGeneralViewController")
         }
     }
     

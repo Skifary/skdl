@@ -1,5 +1,5 @@
 //
-//  LocalManager.swift
+//  OfflineVideoManager.swift
 //  skdl
 //
 //  Created by Skifary on 03/10/2017.
@@ -8,20 +8,17 @@
 
 import Foundation
 
-
-class LocalManager {
+internal class OfflineVideoManager {
     
     //MARK:- property
     
-    var localFiles: [DLFile] {
-        get {
-            return DLFileManager.manager.finishedFiles
-        }
+    internal var offlineVideos: [Video] {
+        return VideoManager.manager.offlineVideos
     }
     
     //MARK:- singleton
 
-    static let manager = LocalManager()
+    internal static let manager = OfflineVideoManager()
     
     fileprivate init() {
         

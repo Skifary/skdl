@@ -8,9 +8,7 @@
 
 import Foundation
 
-
-
-class FolderBrowser {
+public class FolderBrowser {
     
     static func chooseFolder(title: String?) -> URL? {
         let panel = NSOpenPanel()

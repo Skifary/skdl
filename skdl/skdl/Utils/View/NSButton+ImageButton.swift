@@ -1,5 +1,5 @@
 //
-//  NSButtonExtension.swift
+//  NSButton+ImageButton.swift
 //  skdl
 //
 //  Created by Skifary on 07/10/2017.
@@ -8,9 +8,9 @@
 
 import Cocoa
 
-extension NSButton {
+public extension NSButton {
 
-    static func button(with image: NSImage?) -> NSButton {
+    public static func button(with image: NSImage?) -> NSButton {
         let button = NSButton()
         button.bezelStyle = NSButton.BezelStyle.circular
         button.title = ""

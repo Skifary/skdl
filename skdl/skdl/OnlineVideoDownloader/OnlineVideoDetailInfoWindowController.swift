@@ -1,5 +1,5 @@
 //
-//  FIWindowController.swift
+//  OnlineVideoDetailInfoWindowController.swift
 //  skdl
 //
 //  Created by Skifary on 06/09/2017.
@@ -8,22 +8,16 @@
 
 import Cocoa
 
-fileprivate struct Constant {
-    
 
-    static let nameTableColumnTitle = "名称"
-    
-    static let extTableColumnTitle = "扩展名"
-    
-    static let sizeTableColumn = "大小"
-    
-    static let chooseStoragePathTitle = "选择下载路径"
-    
-}
+fileprivate let NameTableColumnTitle = "名称"
 
-fileprivate typealias C = Constant
+fileprivate let ExtTableColumnTitle = "扩展名"
 
-class FIWindowController: NSWindowController {
+fileprivate let SizeTableColumnTitle = "大小"
+
+fileprivate let ChooseStoragePathTitle = "选择下载路径"
+
+internal class OnlineVideoDetailInfoWindowController: NSWindowController {
     
     //MARK:- IBOutlet
     
@@ -36,53 +30,53 @@ class FIWindowController: NSWindowController {
     
     //MARK:- var
     
-    weak var parent: NTWindowController?
+    internal weak var parent: NewDownloadTaskWindowController!
     
-    let files: [DLFile]?
+    fileprivate let videos: [Video]
 
     override var windowNibName: NSNib.Name? {
-        return NSNib.Name.init("FIWindowController")
+        return NSNib.Name.init("OnlineVideoDetailInfoWindowController")
     }
     
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        basicSetting()
-
-    }
-    
-    func basicSetting() {
         setWindow()
-        setTableView()
-        setPopUpButton()
-    }
-    
-    func setWindow() {
-        self.window?.delegate = self
         
-        self.window?.center()
+        setTableView()
+        
+        setPopUpButton()
+        
     }
     
-    func setTableView() {
+    fileprivate func setWindow() {
+        
+        window?.delegate = self
+        
+        window?.center()
+    
+    }
+    
+    fileprivate func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        nameTableColumn.title = C.nameTableColumnTitle
+        nameTableColumn.title = NameTableColumnTitle
         nameTableColumn.width = 400
-        extTableColumn.title = C.extTableColumnTitle
+        extTableColumn.title = ExtTableColumnTitle
         extTableColumn.width = 80
-        sizeTableColumn.title = C.sizeTableColumn
+        sizeTableColumn.title = SizeTableColumnTitle
         sizeTableColumn.width = 80
         tableView.wantsLayer = true
         tableView.layer?.borderWidth = 0
     }
     
-    func setPopUpButton() {
+    fileprivate func setPopUpButton() {
         popUpButton.addItems(withTitles: PV.historyStoragePaths!)
         popUpButton.selectItem(withTitle: PV.localStoragePath!)
     }
     
-    init(files: [DLFile]?) {
-        self.files = files
+    init(with videos: [Video]) {
+        self.videos = videos
         super.init(window: nil)
     }
     
@@ -91,64 +85,70 @@ class FIWindowController: NSWindowController {
     }
     
     deinit {
-       // print("deinit")
+        
     }
     
     override func showWindow(_ sender: Any?) {
         super.showWindow(nil)
-        parent = sender as? NTWindowController
+        parent = sender as! NewDownloadTaskWindowController
     }
     
     //MARK:- IBAction
     
     @IBAction func selectPath(_ sender: Any) {
-        let folderURL = FolderBrowser.chooseFolder(title: C.chooseStoragePathTitle)
-        if folderURL == nil {
+        guard let folderURL = FolderBrowser.chooseFolder(title: ChooseStoragePathTitle) else {
             return
         }
-        
-        if !popUpButton.itemTitles.contains(folderURL!.path) {
-            popUpButton.addItem(withTitle: folderURL!.path)
+        if !popUpButton.itemTitles.contains(folderURL.path) {
+            popUpButton.addItem(withTitle: folderURL.path)
         }
-        popUpButton.selectItem(withTitle: folderURL!.path)
+        popUpButton.selectItem(withTitle: folderURL.path)
     }
     
     @IBAction func startDownload(_ sender: Any) {
-        let localFolder = (popUpButton.selectedItem?.title)!
+        
+        guard let localFolder = popUpButton.selectedItem?.title else {
+            Log.log("local folder is nil")
+            Alert.warn("提示", "请选择保存路径")
+            return
+        }
+
         PV.saveLocalStoragePath(path: localFolder)
         PV.appendHistoryPath(path: localFolder)
-        for file in files! {
-            file.localFolder = URL(string: "file://" + localFolder)
-            DownloadManager.manager.download(with: file)
+        
+        videos.forEach { (v) in
+            v.localFolder = URL(string: "file://" + localFolder)
+            OnlineVideoDownloader.shared.download(with: v)
         }
-        self.close()
-        self.parent?.close()
+        
+        close()
+        parent.close()
     }
 }
 
 
-extension FIWindowController: NSWindowDelegate {
+extension OnlineVideoDetailInfoWindowController: NSWindowDelegate {
     
     func windowWillClose(_ notification: Notification) {
-        self.parent?.fiWindowController = nil
+        parent.detailWindowController = nil
     }
 
 }
 
-extension FIWindowController: NSTableViewDelegate, NSTableViewDataSource {
+extension OnlineVideoDetailInfoWindowController: NSTableViewDelegate, NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return (files?.count)!
+        return videos.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         var text: String?
         if (tableColumn?.isEqual(nameTableColumn))! {
-            text = files?[row].name
+            text = videos[row].name
         } else if (tableColumn?.isEqual(extTableColumn))! {
-            text = files?[row].ext
+            text = videos[row].ext
         } else {
-            text = files?[row].sizeDescription
+            text = videos[row].sizeDescription
         }
         let cell = NSTextFieldCell(textCell: text!)
         return cell

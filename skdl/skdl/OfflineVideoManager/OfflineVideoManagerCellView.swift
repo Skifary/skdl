@@ -1,5 +1,5 @@
 //
-//  LocalTableCellView.swift
+//  OfflineVideoManagerCellView.swift
 //  skdl
 //
 //  Created by Skifary on 07/10/2017.
@@ -8,38 +8,28 @@
 
 import Cocoa
 
-/* LCV: local cell view */
-let LCVIdentifier = "com.skifary.skdl.LCVIdentifier"
 
-fileprivate struct Constant {
+
+fileprivate struct DefaultValue {
     
-    static let nameLabelTitle = "name"
-    static let sizeLabelTitle = "000.00KiB"
-    
-    static let localPlayButtonImage = "local_play"
+    static let Name = "name"
+    static let Size = "000.00KiB"
     
 }
 
-fileprivate typealias C = Constant
+fileprivate let LocalPlayButtonImageName = "local_play"
 
+internal class OfflineVideoManagerCellView: NSTableCellView {
 
-class LocalTableCellView: NSTableCellView {
-
-    weak var file: DLFile?
+    internal weak var video: Video!
     
-    let nameLabel = SKLabel(title: C.nameLabelTitle)
+    internal let nameLabel = SKLabel(title: DefaultValue.Name)
     
-    let sizeLabel = SKLabel.descriptionLabel(fontSize: 13, title: C.sizeLabelTitle)
+    internal let sizeLabel = SKLabel.descriptionLabel(fontSize: 13, title: DefaultValue.Size)
     
-    let playButton = NSButton.button(with: NSImage(named: NSImage.Name(rawValue: C.localPlayButtonImage)))
+    internal let playButton = NSButton.button(with: NSImage(named: NSImage.Name(rawValue: LocalPlayButtonImageName)))
     
-    let showInTheFinderButton = NSButton.button(with: NSImage(named: NSImage.Name.folder))
-    
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
-    }
+    internal let showInTheFinderButton = NSButton.button(with: NSImage(named: NSImage.Name.folder))
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -52,7 +42,7 @@ class LocalTableCellView: NSTableCellView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setSubviewLayout() {
+    fileprivate func setSubviewLayout() {
         
         nameLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
@@ -82,28 +72,26 @@ class LocalTableCellView: NSTableCellView {
         
     }
     
-    func setSubview() {
+    fileprivate func setSubview() {
         
         let views = [nameLabel, sizeLabel, playButton, showInTheFinderButton]
         for view in views {
             addSubview(view)
         }
-        
         setSubviewLayout()
-        
     }
     
-    func set(with file: DLFile) {
-        nameLabel.stringValue = file.name!
-        sizeLabel.stringValue = file.sizeDescription
+    internal func set(with video: Video) {
+        nameLabel.stringValue = video.name
+        sizeLabel.stringValue = video.sizeDescription
     }
     
-    func addPlayButton(target: AnyObject?, action: Selector?) {
+    internal func addPlayButton(target: AnyObject?, action: Selector?) {
         playButton.target = target
         playButton.action = action
     }
     
-    func addShowInTheFinderButton(target: AnyObject?, action: Selector?) {
+    internal func addShowInTheFinderButton(target: AnyObject?, action: Selector?) {
         showInTheFinderButton.target = target
         showInTheFinderButton.action = action
     }

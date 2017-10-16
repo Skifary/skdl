@@ -8,10 +8,9 @@
 
 import Foundation
 
-
-class FileSize {
+public class FileSize {
     
-    enum Unit: Int {
+    public enum Unit: Int {
         case unkown = -1
         case b = 0
         case kb = 1
@@ -30,11 +29,8 @@ class FileSize {
         }
     }
 
-    static func format(size: Int64?) -> String {
-        if size == nil {
-            return "unkown size"
-        }
-        var formatSize: Double = Double(size!)
+    static func format(size: Int64) -> String {
+        var formatSize: Double = Double(size)
         var digits = -1
         while formatSize > 1 {
             formatSize /= 1000
@@ -45,8 +41,7 @@ class FileSize {
             return "unkown size"
         }
         formatSize *= 1000
-        return String(format: "%.2f%@", formatSize, (unit?.string)!)
+        return String(format: "%.2f%@", formatSize, unit!.string)
     }
-    
     
 }
