@@ -16,7 +16,7 @@ internal class VideoManager {
     
     internal var onlineVideos: [Video] {
         return videos.filter { (v) -> Bool in
-            return v.state == Video.State.offline || v.state == Video.State.downloading
+            return v.state == Video.State.online || v.state == Video.State.downloading
         }
     }
     
