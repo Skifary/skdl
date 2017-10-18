@@ -13,6 +13,9 @@
 		D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */; };
 		D50FC6271F8FBB07004420D1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50FC6261F8FBB07004420D1 /* Log.swift */; };
 		D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541FCB91F910E9000CB8381 /* Assert.swift */; };
+		D546ABD01F964F5D00FC3310 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABCF1F964F5D00FC3310 /* ControlBarView.swift */; };
+		D546ABD21F964F7E00FC3310 /* MainDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABD11F964F7E00FC3310 /* MainDisplayView.swift */; };
+		D546ABD41F96549600FC3310 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABD31F96549600FC3310 /* Color.swift */; };
 		D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B04D31F8FC806003A4884 /* ErrorReport.swift */; };
 		D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4C41F602C70002D4BF9 /* ytdlCommand.swift */; };
 		D557A0231F662A8F00197568 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557A0221F662A8F00197568 /* Preference.swift */; };
@@ -74,9 +77,7 @@
 		D5EC26C31F8E69DA009363A2 /* OfflineVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26BF1F8E69DA009363A2 /* OfflineVideoManager.swift */; };
 		D5EC26CC1F8E6A14009363A2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EC26C51F8E6A13009363A2 /* MainViewController.xib */; };
 		D5EC26CD1F8E6A14009363A2 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26C61F8E6A13009363A2 /* MainWindow.swift */; };
-		D5EC26CE1F8E6A14009363A2 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26C71F8E6A14009363A2 /* MainToolbar.swift */; };
 		D5EC26CF1F8E6A14009363A2 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26C81F8E6A14009363A2 /* MainWindowController.swift */; };
-		D5EC26D01F8E6A14009363A2 /* MainToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26C91F8E6A14009363A2 /* MainToolbarItem.swift */; };
 		D5EC26D11F8E6A14009363A2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26CA1F8E6A14009363A2 /* MainViewController.swift */; };
 		D5EC26D51F8E6AF0009363A2 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D31F8E6AF0009363A2 /* VideoManager.swift */; };
 		D5EC26D61F8E6AF0009363A2 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D41F8E6AF0009363A2 /* Video.swift */; };
@@ -99,6 +100,9 @@
 		D5067AFA1F4E7FEB00B93ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D50FC6261F8FBB07004420D1 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Utils/Log.swift; sourceTree = "<group>"; };
 		D541FCB91F910E9000CB8381 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Assert.swift; path = Utils/Assert.swift; sourceTree = "<group>"; };
+		D546ABCF1F964F5D00FC3310 /* ControlBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ControlBarView.swift; path = Main/ControlBarView.swift; sourceTree = "<group>"; };
+		D546ABD11F964F7E00FC3310 /* MainDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainDisplayView.swift; path = Main/MainDisplayView.swift; sourceTree = "<group>"; };
+		D546ABD31F96549600FC3310 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = AppData/Color.swift; sourceTree = "<group>"; };
 		D54B04D31F8FC806003A4884 /* ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorReport.swift; path = Utils/ErrorReport.swift; sourceTree = "<group>"; };
 		D554C4C41F602C70002D4BF9 /* ytdlCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlCommand.swift; path = ytdlCommand/ytdlCommand.swift; sourceTree = "<group>"; };
 		D557A0221F662A8F00197568 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preference.swift; path = Preference/Preference.swift; sourceTree = "<group>"; };
@@ -165,9 +169,7 @@
 		D5EC26BF1F8E69DA009363A2 /* OfflineVideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineVideoManager.swift; path = OfflineVideoManager/OfflineVideoManager.swift; sourceTree = "<group>"; };
 		D5EC26C51F8E6A13009363A2 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = Main/MainViewController.xib; sourceTree = "<group>"; };
 		D5EC26C61F8E6A13009363A2 /* MainWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindow.swift; path = Main/MainWindow.swift; sourceTree = "<group>"; };
-		D5EC26C71F8E6A14009363A2 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainToolbar.swift; path = Main/MainToolbar.swift; sourceTree = "<group>"; };
 		D5EC26C81F8E6A14009363A2 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = Main/MainWindowController.swift; sourceTree = "<group>"; };
-		D5EC26C91F8E6A14009363A2 /* MainToolbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainToolbarItem.swift; path = Main/MainToolbarItem.swift; sourceTree = "<group>"; };
 		D5EC26CA1F8E6A14009363A2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Main/MainViewController.swift; sourceTree = "<group>"; };
 		D5EC26D31F8E6AF0009363A2 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoManager.swift; path = VideoManager/VideoManager.swift; sourceTree = "<group>"; };
 		D5EC26D41F8E6AF0009363A2 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = VideoManager/Video.swift; sourceTree = "<group>"; };
@@ -299,15 +301,15 @@
 		D5D10DC21F513A7900044739 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D50152F41F94DDA800D53613 /* Main.storyboard */,
 				D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */,
-				D5EC26C71F8E6A14009363A2 /* MainToolbar.swift */,
-				D5EC26C91F8E6A14009363A2 /* MainToolbarItem.swift */,
+				D50152F71F94FA8F00D53613 /* AppDelegate+Menu.swift */,
+				D546ABCF1F964F5D00FC3310 /* ControlBarView.swift */,
+				D50152F41F94DDA800D53613 /* Main.storyboard */,
+				D546ABD11F964F7E00FC3310 /* MainDisplayView.swift */,
 				D5EC26CA1F8E6A14009363A2 /* MainViewController.swift */,
 				D5EC26C51F8E6A13009363A2 /* MainViewController.xib */,
 				D5EC26C61F8E6A13009363A2 /* MainWindow.swift */,
 				D5EC26C81F8E6A14009363A2 /* MainWindowController.swift */,
-				D50152F71F94FA8F00D53613 /* AppDelegate+Menu.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EC26EB1F8E6FA3009363A2 /* AppData.swift */,
+				D546ABD31F96549600FC3310 /* Color.swift */,
 			);
 			name = AppData;
 			sourceTree = "<group>";
@@ -519,6 +522,8 @@
 				D5EC26C11F8E69DA009363A2 /* OfflineVideoManagerCellView.swift in Sources */,
 				D5EC26E71F8E6AFB009363A2 /* PathUtility.swift in Sources */,
 				D5EC26C01F8E69DA009363A2 /* OfflineVideoManagerViewController.swift in Sources */,
+				D546ABD01F964F5D00FC3310 /* ControlBarView.swift in Sources */,
+				D546ABD41F96549600FC3310 /* Color.swift in Sources */,
 				D5EC26B71F8E6555009363A2 /* OnlineVideoDownloader.swift in Sources */,
 				D5D9B1F81F721161008E5991 /* ConstraintMakerExtendable.swift in Sources */,
 				D5D9B1E91F721161008E5991 /* ConstraintAttributes.swift in Sources */,
@@ -529,7 +534,6 @@
 				D5D9B1FF1F721161008E5991 /* ConstraintPriorityTarget.swift in Sources */,
 				D5D9B1EF1F721161008E5991 /* ConstraintInsetTarget.swift in Sources */,
 				D561A83F1F6A304A00BEE709 /* ytdlDumpJsonKey.swift in Sources */,
-				D5EC26CE1F8E6A14009363A2 /* MainToolbar.swift in Sources */,
 				D5EC26C31F8E69DA009363A2 /* OfflineVideoManager.swift in Sources */,
 				D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */,
 				D5067AF21F4E7FEB00B93ED4 /* AppDelegate.swift in Sources */,
@@ -544,6 +548,7 @@
 				D5D9B1E81F721161008E5991 /* Constraint.swift in Sources */,
 				D5EC26CD1F8E6A14009363A2 /* MainWindow.swift in Sources */,
 				D5EC26D11F8E6A14009363A2 /* MainViewController.swift in Sources */,
+				D546ABD21F964F7E00FC3310 /* MainDisplayView.swift in Sources */,
 				D5D9B2041F721161008E5991 /* ConstraintViewDSL.swift in Sources */,
 				D5D9B2001F721161008E5991 /* ConstraintRelatableTarget.swift in Sources */,
 				D597B8AE1F72C3E9008C96AA /* MASPreferencesWindowController.m in Sources */,
@@ -584,7 +589,6 @@
 				D5D9B1EE1F721161008E5991 /* ConstraintInsets.swift in Sources */,
 				D5EC26E61F8E6AFB009363A2 /* JSONHelper.swift in Sources */,
 				D5D9B1EB1F721161008E5991 /* ConstraintConstantTarget.swift in Sources */,
-				D5EC26D01F8E6A14009363A2 /* MainToolbarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

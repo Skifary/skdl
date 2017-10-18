@@ -39,17 +39,17 @@ internal class MainWindowController: NSWindowController {
     //MARK:- file private
     fileprivate func setWindow() {
         
-        self.window = MainWindow()
+        window = MainWindow()
         
-        setToolbar()
+     //   setToolbar()
     }
     
-    fileprivate func setToolbar() {
-        let toolbar = MainToolbar(identifier: NSToolbar.Identifier(Identifier.Toolbar))
-        toolbar.delegate = self
-        self.window?.toolbar = toolbar
-    }
-    
+//    fileprivate func setToolbar() {
+//        let toolbar = MainToolbar(identifier: NSToolbar.Identifier(Identifier.Toolbar))
+//        toolbar.delegate = self
+//        self.window?.toolbar = toolbar
+//    }
+//
     fileprivate func setMainViewController() {
         window?.contentViewController = MainViewController()
     }
@@ -58,48 +58,48 @@ internal class MainWindowController: NSWindowController {
     
 }
 
-//MARK:-
-extension MainWindowController: NSToolbarDelegate {
-    
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [
-            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Download),
-            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Local),
-        ]
-    }
-    
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [
-            NSToolbarItem.Identifier.flexibleSpace,
-            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Download),
-            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Local),
-            NSToolbarItem.Identifier.flexibleSpace,
-        ]
-    }
-    
-    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-        
-        let toolbarItem = MainToolbarItem(itemIdentifier: NSToolbarItem.Identifier(itemIdentifier.rawValue))
-        toolbarItem.target = self
-        if itemIdentifier.rawValue == Identifier.ToolbarItem.Download {
-            toolbarItem.action = #selector(downloadItemClick)
-            toolbarItem.label = DownloadToolbarItemTitle
-        } else {
-            toolbarItem.action = #selector(fileItemClick)
-            toolbarItem.label = LocalToolbarItemTitle
-        }
-        return toolbarItem
-        
-    }
-    
-    @objc func downloadItemClick() {
-        let mainVC = self.contentViewController as! MainViewController
-        mainVC.showDownloadView()
-    }
-    
-    @objc func fileItemClick() {
-        let mainVC = self.contentViewController as! MainViewController
-        mainVC.showManagerView()
-    }
-}
+////MARK:-
+//extension MainWindowController: NSToolbarDelegate {
+//
+//    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+//        return [
+//            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Download),
+//            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Local),
+//        ]
+//    }
+//
+//    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+//        return [
+//            NSToolbarItem.Identifier.flexibleSpace,
+//            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Download),
+//            NSToolbarItem.Identifier(rawValue: Identifier.ToolbarItem.Local),
+//            NSToolbarItem.Identifier.flexibleSpace,
+//        ]
+//    }
+//
+//    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+//
+//        let toolbarItem = MainToolbarItem(itemIdentifier: NSToolbarItem.Identifier(itemIdentifier.rawValue))
+//        toolbarItem.target = self
+//        if itemIdentifier.rawValue == Identifier.ToolbarItem.Download {
+//            toolbarItem.action = #selector(downloadItemClick)
+//            toolbarItem.label = DownloadToolbarItemTitle
+//        } else {
+//            toolbarItem.action = #selector(fileItemClick)
+//            toolbarItem.label = LocalToolbarItemTitle
+//        }
+//        return toolbarItem
+//
+//    }
+//
+//    @objc func downloadItemClick() {
+//        let mainVC = self.contentViewController as! MainViewController
+//        mainVC.showDownloadView()
+//    }
+//
+//    @objc func fileItemClick() {
+//        let mainVC = self.contentViewController as! MainViewController
+//        mainVC.showManagerView()
+//    }
+//}
 

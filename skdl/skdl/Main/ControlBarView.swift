@@ -8,12 +8,21 @@
 
 import Cocoa
 
-class ControlBarView: NSView {
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+internal class ControlBarView: NSView {
+    
+    
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+    
+        self.wantsLayer = true
+        
+        self.layer?.backgroundColor = NSColor.red.cgColor
+        
+    }
+    
+    required init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

@@ -10,10 +10,13 @@ import Cocoa
 
 internal class MainViewController: NSViewController {
 
-    fileprivate var downloadViewController = OnlineVideoDownloaderViewController()
+    fileprivate let downloadViewController = OnlineVideoDownloaderViewController()
     
-    fileprivate var localViewController = OfflineVideoManagerViewController()
+    fileprivate let localViewController = OfflineVideoManagerViewController()
     
+    let controlBar = ControlBarView()
+    
+    let displayView = MainDisplayView()
     
     //MARK:- api
     
@@ -31,29 +34,53 @@ internal class MainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         
+      //  addChildControllers()
         
-        addSubViewControllers()
+        setSubView()
+        
         showDownloadView()
     }
     
     
     //MARK:-
     
-    fileprivate func addSubViewControllers() {
-        addChildViewController(downloadViewController)
-        addChildViewController(localViewController)
-        self.view.addSubview(downloadViewController.view)
-        downloadViewController.view.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
+    fileprivate func setSubView() {
+        view.addSubview(controlBar)
+        view.addSubview(displayView)
+        controlBar.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalToSuperview()
+            make.width.equalTo(70)
         }
-        self.view.addSubview(localViewController.view)
-        localViewController.view.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
+        displayView.snp.makeConstraints { (make) in
+            make.top.bottom.right.equalToSuperview()
+            make.left.equalTo(controlBar.snp.right)
         }
+        
+        let displaySubviews = [downloadViewController.view, localViewController.view]
+        
+        displaySubviews.forEach { (view) in
+            displayView.addSubview(view)
+            view.snp.makeConstraints({ (make) in
+                make.left.right.top.bottom.equalToSuperview()
+            })
+        }
+        
     }
     
+//    fileprivate func addSubViewControllers() {
+//        //addChildViewController(downloadViewController)
+//        //addChildViewController(localViewController)
+//        self.view.addSubview(downloadViewController.view)
+//        downloadViewController.view.snp.makeConstraints { (make) in
+//            make.left.right.top.bottom.equalToSuperview()
+//        }
+//        self.view.addSubview(localViewController.view)
+//        localViewController.view.snp.makeConstraints { (make) in
+//            make.left.right.top.bottom.equalToSuperview()
+//        }
+//    }
+//
 
     
 }

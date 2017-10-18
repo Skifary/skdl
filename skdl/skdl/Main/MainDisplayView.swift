@@ -10,10 +10,17 @@ import Cocoa
 
 class MainDisplayView: NSView {
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        self.wantsLayer = true
+        
+        self.layer?.backgroundColor = NSColor.blue.cgColor
+        
+        
     }
     
+    required init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
