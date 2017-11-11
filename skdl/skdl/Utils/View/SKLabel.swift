@@ -16,7 +16,10 @@ public class SKLabel: NSTextField {
         super.init(frame: frameRect)
         isEditable = false
         isBordered = false
+        focusRingType = .none
+        drawsBackground = false
         stringValue = DefaultTitle
+        textColor = NSColor.black
         sizeToFit()
     }
     
@@ -25,7 +28,7 @@ public class SKLabel: NSTextField {
     }
     
     public convenience init(title: String) {
-        self.init(frame: NSRect.zero)
+        self.init(frame: NSZeroRect)
         stringValue = title
         sizeToFit()
     }

@@ -17,7 +17,7 @@ let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomain
 struct Preference {
     
     static let defaultPreference:[String : Any] = [
-        Key.localStorageFolder : docDir,
+        Key.localStorageFolder : docDir + "/skdl",
         Key.historyStorageFolders : [docDir],
         Key.defaultPlayer : "",
     ]
@@ -34,18 +34,16 @@ struct Preference {
     
     struct Value {
         static var localStoragePath: String? {
+            set {
+                standardUD.set(newValue, forKey: Key.localStorageFolder)
+            }
             get {
                 return standardUD.string(forKey: Key.localStorageFolder)
             }
         }
-        static func saveLocalStoragePath(path: String) {
-            standardUD.set(path, forKey: Key.localStorageFolder)
-        }
-        
+
         static var historyStoragePaths: [String]? {
-            get {
-                return standardUD.stringArray(forKey: Key.historyStorageFolders)
-            }
+            return standardUD.stringArray(forKey: Key.historyStorageFolders)
         }
         
         static func appendHistoryPath(path: String) {
@@ -61,13 +59,12 @@ struct Preference {
         }
         
         static var defaultPlayer: String? {
+            set {
+                standardUD.set(newValue, forKey: Key.defaultPlayer)
+            }
             get {
                 return standardUD.string(forKey: Key.defaultPlayer)
             }
-        }
-        
-        static func setDefaultPlayer(name: String) {
-             standardUD.set(name, forKey: Key.defaultPlayer)
         }
         
     }

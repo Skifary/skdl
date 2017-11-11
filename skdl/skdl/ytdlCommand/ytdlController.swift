@@ -29,12 +29,19 @@ internal class ytdlController {
         return true
     }
     
-    internal func dumpJson(from urls: [String]) -> [String]? {
+    internal func dumpJson(urls: [String]) -> [String]? {
         var args = [YOS.kDumpJson]
         args.append(contentsOf: urls)
         let res = ytdlCommand.resultFromCommand(args: args)
         let jsons = res.result?.components(separatedBy: "\n")
         return jsons
+    }
+    
+    internal func dumpJson(url: String) -> String? {
+        var args = [YOS.kDumpJson]
+        args.append(url)
+        let res = ytdlCommand.resultFromCommand(args: args)
+        return res.result
     }
     
     internal func download(with url: String, localPath: String) -> (process: Process, out: Pipe, error: Pipe) {

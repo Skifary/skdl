@@ -8,14 +8,16 @@
 
 import Cocoa
 
-@NSApplicationMain
+
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     //MARK:- var
     
-    internal var newTaskWindowController: NewDownloadTaskWindowController?
+    internal var statusBarItem: NSStatusItem!
     
-    internal var prefecenceWindowController: MASPreferencesWindowController?
+    internal var popover: NSPopover!
+    
+    internal var monitor: Any?
 
     //MARK:- application
     
@@ -24,8 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 注册默认自定义偏好
         UserDefaults.standard.register(defaults: Preference.defaultPreference)
  
-        setMenu()
-    
+        
+      //  setMenu()
+       statusBarItem = statusItem()
+        
+     //   setStatusBar()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -34,36 +39,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     }
 
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if (!flag) {
-            NSApp.activate(ignoringOtherApps: false)
-            NSApp.windows.last?.windowController?.showWindow(nil)
-            NSApp.windows.last?.center()
-        }
-        return true
-    }
+//    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+//        if (!flag) {
+//            NSApp.activate(ignoringOtherApps: false)
+//            NSApp.windows.last?.windowController?.showWindow(nil)
+//            NSApp.windows.last?.center()
+//        }
+//        return true
+//    }
 
     //MARK:- IBAction
     
-    @IBAction func showPreference(_ sender: Any) {
-        
-        let viewControllers: [NSViewController] = [PreferenceGeneralViewController()]
-        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: AppData.PreferenceTitle)
-        prefecenceWindowController?.window?.delegate = self
-        prefecenceWindowController?.showWindow(nil)
-        prefecenceWindowController?.window?.center()
-        
-    }
+//    @IBAction func showPreference(_ sender: Any) {
+//        
+//        let viewControllers: [NSViewController] = [PreferenceGeneralViewController()]
+//        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: AppData.PreferenceTitle)
+//        prefecenceWindowController?.window?.delegate = self
+//        prefecenceWindowController?.showWindow(nil)
+//        prefecenceWindowController?.window?.center()
+//        
+//    }
     
 }
 
 
-extension AppDelegate: NSWindowDelegate {
-    
-    func windowWillClose(_ notification: Notification) {
-        if (prefecenceWindowController?.window?.isEqual(notification.object))! {
-            prefecenceWindowController = nil
-        }
-    }
-    
-}
+//extension AppDelegate: NSWindowDelegate {
+//
+//    func windowWillClose(_ notification: Notification) {
+//        if (prefecenceWindowController?.window?.isEqual(notification.object))! {
+//            prefecenceWindowController = nil
+//        }
+//    }
+//
+//}
+

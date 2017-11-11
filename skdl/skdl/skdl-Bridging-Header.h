@@ -9,6 +9,5 @@
 #ifndef skdl_Bridging_Header_h
 #define skdl_Bridging_Header_h
 
-#import "MASPreferences.h"
 
 #endif /* skdl_Bridging_Header_h */

@@ -6,7 +6,7 @@
 //  Copyright © 2017 skifary. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 public class FolderBrowser {
     

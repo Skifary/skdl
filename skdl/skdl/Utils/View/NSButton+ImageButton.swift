@@ -10,11 +10,11 @@ import Cocoa
 
 public extension NSButton {
 
-    public static func button(with image: NSImage?) -> NSButton {
+    public static func button(with imageName: NSImage.Name) -> NSButton {
         let button = NSButton()
         button.bezelStyle = NSButton.BezelStyle.circular
         button.title = ""
-        button.image = image
+        button.image = NSImage(named: imageName)
         button.isBordered = false
         button.imageScaling = NSImageScaling.scaleProportionallyDown
         return button

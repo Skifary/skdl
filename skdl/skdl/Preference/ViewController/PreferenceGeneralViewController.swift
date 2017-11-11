@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferenceGeneralViewController: NSViewController, MASPreferencesViewController {
+class PreferenceGeneralViewController: NSViewController/*, MASPreferencesViewController */{
     
     var viewIdentifier: String {
         get {

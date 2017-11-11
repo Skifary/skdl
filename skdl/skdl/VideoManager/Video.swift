@@ -81,7 +81,7 @@ internal class Video: NSObject, NSCoding {
     
     internal var state: State = .online
     
-    internal var task: OnlineDownloadTask?
+    internal var task: DownloadTask?
     
     internal var sizeDescription: String {
         return FileSize.format(size: size)
