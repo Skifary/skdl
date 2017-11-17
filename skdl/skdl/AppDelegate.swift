@@ -32,8 +32,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !isReady {
             UserDefaults.standard.register(defaults: Preference.defaultPreference)
             statusBarItem = statusItem()
+
             isReady = true
         }
+        
+        
+        // if have pending open request
+        if let url = pendingURL {
+            parsePendingURL(url)
+        }
+
         
         // 注册默认自定义偏好
    //     UserDefaults.standard.register(defaults: Preference.defaultPreference)
@@ -58,14 +66,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     @objc fileprivate func handleURLEvent(event: NSAppleEventDescriptor, withReplyEvent replyEvent: NSAppleEventDescriptor) {
-//        openFileCalled = true
         guard let url = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue else { return }
         if isReady {
             parsePendingURL(url)
         } else {
             pendingURL = url
         }
-        
         
     }
     
@@ -76,7 +82,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             guard let urlValue = (parsed.queryItems?.first { $0.name == "url" }?.value) else { return }
           //  PlayerCore.active.openURLString(urlValue)
             
-            print("parsePending url is ",urlValue)
+           // print("parsePending url is ",urlValue)
+            
+            DispatchQueue.global().async {
+                VideoDownloader.shared.download(with: urlValue)
+            }
         }
     }
     

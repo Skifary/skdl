@@ -58,6 +58,52 @@ internal class VideoDownloader {
         }
     }
     
+    internal func download(with url: String) {
+        guard url != "" else {
+            let error = "url is nil!"
+            Log.log(error)
+            return
+        }
+        
+        print("download")
+        var isPorxyUrl = false
+        
+        if !ytdlController.shared.isURLAvailable(url: url) {
+            if !ytdlController.shared.isURLAvailableInProxy(url: url) {
+                let error = "url is unavailable!"
+                Log.log(error)
+                return
+            }
+            isPorxyUrl = true
+        }
+        print("dump json start")
+        guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
+            let error = "json is unavailable!"
+            Log.log(error)
+            return
+        }
+        
+        let dump = JSONHelper.getDictionary(from: json)
+        
+        let video = Video()
+        video.url = url
+        video.name = dump[YDJKey.kTitle] as? String ?? ""
+        video.ext = dump[YDJKey.kExt] as? String ?? ""
+        video.size = dump[YDJKey.kFileSize] as? Int64 ?? 0
+        video.duration = dump[YDJKey.kDuration] as? Int64 ?? 0
+        video.format = dump[YDJKey.kFormat] as? String ?? ""
+        video.playlist = dump[YDJKey.kPlayList] as? String ?? ""
+        video.id = dump[YDJKey.kID] as? String ?? ""
+        
+        video.localFolder = URL(string: "file://" + PV.localStoragePath!)
+        
+        video.needProxy = isPorxyUrl
+        
+        print("download start")
+        download(with: video)
+        
+    }
+    
     internal func finish(task: DownloadTask) {
         let video = task.video!
         video.state = .offline

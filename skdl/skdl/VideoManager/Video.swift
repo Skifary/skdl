@@ -12,6 +12,7 @@ internal class Video: NSObject, NSCoding {
     
     //MARK:- NSCoder Key
     fileprivate struct CoderKey {
+        static let id = "skdl.video.key.id"
         static let url = "skdl.video.key.url"
         static let name = "skdl.video.key.name"
         static let size = "skdl.video.key.size"
@@ -25,6 +26,7 @@ internal class Video: NSObject, NSCoding {
     }
     
     internal func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: CoderKey.id)
         aCoder.encode(url, forKey: CoderKey.url)
         aCoder.encode(name, forKey: CoderKey.name)
         aCoder.encode(size, forKey: CoderKey.size)
@@ -38,6 +40,7 @@ internal class Video: NSObject, NSCoding {
     }
     
     internal required init?(coder aDecoder: NSCoder) {
+        id = (aDecoder.decodeObject(forKey: CoderKey.id) as? String) ?? ""
         url = (aDecoder.decodeObject(forKey: CoderKey.url) as? String) ?? ""
         name = (aDecoder.decodeObject(forKey: CoderKey.name) as? String) ?? ""
         size = (aDecoder.decodeObject(forKey: CoderKey.size) as? Int64) ?? 0

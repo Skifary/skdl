@@ -56,8 +56,6 @@ internal extension AppDelegate {
         setPopover(background: Color.Main)
     }
     
-    
-    
     fileprivate func closePopover() {
         guard popover.isShown else {
             return
@@ -65,9 +63,7 @@ internal extension AppDelegate {
         popover.close()
         
         //???? 这里是要写什么来着？
-        
-        
-        
+
         popoverCloseEvent.forEach({ (event) in
             event()
         })
