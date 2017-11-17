@@ -112,7 +112,7 @@ internal class ContentCellView: NSTableCellView {
             make.right.equalTo(pauseButton.snp.left).offset(-4)
             make.bottom.equalTo(sizeLabel.snp.bottom)
             make.height.equalTo(12)
-            make.width.equalTo(50)
+            make.width.equalTo(42)
         }
         
         etaLabel.snp.makeConstraints { (make) in
@@ -123,7 +123,7 @@ internal class ContentCellView: NSTableCellView {
         }
         
         speedLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(progressLabel.snp.left).offset(-4)
+            make.right.equalTo(progressLabel.snp.left)
             make.bottom.equalTo(progressLabel.snp.bottom)
             make.height.equalTo(12)
             make.width.equalTo(70)

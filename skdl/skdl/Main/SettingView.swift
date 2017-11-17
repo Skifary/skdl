@@ -63,12 +63,12 @@ internal class SettingView: NSView {
         chooseButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-8)
             make.bottom.equalToSuperview().offset(-8)
-            make.height.width.equalTo(18)
+            make.width.equalTo(19)
+            make.height.equalTo(16.07)
         }
         
         saveFolderPathLabel.snp.makeConstraints { (make) in
             make.left.equalTo(saveFolderLabel.snp.right)
-           // make.right.equalTo(chooseButton.snp.right)
             make.height.equalTo(18)
             make.top.equalToSuperview().offset(8)
             make.width.equalTo(PopoverView.Size.Content.width-16-size.width)

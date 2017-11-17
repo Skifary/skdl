@@ -20,6 +20,10 @@ struct Preference {
         Key.localStorageFolder : docDir + "/skdl",
         Key.historyStorageFolders : [docDir],
         Key.defaultPlayer : "",
+        Key.proxyType : 0,
+        Key.proxyAddress : "127.0.0.1",
+        Key.proxtPort : "1080",
+        Key.socketTimeout : "5",
     ]
     
     struct Key {
@@ -29,6 +33,14 @@ struct Preference {
         static let historyStorageFolders = "historyStorageFolders"
         
         static let defaultPlayer = "defaultPlayer"
+        
+        static let proxyType = "proxyType"
+        
+        static let proxyAddress = "proxyAddress"
+        
+        static let proxtPort = "proxtPort"
+        
+        static let socketTimeout = "socketTimeout"
     }
     
     
@@ -67,8 +79,51 @@ struct Preference {
             }
         }
         
+        static var proxyType: Int? {
+            set {
+                standardUD.set(newValue, forKey: Key.proxyType)
+            }
+            get {
+                return standardUD.integer(forKey: Key.proxyType)
+            }
+        }
+        
+        static var proxyAddress: String? {
+            set {
+                standardUD.set(newValue, forKey: Key.proxyAddress)
+            }
+            get {
+                return standardUD.string(forKey: Key.proxyAddress)
+            }
+        }
+        
+        static var proxyPort: String? {
+            set {
+                standardUD.set(newValue, forKey: Key.proxtPort)
+            }
+            get {
+                return standardUD.string(forKey: Key.proxtPort)
+            }
+        }
+        
+        static var socketTimeout: String? {
+            set {
+                standardUD.set(newValue, forKey: Key.socketTimeout)
+            }
+            get {
+                return standardUD.string(forKey: Key.socketTimeout)
+            }
+        }
+        
     }
     
-
+    static var proxy: String {
+        let proxyType = Value.proxyType == 0 ? "socks5" : "http"
+        let address = Value.proxyAddress
+        let port = Value.proxyPort
+        
+        let proxy: String = "\(proxyType)://\(address!):\(port!)/"
+        return proxy
+    }
     
 }

@@ -248,12 +248,12 @@
 		D5C8BA911F9CDF0B0084643B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */,
 				D5C8BA921F9CDF300084643B /* AddView.swift */,
-				D52CE1631F9DBAF900742E83 /* SettingView.swift */,
-				D5A551E41FB2E11C008BF506 /* ContentTableView.swift */,
 				D5A551E61FB2FC97008BF506 /* ContentCellView.swift */,
+				D5A551E41FB2E11C008BF506 /* ContentTableView.swift */,
+				D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */,
 				D572EF811FB7283F00096C48 /* ProxyView.swift */,
+				D52CE1631F9DBAF900742E83 /* SettingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -628,6 +628,7 @@
 				DEVELOPMENT_TEAM = HCGGZBEBSU;
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
@@ -644,6 +645,7 @@
 				DEVELOPMENT_TEAM = HCGGZBEBSU;
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";

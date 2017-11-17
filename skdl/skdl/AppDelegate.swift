@@ -16,8 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     internal var statusBarItem: NSStatusItem!
     
     internal var popover: NSPopover!
-    
+   
     internal var monitor: Any?
+    
+    internal var popoverCloseEvent: [()->Void] = []
 
     //MARK:- application
     
@@ -38,38 +40,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         VideoManager.manager.quitAndSave()
     
     }
-
-//    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-//        if (!flag) {
-//            NSApp.activate(ignoringOtherApps: false)
-//            NSApp.windows.last?.windowController?.showWindow(nil)
-//            NSApp.windows.last?.center()
-//        }
-//        return true
-//    }
-
-    //MARK:- IBAction
     
-//    @IBAction func showPreference(_ sender: Any) {
-//        
-//        let viewControllers: [NSViewController] = [PreferenceGeneralViewController()]
-//        prefecenceWindowController = MASPreferencesWindowController(viewControllers: viewControllers, title: AppData.PreferenceTitle)
-//        prefecenceWindowController?.window?.delegate = self
-//        prefecenceWindowController?.showWindow(nil)
-//        prefecenceWindowController?.window?.center()
-//        
-//    }
-    
+    //MARK:-
+
+    internal func registerForPopoverCloseEvent(_ event: @escaping ()->Void) {
+        popoverCloseEvent.append(event)
+    }
 }
 
 
-//extension AppDelegate: NSWindowDelegate {
-//
-//    func windowWillClose(_ notification: Notification) {
-//        if (prefecenceWindowController?.window?.isEqual(notification.object))! {
-//            prefecenceWindowController = nil
-//        }
-//    }
-//
-//}
+
 

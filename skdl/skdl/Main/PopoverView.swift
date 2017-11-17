@@ -12,11 +12,15 @@ internal class PopoverView: NSView {
     
 
     internal struct Size {
-        static let Content = NSMakeSize(300, 450)
+        static let Content = NSMakeSize(275, 412.5)
         
         static let AddHeight: CGFloat = 60.0
         
         static let SettingHeight: CGFloat = 60.0
+        
+        static var ProxyHeight: CGFloat {
+            return Content.height + SettingHeight
+        }
     }
 
     internal let settingButton: NSButton = NSButton.button(with: ImageName.Setting)
@@ -40,10 +44,17 @@ internal class PopoverView: NSView {
     
     internal let tableView: ContentTableView = ContentTableView(frame: NSZeroRect)
     
+    internal let proxyView: ProxyView = ProxyView(frame: NSZeroRect)
+    
+    internal var proxyViewTopConstraint: NSLayoutConstraint!
+    
+    //MARK:-
     internal convenience init() {
         self.init(frame: NSZeroRect)
         setSubviews()
     }
+    
+
 
     // 这个玩意会在view变形的时候绘制
     override func draw(_ dirtyRect: NSRect) {
@@ -57,11 +68,12 @@ internal class PopoverView: NSView {
     
     fileprivate func setSubviews() {
     
+        proxyView.isHidden = true
         
         tableContainerView.contentView.documentView = tableView
         
 
-        let subviews = [settingButton, openFolderButton, addButton, addView, settingView, tableContainerView]
+        let subviews = [settingButton, openFolderButton, addButton, addView, settingView, tableContainerView, proxyView]
         
         subviews.forEach { (v) in
             addSubview(v)
@@ -105,8 +117,16 @@ internal class PopoverView: NSView {
             make.height.equalTo(Size.Content.height - 42)
         }
         
+        proxyView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(Size.ProxyHeight)
+            // 记住constraints用来执行动画，snapkit在cocoa上的动画功能偏弱
+            proxyViewTopConstraint = make.top.equalTo(self.snp.bottom).constraint.layoutConstraints.first
+        }
     }
     
     //MARK:- api
+    
+    
     
 }

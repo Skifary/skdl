@@ -66,6 +66,12 @@ internal extension AppDelegate {
         
         //???? 这里是要写什么来着？
         
+        
+        
+        popoverCloseEvent.forEach({ (event) in
+            event()
+        })
+        
         guard let monitor = self.monitor else {
             return
         }

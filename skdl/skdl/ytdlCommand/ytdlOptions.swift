@@ -10,21 +10,29 @@ import Foundation
 
 internal typealias YOS = ytdlOptions.Simulate
 internal typealias YOF = ytdlOptions.Filesystem
+internal typealias YON = ytdlOptions.NetworkOptions
 
 internal struct ytdlOptions {
     
     internal struct Simulate {
         
-        internal static let kGetUrl: String = "-g" //Simulate, quiet but print URL
+        static let GetUrl: String = "-g" //Simulate, quiet but print URL
         
-        internal static let kDumpJson: String = "-j" //Simulate, quiet but print JSON information.
+        static let DumpJson: String = "-j" //Simulate, quiet but print JSON information.
         
     }
     
     internal struct Filesystem {
         
-       internal static let kOutput: String = "-o"  //Output filename template
+        static let Output: String = "-o"  //Output filename template
         
+    }
+    
+    internal struct NetworkOptions {
+        
+        static let Proxy: String = "--proxy" // 代理协议
+        // 由此考虑 是不是做一个超时重试时间？
+        static let SocketTimeout: String = "--socket-timeout" //设置默认超时时间
     }
     
 }

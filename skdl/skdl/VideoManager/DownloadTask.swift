@@ -58,7 +58,7 @@ internal class DownloadTask: NSObject {
     //MARK:- api
     
     internal func start() {
-        let res = ytdlController.shared.download(with: url, localPath: local!)
+        let res = ytdlController.shared.download(with: url, localPath: local!, isProxyUrl: video.needProxy)
         error = res.error
         out = res.out
         process = res.process

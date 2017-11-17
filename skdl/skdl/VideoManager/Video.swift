@@ -21,6 +21,7 @@ internal class Video: NSObject, NSCoding {
         static let playlist = "skdl.video.key.playlist"
         static let local = "skdl.video.key.local"
         static let state = "skdl.video.key.state"
+        static let isProxy = "skdl.video.key.isProxy"
     }
     
     internal func encode(with aCoder: NSCoder) {
@@ -33,6 +34,7 @@ internal class Video: NSObject, NSCoding {
         aCoder.encode(playlist, forKey: CoderKey.playlist)
         aCoder.encode(localFolder, forKey: CoderKey.local)
         aCoder.encode(state.rawValue, forKey: CoderKey.state)
+        aCoder.encode(needProxy, forKey: CoderKey.isProxy)
     }
     
     internal required init?(coder aDecoder: NSCoder) {
@@ -45,6 +47,7 @@ internal class Video: NSObject, NSCoding {
         playlist = (aDecoder.decodeObject(forKey: CoderKey.playlist) as? String) ?? ""
         localFolder = (aDecoder.decodeObject(forKey: CoderKey.local) as? URL) ?? nil
         state = State(rawValue: (aDecoder.decodeObject(forKey: CoderKey.state) as! Int16))!
+        needProxy = aDecoder.decodeBool(forKey: CoderKey.isProxy)
     }
     
     override init() {
@@ -82,6 +85,8 @@ internal class Video: NSObject, NSCoding {
     internal var state: State = .online
     
     internal var task: DownloadTask?
+    
+    internal var needProxy: Bool = false
     
     internal var sizeDescription: String {
         return FileSize.format(size: size)

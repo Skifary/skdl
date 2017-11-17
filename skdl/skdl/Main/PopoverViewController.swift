@@ -37,6 +37,8 @@ internal class PopoverViewController: NSViewController {
         return view as! PopoverView
     }
     
+    //MARK:-
+    
     override func loadView() {
         view = PopoverView()
     }
@@ -56,6 +58,7 @@ internal class PopoverViewController: NSViewController {
     
     override func mouseDown(with event: NSEvent) {
         
+        
         hideBottomView()
 
     }
@@ -67,13 +70,7 @@ internal class PopoverViewController: NSViewController {
         
         setTableView()
         
-        VideoDownloader.shared.registerStartHandle {
-            self.popoverView.tableView.reloadData()
-        }
-        
-        VideoDownloader.shared.registerEndHandle {
-            self.popoverView.tableView.reloadData()
-        }
+
         
     }
     
@@ -106,6 +103,19 @@ internal class PopoverViewController: NSViewController {
         
         hideAddView()
         hideSettingView()
+        
+        popoverView.proxyView.registerForHideEvent {
+            
+            self.hideProxyView()
+            
+        }
+        
+        let appDelegate = NSApp.delegate as! AppDelegate
+        appDelegate.registerForPopoverCloseEvent {
+            if !self.popoverView.proxyView.isHidden {
+                self.hideProxyView()
+            }
+        }
 
     }
     
@@ -218,12 +228,18 @@ internal class PopoverViewController: NSViewController {
     fileprivate func setTableView() {
         
         let tableView = popoverView.tableView
-        
         tableView.delegate = self
-        
         tableView.dataSource = self
         
         tableView.menu = menuForTableViewRightClick()
+        
+        VideoDownloader.shared.registerStartHandle {
+            self.popoverView.tableView.reloadData()
+        }
+        
+        VideoDownloader.shared.registerEndHandle {
+            self.popoverView.tableView.reloadData()
+        }
     }
     
     fileprivate func menuForTableViewRightClick() -> NSMenu {
@@ -235,14 +251,11 @@ internal class PopoverViewController: NSViewController {
     fileprivate func menuForAdvanced() -> NSMenu {
         let menu = NSMenu()
         
-        let quitItem = NSMenuItem(title: Text.Title.MenuItemQuit, action: #selector(advancedQuitAction), keyEquivalent: "q")
-        
-        menu.addItem(quitItem)
-        
         let proxyItem = NSMenuItem(title: Text.Title.MenuItemProxy, action: #selector(advancedProxyAction), keyEquivalent: "")
-        
         menu.addItem(proxyItem)
-        
+        let quitItem = NSMenuItem(title: Text.Title.MenuItemQuit, action: #selector(advancedQuitAction), keyEquivalent: "q")
+        menu.addItem(quitItem)
+
         return menu
     }
     
@@ -254,10 +267,51 @@ internal class PopoverViewController: NSViewController {
     
     @objc fileprivate func advancedProxyAction(sender: NSButton) {
         
-        
+        showProxyView()
+    }
     
-        /* TODO: 写proxy逻辑，弹出proxy窗口 */
+    fileprivate func showProxyView() {
         
+        let proxyView = popoverView.proxyView
+        
+        proxyView.setProxyType(with: PV.proxyType!)
+        
+        proxyView.addressTextField.stringValue = PV.proxyAddress ?? ""
+        
+        proxyView.portTextField.stringValue = PV.proxyPort ?? ""
+        
+        proxyView.isHidden = false
+        
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2
+            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+            
+            popoverView.proxyViewTopConstraint.animator().constant = -PopoverView.Size.ProxyHeight
+
+        })
+        
+    }
+    
+    fileprivate func hideProxyView() {
+        
+        let proxyView = popoverView.proxyView
+        
+        PV.proxyType = proxyView.proxyType()
+        
+        PV.proxyAddress = proxyView.addressTextField.stringValue
+        
+        PV.proxyPort = proxyView.portTextField.stringValue
+
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.2
+            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+            
+            popoverView.proxyViewTopConstraint.animator().constant = 0
+            
+        }) {
+            proxyView.isHidden = true
+        }
+
     }
     
     //MARK:-
@@ -271,14 +325,27 @@ internal class PopoverViewController: NSViewController {
             return
         }
         
-        guard ytdlController.shared.isURLAvailable(url: url) else {
-            let error = "url is unavailable!"
-            Log.log(error)
-            showError(error)
-            return
-        }
+//        guard ytdlController.shared.isURLAvailable(url: url) else {
+//            let error = "url is unavailable!"
+//            Log.log(error)
+//            showError(error)
+//            return
+//        }
+        print("download")
+        var isPorxyUrl = false
         
-        guard let json = ytdlController.shared.dumpJson(url: url) else {
+        if !ytdlController.shared.isURLAvailable(url: url) {
+            if !ytdlController.shared.isURLAvailableInProxy(url: url) {
+                let error = "url is unavailable!"
+                Log.log(error)
+                showError(error)
+                return
+            }
+            print("is proxy url")
+            isPorxyUrl = true
+        }
+        print("dump json start")
+        guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
             let error = "json is unavailable!"
             Log.log(error)
             showError(error)
@@ -299,6 +366,7 @@ internal class PopoverViewController: NSViewController {
         
         video.localFolder = URL(string: "file://" + PV.localStoragePath!)
         
+        video.needProxy = isPorxyUrl
         VideoDownloader.shared.download(with: video)
     }
     
@@ -328,6 +396,8 @@ extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
         
         let cell = ContentCellView(frame: NSZeroRect)
 
+       // cell.nameLabel.stringValue = "这是名字这是名字这是名字这是名字这是名字"
+        
         cell.pauseButton.action = #selector(self.pauseButtonClick)
         cell.pauseButton.target = self
 
