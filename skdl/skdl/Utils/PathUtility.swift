@@ -55,21 +55,5 @@ public class PathUtility {
             }
         }
     }
-
-    
-    // 不确定这个函数到底用了没 先留着
-    
-//    static func getURLFromString(_ urlString: String) -> URL {
-//
-//        guard let allowedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-//
-//            Log.logWithCallStack("")
-//
-//            return URL(
-//        }
-//
-//
-//        return URL(string: allowedString)
-//    }
     
 }

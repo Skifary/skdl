@@ -35,22 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             isReady = true
         }
-        
-        
+
         // if have pending open request
         if let url = pendingURL {
             parsePendingURL(url)
         }
-
-        
-        // 注册默认自定义偏好
-   //     UserDefaults.standard.register(defaults: Preference.defaultPreference)
- 
-        
-      //  setMenu()
-       
-        
-     //   setStatusBar()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -72,7 +61,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             pendingURL = url
         }
-        
     }
     
     private func parsePendingURL(_ url: String) {
@@ -80,10 +68,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // links
         if let host = parsed.host, host == "weblink" {
             guard let urlValue = (parsed.queryItems?.first { $0.name == "url" }?.value) else { return }
-          //  PlayerCore.active.openURLString(urlValue)
-            
-           // print("parsePending url is ",urlValue)
-            
             DispatchQueue.global().async {
                 VideoDownloader.shared.download(with: urlValue)
             }

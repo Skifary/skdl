@@ -222,9 +222,6 @@ internal class ProxyView: NSView {
             make.height.equalTo(20)
         }
     
-        //然后写返回事件
-        
-        // 然后添加 如果不可用 使用代理的逻辑
     }
     
     //MARK:- event
@@ -240,19 +237,6 @@ internal class ProxyView: NSView {
         hideEvent!()
         
     }
-        
-    
-    override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        
-        print(event.keyCode)
-        
-        return true
-    }
-    
-    override func keyDown(with event: NSEvent) {
-        print(event.keyCode)
-    }
-    
     
     //MARK:-
     

@@ -57,7 +57,6 @@ internal class ytdlController {
         var args = [YOS.DumpJson]
         args.append(url)
         if isProxyUrl {
-            print("append proxy1")
             args.append(YON.Proxy)
             args.append(Preference.proxy)
         }
@@ -68,9 +67,6 @@ internal class ytdlController {
     internal func download(with url: String, localPath: String, isProxyUrl: Bool = false) -> (process: Process, out: Pipe, error: Pipe) {
         var args = [YOF.Output, localPath, url]
         if isProxyUrl {
-            print("append proxy2")
-            
-            print(Preference.proxy)
             args.append(YON.Proxy)
             args.append(Preference.proxy)
         }

@@ -324,14 +324,7 @@ internal class PopoverViewController: NSViewController {
             showError(error)
             return
         }
-        
-//        guard ytdlController.shared.isURLAvailable(url: url) else {
-//            let error = "url is unavailable!"
-//            Log.log(error)
-//            showError(error)
-//            return
-//        }
-        print("download")
+
         var isPorxyUrl = false
         
         if !ytdlController.shared.isURLAvailable(url: url) {
@@ -341,10 +334,8 @@ internal class PopoverViewController: NSViewController {
                 showError(error)
                 return
             }
-            print("is proxy url")
             isPorxyUrl = true
         }
-        print("dump json start")
         guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
             let error = "json is unavailable!"
             Log.log(error)

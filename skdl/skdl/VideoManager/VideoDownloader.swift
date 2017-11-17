@@ -64,8 +64,7 @@ internal class VideoDownloader {
             Log.log(error)
             return
         }
-        
-        print("download")
+
         var isPorxyUrl = false
         
         if !ytdlController.shared.isURLAvailable(url: url) {
@@ -76,7 +75,7 @@ internal class VideoDownloader {
             }
             isPorxyUrl = true
         }
-        print("dump json start")
+        
         guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
             let error = "json is unavailable!"
             Log.log(error)
@@ -94,12 +93,11 @@ internal class VideoDownloader {
         video.format = dump[YDJKey.kFormat] as? String ?? ""
         video.playlist = dump[YDJKey.kPlayList] as? String ?? ""
         video.id = dump[YDJKey.kID] as? String ?? ""
-        
+
         video.localFolder = URL(string: "file://" + PV.localStoragePath!)
-        
+
         video.needProxy = isPorxyUrl
-        
-        print("download start")
+
         download(with: video)
         
     }
