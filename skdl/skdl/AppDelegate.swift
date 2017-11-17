@@ -20,17 +20,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     internal var monitor: Any?
     
     internal var popoverCloseEvent: [()->Void] = []
+    
+    private var isReady: Bool = false // check if finish launching
+    
+    private var pendingURL: String?
 
     //MARK:- application
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        if !isReady {
+            UserDefaults.standard.register(defaults: Preference.defaultPreference)
+            statusBarItem = statusItem()
+            isReady = true
+        }
+        
         // 注册默认自定义偏好
-        UserDefaults.standard.register(defaults: Preference.defaultPreference)
+   //     UserDefaults.standard.register(defaults: Preference.defaultPreference)
  
         
       //  setMenu()
-       statusBarItem = statusItem()
+       
         
      //   setStatusBar()
     }
@@ -39,6 +49,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         VideoManager.manager.quitAndSave()
     
+    }
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        // register for url event
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+    }
+    
+    
+    @objc fileprivate func handleURLEvent(event: NSAppleEventDescriptor, withReplyEvent replyEvent: NSAppleEventDescriptor) {
+//        openFileCalled = true
+        guard let url = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue else { return }
+        if isReady {
+            parsePendingURL(url)
+        } else {
+            pendingURL = url
+        }
+        
+        
+    }
+    
+    private func parsePendingURL(_ url: String) {
+        guard let parsed = NSURLComponents(string: url) else { return }
+        // links
+        if let host = parsed.host, host == "weblink" {
+            guard let urlValue = (parsed.queryItems?.first { $0.name == "url" }?.value) else { return }
+          //  PlayerCore.active.openURLString(urlValue)
+            
+            print("parsePending url is ",urlValue)
+        }
     }
     
     //MARK:-
