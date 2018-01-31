@@ -10,10 +10,8 @@ import Cocoa
 
 open class SKButton: NSButton {
     
-    
     public struct TwinkleOption: OptionSet {
-    
-        
+
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }

@@ -22,8 +22,6 @@ internal struct ImageName {
     
     static let NewTask = NSImage.Name("popover_add")
     
-    static let Return = NSImage.Name("popover_return")
-    
     //MARK:- cell
     static let Default = NSImage.Name("popover_content_defaultimage")
     

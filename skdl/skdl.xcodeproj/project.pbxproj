@@ -328,12 +328,12 @@
 		D57A9C8F201489B900D1C35C /* CocoaExtension */ = {
 			isa = PBXGroup;
 			children = (
+				D52AC2EE2021B090005BA48B /* NSButton+Action.swift */,
 				D5EC26D91F8E6AFA009363A2 /* NSButton+Image.swift */,
 				D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */,
 				D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */,
 				D5ACC5772018E38D009B6322 /* NSView+Subviews.swift */,
 				D5A7825C202020E900D39F70 /* NSViewController+Present.swift */,
-				D52AC2EE2021B090005BA48B /* NSButton+Action.swift */,
 			);
 			path = CocoaExtension;
 			sourceTree = "<group>";
