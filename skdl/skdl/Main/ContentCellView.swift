@@ -9,6 +9,7 @@
 import Cocoa
 
 
+
 internal class ContentCellView: NSTableCellView {
     
  
@@ -75,11 +76,7 @@ internal class ContentCellView: NSTableCellView {
     
     fileprivate func setSubviews() {
         
-        let views = [thumbnailView, nameLabel, sizeLabel, progressLabel, pauseButton, etaLabel, speedLabel]
-        
-        views.forEach { (v) in
-            addSubview(v)
-        }
+        addSubviews([thumbnailView, nameLabel, sizeLabel, progressLabel, pauseButton, etaLabel, speedLabel])
         
         thumbnailView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -98,7 +95,7 @@ internal class ContentCellView: NSTableCellView {
             make.left.equalTo(thumbnailView.snp.right).offset(8)
             make.top.equalToSuperview().offset(12)
             make.height.equalTo(13)
-            make.width.equalTo(PopoverView.Size.Content.width - 28 - 50 - ContentCellView.Size.Height - Size.PauseButton)
+            make.width.equalTo(AppSize.Content.width - 28 - 50 - ContentCellView.Size.Height - Size.PauseButton)
         }
         
         sizeLabel.snp.makeConstraints { (make) in

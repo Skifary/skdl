@@ -11,25 +11,43 @@
 		D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */; };
 		D50732641F986D5E00A928FD /* AppDelegate+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50732631F986D5E00A928FD /* AppDelegate+StatusBar.swift */; };
 		D50FC6271F8FBB07004420D1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50FC6261F8FBB07004420D1 /* Log.swift */; };
+		D52AC2EF2021B090005BA48B /* NSButton+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AC2EE2021B090005BA48B /* NSButton+Action.swift */; };
 		D52AD1CA1F99A9C300F50A3D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1C91F99A9C300F50A3D /* main.swift */; };
 		D52AD1F11F99D37800F50A3D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */; };
 		D52AD1F31F9A39CB00F50A3D /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */; };
-		D52CE1641F9DBAFA00742E83 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CE1631F9DBAF900742E83 /* SettingView.swift */; };
 		D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541FCB91F910E9000CB8381 /* Assert.swift */; };
 		D546ABD41F96549600FC3310 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABD31F96549600FC3310 /* Color.swift */; };
 		D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B04D31F8FC806003A4884 /* ErrorReport.swift */; };
+		D54E8403201C5E1700D6A798 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E8402201C5E1700D6A798 /* Draw.swift */; };
+		D54E8407201CA95B00D6A798 /* ShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E8406201CA95B00D6A798 /* ShadowLayer.swift */; };
+		D54E840C201CCB2600D6A798 /* NSTextField+Frameless.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */; };
 		D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554C4C41F602C70002D4BF9 /* ytdlCommand.swift */; };
 		D55587FB1FB68A2F008E254A /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55587F81FB68A2F008E254A /* Preference.swift */; };
+		D559039C201CCEB90086D5DF /* ProxySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D559039B201CCEB90086D5DF /* ProxySettingView.swift */; };
+		D559039E201CD97E0086D5DF /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D559039D201CD97E0086D5DF /* InputView.swift */; };
+		D55903A0201CDC4F0086D5DF /* GeneralSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D559039F201CDC4F0086D5DF /* GeneralSettingView.swift */; };
+		D55903A2201CDC6D0086D5DF /* GeneralSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55903A1201CDC6D0086D5DF /* GeneralSettingViewController.swift */; };
 		D561A83F1F6A304A00BEE709 /* ytdlDumpJsonKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561A83E1F6A304A00BEE709 /* ytdlDumpJsonKey.swift */; };
 		D56AFB321F612B5000131348 /* youtube-dl in Resources */ = {isa = PBXBuildFile; fileRef = D56AFB311F612B5000131348 /* youtube-dl */; };
 		D56AFB341F616E1300131348 /* ytdlOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56AFB331F616E1300131348 /* ytdlOptions.swift */; };
-		D572EF821FB7283F00096C48 /* ProxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EF811FB7283F00096C48 /* ProxyView.swift */; };
 		D572EF861FB72A9600096C48 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572EF851FB72A9600096C48 /* Image.swift */; };
+		D57A2C9C20123F0400A4FCD9 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57A2C9B20123F0400A4FCD9 /* BasicViewController.swift */; };
+		D57A9C9120148A2E00D1C35C /* NSImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */; };
+		D58AABE1201B077500E9BA83 /* TitledInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AABE0201B077500E9BA83 /* TitledInputView.swift */; };
+		D5A177F71FD8415500EB7B21 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A177F61FD8415500EB7B21 /* Toast.swift */; };
+		D5A177F91FD841AA00EB7B21 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A177F81FD841AA00EB7B21 /* BasicView.swift */; };
 		D5A551E51FB2E11C008BF506 /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A551E41FB2E11C008BF506 /* ContentTableView.swift */; };
 		D5A551E71FB2FC97008BF506 /* ContentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A551E61FB2FC97008BF506 /* ContentCellView.swift */; };
+		D5A7825D202020E900D39F70 /* NSViewController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7825C202020E900D39F70 /* NSViewController+Present.swift */; };
+		D5ACC5762018D404009B6322 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5752018D404009B6322 /* CheckBoxView.swift */; };
+		D5ACC5782018E38D009B6322 /* NSView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC5772018E38D009B6322 /* NSView+Subviews.swift */; };
+		D5ACC57A201A3BAC009B6322 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC579201A3BAC009B6322 /* NewTaskView.swift */; };
+		D5ACC57C201A3BD8009B6322 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC57B201A3BD8009B6322 /* NewTaskViewController.swift */; };
+		D5ACC57E201A3BFF009B6322 /* URLInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC57D201A3BFF009B6322 /* URLInputView.swift */; };
 		D5C72ABD1F6286A5004CB147 /* ytdlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C72ABC1F6286A5004CB147 /* ytdlController.swift */; };
 		D5C8906F1FA0BA0400331F9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8906E1FA0BA0400331F9A /* SKButton.swift */; };
-		D5C8BA931F9CDF300084643B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8BA921F9CDF300084643B /* AddView.swift */; };
+		D5D4F9A7201A3D4B00BA27DB /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D4F9A6201A3D4B00BA27DB /* SegmentControl.swift */; };
+		D5D5B4041FD98A4B003073DD /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B4031FD98A4B003073DD /* PresentAnimator.swift */; };
 		D5D9B1E81F721161008E5991 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9B1C41F721161008E5991 /* Constraint.swift */; };
 		D5D9B1E91F721161008E5991 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9B1C51F721161008E5991 /* ConstraintAttributes.swift */; };
 		D5D9B1EA1F721161008E5991 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9B1C61F721161008E5991 /* ConstraintConfig.swift */; };
@@ -68,7 +86,7 @@
 		D5EC26D51F8E6AF0009363A2 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D31F8E6AF0009363A2 /* VideoManager.swift */; };
 		D5EC26D61F8E6AF0009363A2 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D41F8E6AF0009363A2 /* Video.swift */; };
 		D5EC26E11F8E6AFB009363A2 /* FolderBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D71F8E6AFA009363A2 /* FolderBrowser.swift */; };
-		D5EC26E21F8E6AFB009363A2 /* NSButton+ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D91F8E6AFA009363A2 /* NSButton+ImageButton.swift */; };
+		D5EC26E21F8E6AFB009363A2 /* NSButton+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26D91F8E6AFA009363A2 /* NSButton+Image.swift */; };
 		D5EC26E31F8E6AFB009363A2 /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26DA1F8E6AFA009363A2 /* SKLabel.swift */; };
 		D5EC26E51F8E6AFB009363A2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26DC1F8E6AFA009363A2 /* Alert.swift */; };
 		D5EC26E61F8E6AFB009363A2 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26DD1F8E6AFA009363A2 /* JSONHelper.swift */; };
@@ -77,6 +95,9 @@
 		D5EC26EC1F8E6FA3009363A2 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC26EB1F8E6FA3009363A2 /* AppData.swift */; };
 		D5F203C71F979C3E00720C64 /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F203C51F979C3D00720C64 /* DownloadTask.swift */; };
 		D5F203C81F979C3E00720C64 /* VideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F203C61F979C3E00720C64 /* VideoDownloader.swift */; };
+		D5F2F1B9201B911D0009638F /* ProxySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2F1B8201B911D0009638F /* ProxySettingViewController.swift */; };
+		D5F5055A201E254E00E6001C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50559201E254E00E6001C /* AboutView.swift */; };
+		D5F5055C201E256A00E6001C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5055B201E256A00E6001C /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,26 +107,44 @@
 		D5067AFA1F4E7FEB00B93ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D50732631F986D5E00A928FD /* AppDelegate+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppDelegate+StatusBar.swift"; path = "Main/AppDelegate+StatusBar.swift"; sourceTree = "<group>"; };
 		D50FC6261F8FBB07004420D1 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Utils/Log.swift; sourceTree = "<group>"; };
+		D52AC2EE2021B090005BA48B /* NSButton+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Action.swift"; sourceTree = "<group>"; };
 		D52AD1C91F99A9C300F50A3D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverViewController.swift; path = Main/PopoverViewController.swift; sourceTree = "<group>"; };
 		D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverView.swift; path = Main/PopoverView.swift; sourceTree = "<group>"; };
-		D52CE1631F9DBAF900742E83 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = Main/SettingView.swift; sourceTree = "<group>"; };
 		D541FCB91F910E9000CB8381 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Assert.swift; path = Utils/Assert.swift; sourceTree = "<group>"; };
 		D546ABD31F96549600FC3310 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = AppData/Color.swift; sourceTree = "<group>"; };
 		D54B04D31F8FC806003A4884 /* ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorReport.swift; path = Utils/ErrorReport.swift; sourceTree = "<group>"; };
+		D54E8402201C5E1700D6A798 /* Draw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Draw.swift; path = Utils/Draw.swift; sourceTree = "<group>"; };
+		D54E8406201CA95B00D6A798 /* ShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShadowLayer.swift; path = Main/ShadowLayer.swift; sourceTree = "<group>"; };
+		D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Frameless.swift"; sourceTree = "<group>"; };
 		D554C4C41F602C70002D4BF9 /* ytdlCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlCommand.swift; path = ytdlCommand/ytdlCommand.swift; sourceTree = "<group>"; };
 		D55587F81FB68A2F008E254A /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		D559039B201CCEB90086D5DF /* ProxySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProxySettingView.swift; path = Main/ProxySettingView.swift; sourceTree = "<group>"; };
+		D559039D201CD97E0086D5DF /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputView.swift; path = Main/InputView.swift; sourceTree = "<group>"; };
+		D559039F201CDC4F0086D5DF /* GeneralSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralSettingView.swift; path = Main/GeneralSettingView.swift; sourceTree = "<group>"; };
+		D55903A1201CDC6D0086D5DF /* GeneralSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralSettingViewController.swift; path = Main/GeneralSettingViewController.swift; sourceTree = "<group>"; };
 		D561A83E1F6A304A00BEE709 /* ytdlDumpJsonKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlDumpJsonKey.swift; path = ytdlCommand/ytdlDumpJsonKey.swift; sourceTree = "<group>"; };
 		D56AFB311F612B5000131348 /* youtube-dl */ = {isa = PBXFileReference; lastKnownFileType = file; name = "youtube-dl"; path = "Vendor/youtube-dl/youtube-dl"; sourceTree = "<group>"; };
 		D56AFB331F616E1300131348 /* ytdlOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlOptions.swift; path = ytdlCommand/ytdlOptions.swift; sourceTree = "<group>"; };
-		D572EF811FB7283F00096C48 /* ProxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProxyView.swift; path = Main/ProxyView.swift; sourceTree = "<group>"; };
 		D572EF851FB72A9600096C48 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Image.swift; path = AppData/Image.swift; sourceTree = "<group>"; };
+		D57A2C9B20123F0400A4FCD9 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicViewController.swift; path = Main/BasicViewController.swift; sourceTree = "<group>"; };
+		D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Text.swift"; sourceTree = "<group>"; };
+		D58AABE0201B077500E9BA83 /* TitledInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitledInputView.swift; path = Main/TitledInputView.swift; sourceTree = "<group>"; };
+		D5A177F61FD8415500EB7B21 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		D5A177F81FD841AA00EB7B21 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicView.swift; path = Main/BasicView.swift; sourceTree = "<group>"; };
 		D5A551E41FB2E11C008BF506 /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentTableView.swift; path = Main/ContentTableView.swift; sourceTree = "<group>"; };
 		D5A551E61FB2FC97008BF506 /* ContentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentCellView.swift; path = Main/ContentCellView.swift; sourceTree = "<group>"; };
+		D5A7825C202020E900D39F70 /* NSViewController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Present.swift"; sourceTree = "<group>"; };
+		D5ACC5752018D404009B6322 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CheckBoxView.swift; path = Main/CheckBoxView.swift; sourceTree = "<group>"; };
+		D5ACC5772018E38D009B6322 /* NSView+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Subviews.swift"; sourceTree = "<group>"; };
+		D5ACC579201A3BAC009B6322 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskView.swift; path = Main/NewTaskView.swift; sourceTree = "<group>"; };
+		D5ACC57B201A3BD8009B6322 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = Main/NewTaskViewController.swift; sourceTree = "<group>"; };
+		D5ACC57D201A3BFF009B6322 /* URLInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLInputView.swift; path = Main/URLInputView.swift; sourceTree = "<group>"; };
 		D5C6B2401F650E9E00BC2D04 /* skdl-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "skdl-Bridging-Header.h"; sourceTree = "<group>"; };
 		D5C72ABC1F6286A5004CB147 /* ytdlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlController.swift; path = ytdlCommand/ytdlController.swift; sourceTree = "<group>"; };
 		D5C8906E1FA0BA0400331F9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
-		D5C8BA921F9CDF300084643B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddView.swift; path = Main/AddView.swift; sourceTree = "<group>"; };
+		D5D4F9A6201A3D4B00BA27DB /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = Main/SegmentControl.swift; sourceTree = "<group>"; };
+		D5D5B4031FD98A4B003073DD /* PresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PresentAnimator.swift; path = Utils/PresentAnimator.swift; sourceTree = "<group>"; };
 		D5D9B1C41F721161008E5991 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		D5D9B1C51F721161008E5991 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		D5D9B1C61F721161008E5991 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -145,7 +184,7 @@
 		D5EC26D31F8E6AF0009363A2 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoManager.swift; path = VideoManager/VideoManager.swift; sourceTree = "<group>"; };
 		D5EC26D41F8E6AF0009363A2 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = VideoManager/Video.swift; sourceTree = "<group>"; };
 		D5EC26D71F8E6AFA009363A2 /* FolderBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderBrowser.swift; path = Utils/FolderBrowser.swift; sourceTree = "<group>"; };
-		D5EC26D91F8E6AFA009363A2 /* NSButton+ImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSButton+ImageButton.swift"; sourceTree = "<group>"; };
+		D5EC26D91F8E6AFA009363A2 /* NSButton+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSButton+Image.swift"; sourceTree = "<group>"; };
 		D5EC26DA1F8E6AFA009363A2 /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
 		D5EC26DC1F8E6AFA009363A2 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alert.swift; path = Utils/Alert.swift; sourceTree = "<group>"; };
 		D5EC26DD1F8E6AFA009363A2 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONHelper.swift; path = Utils/JSONHelper.swift; sourceTree = "<group>"; };
@@ -154,6 +193,9 @@
 		D5EC26EB1F8E6FA3009363A2 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppData.swift; path = AppData/AppData.swift; sourceTree = "<group>"; };
 		D5F203C51F979C3D00720C64 /* DownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownloadTask.swift; path = VideoManager/DownloadTask.swift; sourceTree = "<group>"; };
 		D5F203C61F979C3E00720C64 /* VideoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoDownloader.swift; path = VideoManager/VideoDownloader.swift; sourceTree = "<group>"; };
+		D5F2F1B8201B911D0009638F /* ProxySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProxySettingViewController.swift; path = Main/ProxySettingViewController.swift; sourceTree = "<group>"; };
+		D5F50559201E254E00E6001C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = Main/AboutView.swift; sourceTree = "<group>"; };
+		D5F5055B201E256A00E6001C /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Main/AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +279,19 @@
 			name = SurportFiles;
 			sourceTree = "<group>";
 		};
+		D54E8408201CBD8F00D6A798 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				D5ACC5752018D404009B6322 /* CheckBoxView.swift */,
+				D559039D201CD97E0086D5DF /* InputView.swift */,
+				D5D4F9A6201A3D4B00BA27DB /* SegmentControl.swift */,
+				D54E8406201CA95B00D6A798 /* ShadowLayer.swift */,
+				D58AABE0201B077500E9BA83 /* TitledInputView.swift */,
+				D5ACC57D201A3BFF009B6322 /* URLInputView.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		D55587F41FB68A2F008E254A /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,15 +300,52 @@
 			path = Preference;
 			sourceTree = "<group>";
 		};
+		D559039A201CCE6B0086D5DF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D5A177F81FD841AA00EB7B21 /* BasicView.swift */,
+				D5ACC579201A3BAC009B6322 /* NewTaskView.swift */,
+				D559039B201CCEB90086D5DF /* ProxySettingView.swift */,
+				D559039F201CDC4F0086D5DF /* GeneralSettingView.swift */,
+				D5F50559201E254E00E6001C /* AboutView.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		D57A2C9A20123ED300A4FCD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D5F5055B201E256A00E6001C /* AboutViewController.swift */,
+				D57A2C9B20123F0400A4FCD9 /* BasicViewController.swift */,
+				D55903A1201CDC6D0086D5DF /* GeneralSettingViewController.swift */,
+				D5ACC57B201A3BD8009B6322 /* NewTaskViewController.swift */,
+				D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */,
+				D5F2F1B8201B911D0009638F /* ProxySettingViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D57A9C8F201489B900D1C35C /* CocoaExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D5EC26D91F8E6AFA009363A2 /* NSButton+Image.swift */,
+				D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */,
+				D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */,
+				D5ACC5772018E38D009B6322 /* NSView+Subviews.swift */,
+				D5A7825C202020E900D39F70 /* NSViewController+Present.swift */,
+				D52AC2EE2021B090005BA48B /* NSButton+Action.swift */,
+			);
+			path = CocoaExtension;
+			sourceTree = "<group>";
+		};
 		D5C8BA911F9CDF0B0084643B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D5C8BA921F9CDF300084643B /* AddView.swift */,
+				D559039A201CCE6B0086D5DF /* Setting */,
+				D54E8408201CBD8F00D6A798 /* Custom */,
 				D5A551E61FB2FC97008BF506 /* ContentCellView.swift */,
 				D5A551E41FB2E11C008BF506 /* ContentTableView.swift */,
 				D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */,
-				D572EF811FB7283F00096C48 /* ProxyView.swift */,
-				D52CE1631F9DBAF900742E83 /* SettingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -261,11 +353,11 @@
 		D5D10DC21F513A7900044739 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D57A2C9A20123ED300A4FCD9 /* Controller */,
 				D5C8BA911F9CDF0B0084643B /* View */,
 				D52AD1C91F99A9C300F50A3D /* main.swift */,
 				D5067AF11F4E7FEB00B93ED4 /* AppDelegate.swift */,
 				D50732631F986D5E00A928FD /* AppDelegate+StatusBar.swift */,
-				D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -275,12 +367,15 @@
 			children = (
 				D5EC26DC1F8E6AFA009363A2 /* Alert.swift */,
 				D541FCB91F910E9000CB8381 /* Assert.swift */,
+				D57A9C8F201489B900D1C35C /* CocoaExtension */,
+				D54E8402201C5E1700D6A798 /* Draw.swift */,
 				D54B04D31F8FC806003A4884 /* ErrorReport.swift */,
 				D5EC26E01F8E6AFB009363A2 /* FileSize.swift */,
 				D5EC26D71F8E6AFA009363A2 /* FolderBrowser.swift */,
 				D5EC26DD1F8E6AFA009363A2 /* JSONHelper.swift */,
 				D50FC6261F8FBB07004420D1 /* Log.swift */,
 				D5EC26DE1F8E6AFA009363A2 /* PathUtility.swift */,
+				D5D5B4031FD98A4B003073DD /* PresentAnimator.swift */,
 				D5EC26D81F8E6AFA009363A2 /* View */,
 			);
 			name = Utils;
@@ -351,9 +446,9 @@
 		D5EC26D81F8E6AFA009363A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D5EC26D91F8E6AFA009363A2 /* NSButton+ImageButton.swift */,
 				D5EC26DA1F8E6AFA009363A2 /* SKLabel.swift */,
 				D5C8906E1FA0BA0400331F9A /* SKButton.swift */,
+				D5A177F61FD8415500EB7B21 /* Toast.swift */,
 			);
 			name = View;
 			path = Utils/View;
@@ -444,23 +539,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5EC26E71F8E6AFB009363A2 /* PathUtility.swift in Sources */,
+				D54E8403201C5E1700D6A798 /* Draw.swift in Sources */,
+				D58AABE1201B077500E9BA83 /* TitledInputView.swift in Sources */,
+				D5ACC5762018D404009B6322 /* CheckBoxView.swift in Sources */,
 				D546ABD41F96549600FC3310 /* Color.swift in Sources */,
 				D5D9B1F81F721161008E5991 /* ConstraintMakerExtendable.swift in Sources */,
-				D572EF821FB7283F00096C48 /* ProxyView.swift in Sources */,
 				D5D9B1E91F721161008E5991 /* ConstraintAttributes.swift in Sources */,
 				D5D9B1F01F721161008E5991 /* ConstraintItem.swift in Sources */,
 				D5EC26E51F8E6AFB009363A2 /* Alert.swift in Sources */,
 				D5EC26D51F8E6AF0009363A2 /* VideoManager.swift in Sources */,
 				D5D9B1ED1F721161008E5991 /* ConstraintDSL.swift in Sources */,
+				D57A9C9120148A2E00D1C35C /* NSImage+Text.swift in Sources */,
 				D5D9B1FF1F721161008E5991 /* ConstraintPriorityTarget.swift in Sources */,
 				D5D9B1EF1F721161008E5991 /* ConstraintInsetTarget.swift in Sources */,
 				D561A83F1F6A304A00BEE709 /* ytdlDumpJsonKey.swift in Sources */,
 				D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */,
 				D5067AF21F4E7FEB00B93ED4 /* AppDelegate.swift in Sources */,
+				D5F5055C201E256A00E6001C /* AboutViewController.swift in Sources */,
 				D5D9B1EA1F721161008E5991 /* ConstraintConfig.swift in Sources */,
 				D5D9B1F61F721161008E5991 /* ConstraintMaker.swift in Sources */,
-				D5EC26E21F8E6AFB009363A2 /* NSButton+ImageButton.swift in Sources */,
+				D5EC26E21F8E6AFB009363A2 /* NSButton+Image.swift in Sources */,
 				D55587FB1FB68A2F008E254A /* Preference.swift in Sources */,
+				D5ACC57A201A3BAC009B6322 /* NewTaskView.swift in Sources */,
+				D5ACC57E201A3BFF009B6322 /* URLInputView.swift in Sources */,
+				D5F5055A201E254E00E6001C /* AboutView.swift in Sources */,
 				D5D9B1F31F721161008E5991 /* ConstraintLayoutGuideDSL.swift in Sources */,
 				D50FC6271F8FBB07004420D1 /* Log.swift in Sources */,
 				D5EC26E31F8E6AFB009363A2 /* SKLabel.swift in Sources */,
@@ -468,17 +570,21 @@
 				D5D9B1E81F721161008E5991 /* Constraint.swift in Sources */,
 				D5D9B2041F721161008E5991 /* ConstraintViewDSL.swift in Sources */,
 				D5D9B2001F721161008E5991 /* ConstraintRelatableTarget.swift in Sources */,
+				D559039C201CCEB90086D5DF /* ProxySettingView.swift in Sources */,
 				D5EC26D61F8E6AF0009363A2 /* Video.swift in Sources */,
 				D52AD1CA1F99A9C300F50A3D /* main.swift in Sources */,
 				D5D9B2051F721161008E5991 /* Debugging.swift in Sources */,
+				D5D5B4041FD98A4B003073DD /* PresentAnimator.swift in Sources */,
 				D5EC26E11F8E6AFB009363A2 /* FolderBrowser.swift in Sources */,
 				D5D9B2091F721162008E5991 /* Typealiases.swift in Sources */,
 				D5D9B1FA1F721161008E5991 /* ConstraintMakerPriortizable.swift in Sources */,
+				D559039E201CD97E0086D5DF /* InputView.swift in Sources */,
 				D52AD1F31F9A39CB00F50A3D /* PopoverView.swift in Sources */,
+				D5ACC57C201A3BD8009B6322 /* NewTaskViewController.swift in Sources */,
 				D5D9B1FB1F721161008E5991 /* ConstraintMakerRelatable.swift in Sources */,
 				D52AD1F11F99D37800F50A3D /* PopoverViewController.swift in Sources */,
-				D5C8BA931F9CDF300084643B /* AddView.swift in Sources */,
 				D5A551E51FB2E11C008BF506 /* ContentTableView.swift in Sources */,
+				D57A2C9C20123F0400A4FCD9 /* BasicViewController.swift in Sources */,
 				D5D9B1FC1F721161008E5991 /* ConstraintMultiplierTarget.swift in Sources */,
 				D5D9B20A1F721162008E5991 /* UILayoutSupport+Extensions.swift in Sources */,
 				D5D9B2071F721161008E5991 /* LayoutConstraint.swift in Sources */,
@@ -488,23 +594,33 @@
 				D5D9B1FD1F721161008E5991 /* ConstraintOffsetTarget.swift in Sources */,
 				D5D9B1EC1F721161008E5991 /* ConstraintDescription.swift in Sources */,
 				D5EC26EC1F8E6FA3009363A2 /* AppData.swift in Sources */,
+				D5A177F91FD841AA00EB7B21 /* BasicView.swift in Sources */,
 				D5D9B1FE1F721161008E5991 /* ConstraintPriority.swift in Sources */,
-				D52CE1641F9DBAFA00742E83 /* SettingView.swift in Sources */,
+				D5F2F1B9201B911D0009638F /* ProxySettingViewController.swift in Sources */,
+				D54E840C201CCB2600D6A798 /* NSTextField+Frameless.swift in Sources */,
+				D5ACC5782018E38D009B6322 /* NSView+Subviews.swift in Sources */,
 				D5C8906F1FA0BA0400331F9A /* SKButton.swift in Sources */,
+				D52AC2EF2021B090005BA48B /* NSButton+Action.swift in Sources */,
 				D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */,
 				D5D9B2011F721161008E5991 /* ConstraintRelation.swift in Sources */,
 				D5D9B2031F721161008E5991 /* ConstraintView.swift in Sources */,
 				D5F203C71F979C3E00720C64 /* DownloadTask.swift in Sources */,
 				D5D9B2021F721161008E5991 /* ConstraintView+Extensions.swift in Sources */,
+				D5A7825D202020E900D39F70 /* NSViewController+Present.swift in Sources */,
+				D5D4F9A7201A3D4B00BA27DB /* SegmentControl.swift in Sources */,
+				D5A177F71FD8415500EB7B21 /* Toast.swift in Sources */,
 				D56AFB341F616E1300131348 /* ytdlOptions.swift in Sources */,
 				D5EC26E91F8E6AFB009363A2 /* FileSize.swift in Sources */,
 				D5D9B1F91F721161008E5991 /* ConstraintMakerFinalizable.swift in Sources */,
 				D554C4C51F602C70002D4BF9 /* ytdlCommand.swift in Sources */,
+				D55903A2201CDC6D0086D5DF /* GeneralSettingViewController.swift in Sources */,
 				D50732641F986D5E00A928FD /* AppDelegate+StatusBar.swift in Sources */,
+				D55903A0201CDC4F0086D5DF /* GeneralSettingView.swift in Sources */,
 				D5D9B1F41F721161008E5991 /* ConstraintLayoutSupport.swift in Sources */,
 				D572EF861FB72A9600096C48 /* Image.swift in Sources */,
 				D5D9B1F71F721161008E5991 /* ConstraintMakerEditable.swift in Sources */,
 				D5D9B1F21F721161008E5991 /* ConstraintLayoutGuide.swift in Sources */,
+				D54E8407201CA95B00D6A798 /* ShadowLayer.swift in Sources */,
 				D5F203C81F979C3E00720C64 /* VideoDownloader.swift in Sources */,
 				D5D9B2081F721162008E5991 /* LayoutConstraintItem.swift in Sources */,
 				D5D9B1EE1F721161008E5991 /* ConstraintInsets.swift in Sources */,

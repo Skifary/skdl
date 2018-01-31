@@ -29,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        
         if !isReady {
             UserDefaults.standard.register(defaults: Preference.defaultPreference)
             statusBarItem = statusItem()

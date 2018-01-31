@@ -20,19 +20,9 @@ internal struct ImageName {
     
     static let Folder = NSImage.Name("popover_folder")
     
-    static let Add = NSImage.Name("popover_add")
+    static let NewTask = NSImage.Name("popover_add")
     
     static let Return = NSImage.Name("popover_return")
-    
-    //MARK:- add
-    static let Link = NSImage.Name("popover_add_link")
-
-    static let Download = NSImage.Name("popover_add_download")
-    
-    //MARK:- setting
-    static let Choose = NSImage.Name("popover_setting_choose")
-    
-    static let Advanced = NSImage.Name("popover_setting_advanced")
     
     //MARK:- cell
     static let Default = NSImage.Name("popover_content_defaultimage")
@@ -40,5 +30,30 @@ internal struct ImageName {
     static let Pause = NSImage.Name("download_pause")
     
     static let Continue = NSImage.Name("download_continue")
+    
+    //MARK:- basic
+    
+    struct Basic {
+        static let Back = NSImage.Name("basic_back")
+    }
+    
+    struct CheckBox {
+     
+        static let Checked = NSImage.Name("checkbox_checked")
+    
+        static let Unchecked = NSImage.Name("checkbox_unchecked")
+    
+    }
+    
+    struct General {
+        
+        static let ChooseFolder = NSImage.Name("general_choose_folder")
+    }
+    
+    struct About {
+        
+        static let Logo = NSImage.Name("about_logo")
+    }
+    
     
 }

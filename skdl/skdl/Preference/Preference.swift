@@ -10,9 +10,9 @@ import Foundation
 
 typealias PK = Preference.Key
 typealias PV = Preference.Value
+
 let standardUD = UserDefaults.standard
 let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-
 
 struct Preference {
     
@@ -45,7 +45,7 @@ struct Preference {
     
     
     struct Value {
-        static var localStoragePath: String? {
+        static var localStoragePath: String! {
             set {
                 standardUD.set(newValue, forKey: Key.localStorageFolder)
             }

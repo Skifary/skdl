@@ -1,5 +1,5 @@
 //
-//  NSButton+ImageButton.swift
+//  NSButton+Image.swift
 //  skdl
 //
 //  Created by Skifary on 07/10/2017.
@@ -11,10 +11,14 @@ import Cocoa
 public extension NSButton {
 
     public static func button(with imageName: NSImage.Name) -> NSButton {
+        return NSButton.button(with: NSImage(named: imageName))
+    }
+    
+    public static func button(with image: NSImage?) -> NSButton {
         let button = NSButton()
         button.bezelStyle = NSButton.BezelStyle.circular
         button.title = ""
-        button.image = NSImage(named: imageName)
+        button.image = image
         button.isBordered = false
         button.imageScaling = NSImageScaling.scaleProportionallyDown
         return button

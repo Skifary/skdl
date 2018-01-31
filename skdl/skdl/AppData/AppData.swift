@@ -17,3 +17,17 @@ internal struct AppData {
     internal static let PreferenceTitle = ""
     
 }
+
+internal struct AppSize {
+    
+    internal static let Content = NSMakeSize(320, 568)
+    
+    static var Height: CGFloat {
+        return AppSize.Content.height
+    }
+    
+    static var Width: CGFloat {
+        return AppSize.Content.width
+    }
+    
+}

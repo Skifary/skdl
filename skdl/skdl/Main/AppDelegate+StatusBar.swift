@@ -24,7 +24,7 @@ internal extension AppDelegate {
         if popover == nil {
             let popover = NSPopover()
             popover.animates = true
-            popover.contentSize = PopoverView.Size.Content
+            popover.contentSize = AppSize.Content
             let popoperViewController = PopoverViewController()
             popover.contentViewController = popoperViewController
             self.popover = popover

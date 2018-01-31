@@ -8,32 +8,43 @@
 
 import Cocoa
 
-internal class PopoverViewController: NSViewController {
+class PopoverViewController: NSViewController {
     
     fileprivate struct Text {
         
-        struct Title {
-            static let ChooseFolder = "Choose Folder"
-            
-            static let MenuItemQuit = "Quit"
-            
-            static let MenuItemSuspend = "Suspend"
-            
-            static let MenuItemRemove = "Remove"
-            
-            static let MenuItemShowInTheFinder = "Show in the Finder"
-            
-            static let MenuItemProxy = "Proxy"
-        }
-        
-    }
-    
-    internal var videos: [Video] {
-       return VideoDownloader.shared.downloadingVideos
-    }
-    
+        static let ChooseFolder = "Choose Folder"
 
-    internal var popoverView: PopoverView {
+        struct MenuItem {
+
+            // setting
+            
+            static let Proxy = "Proxy"
+
+            static let General = "General"
+            
+            static let About = "About"
+            
+            static let Quit = "Quit"
+            
+            // table view
+            
+            static let Suspend = "Suspend"
+            
+            static let Remove = "Remove"
+            
+            static let ShowInTheFinder = "Show in the Finder"
+
+        }
+
+    }
+    
+    //MARK:-
+    
+    var videos: [Video] {
+        return VideoDownloader.shared.downloadingVideos
+    }
+    
+    var popoverView: PopoverView {
         return view as! PopoverView
     }
     
@@ -45,185 +56,52 @@ internal class PopoverViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         setup()
-        
-    }
-    
-    override func viewWillDisappear() {
-
-        hideBottomView()
-    }
-    
-    override func mouseDown(with event: NSEvent) {
-        
-        
-        hideBottomView()
-
     }
     
     //MARK:- popover setting
     
     func setup() {
         setPopoverView()
-        
         setTableView()
-        
-
-        
     }
     
     fileprivate func setPopoverView() {
-        
-        guard let popoverView = view as? PopoverView else {
-            Log.log("popover view error!")
-            return
-        }
-        
-        popoverView.addButton.action = #selector(addAction)
-        popoverView.addButton.target = self
-        
-        popoverView.settingButton.action = #selector(settingAction)
-        popoverView.settingButton.target = self
-        
-        popoverView.openFolderButton.action = #selector(openFolderAction)
-        popoverView.openFolderButton.target = self
-        
-        popoverView.addView.downloadButton.action = #selector(downloadAction)
-        popoverView.addView.downloadButton.target = self
-        
-        popoverView.settingView.saveFolderPathLabel.stringValue = PV.localStoragePath!
-        
-        popoverView.settingView.chooseButton.action = #selector(chooseAction)
-        popoverView.settingView.chooseButton.target = self
-        
-        popoverView.settingView.advancedButton.action = #selector(advancedAction)
-        popoverView.settingView.advancedButton.target = self
-        
-        hideAddView()
-        hideSettingView()
-        
-        popoverView.proxyView.registerForHideEvent {
-            
-            self.hideProxyView()
-            
-        }
-        
-        let appDelegate = NSApp.delegate as! AppDelegate
-        appDelegate.registerForPopoverCloseEvent {
-            if !self.popoverView.proxyView.isHidden {
-                self.hideProxyView()
-            }
-        }
 
+//        let buttonAndAction: [NSButton : Selector?] = [
+//            popoverView.newTaskButton : #selector(newTaskAction),
+//            popoverView.settingButton : #selector(settingAction),
+//            popoverView.openFolderButton : #selector(openFolderAction),
+//        ]
+//
+//        buttonAndAction.forEach { (button,action) in
+//            button.action = action
+//            button.target = self
+//        }
+        
+        NSButton.batchAddActions([
+            popoverView.newTaskButton : #selector(newTaskAction),
+            popoverView.settingButton : #selector(settingAction),
+            popoverView.openFolderButton : #selector(openFolderAction),
+            ], self)
     }
-    
-    internal func hideBottomView() {
-        if !popoverView.addView.isHidden {
-            hideAddView()
-        }
-        
-        if !popoverView.settingView.isHidden {
-            hideSettingView()
-        }
-    }
-    
-    @objc fileprivate func addAction(_ sender: NSButton) {
-        
-        guard popoverView.addView.isHidden else {
-            hideAddView()
-            return
-        }
-        
-        showAddView()
-        
+
+    @objc fileprivate func newTaskAction(_ sender: NSButton) {
+        let vc = NewTaskViewController()
+        presentViewControllerFromBottom(vc)
     }
     
     @objc fileprivate func settingAction(_ sender: NSButton) {
+        let menu = settingMenu()
         
-        guard popoverView.settingView.isHidden else {
-            hideSettingView()
-            return
-        }
-        
-        showSettingView()
-        
+        NSMenu.popUpContextMenu(menu, with: NSApp.currentEvent!, for: sender)
     }
     
     @objc fileprivate func openFolderAction(_ sender: NSButton) {
-
         NSWorkspace.shared.selectFile(PV.localStoragePath, inFileViewerRootedAtPath: PV.localStoragePath!)
-        
-        hideBottomView()
-
     }
     
-    @objc fileprivate func downloadAction(_ sender: NSButton) {
-        
-        hideAddView()
-        
-        let url = popoverView.addView.urlTextField.stringValue
-
-        DispatchQueue.global().async {
-            self.download(with: url)
-        }
-        
-    }
-    
-    @objc fileprivate func chooseAction(_ sender: NSButton) {
-        
-        guard let url = FolderBrowser.chooseFolder(title: Text.Title.ChooseFolder) else { return }
-        
-        PV.localStoragePath = url.path
-
-        popoverView.settingView.saveFolderPathLabel.stringValue = url.path
-        
-    }
-    
-    @objc fileprivate func advancedAction(_ sender: NSButton) {
-        
-        let menu = menuForAdvanced()
-        
-        NSMenu.popUpContextMenu(menu, with: NSApp.currentEvent!, for: sender)
-        
-    }
-    
-   // fileprivate func
-    
-    fileprivate func showAddView() {
-        hideSettingView()
-        changePopoverContentSize(with: PopoverView.Size.AddHeight)
-        popoverView.addView.isHidden = false
-    }
-    
-    fileprivate func hideAddView() {
-        changePopoverContentSize(with: 0)
-        popoverView.addView.isHidden = true
-    }
-    
-    fileprivate func showSettingView() {
-        hideAddView()
-        changePopoverContentSize(with: PopoverView.Size.SettingHeight)
-        popoverView.settingView.isHidden = false
-    }
-    
-    fileprivate func hideSettingView() {
-        changePopoverContentSize(with: 0)
-        popoverView.settingView.isHidden = true
-    }
-    
-    fileprivate func changePopoverContentSize(with increaseHeight: CGFloat) {
-
-        let appDelegate = NSApp.delegate as? AppDelegate
-        guard let popover = appDelegate?.popover  else {
-            Log.log("popover is nil!")
-            return
-        }
- 
-        popover.contentSize = NSMakeSize(PopoverView.Size.Content.width, PopoverView.Size.Content.height + increaseHeight)
-        
-    }
+    //MARK:- table view
     
     fileprivate func setTableView() {
         
@@ -248,130 +126,47 @@ internal class PopoverViewController: NSViewController {
         return menu
     }
     
-    fileprivate func menuForAdvanced() -> NSMenu {
+    //MARK:-
+    
+    fileprivate func settingMenu() -> NSMenu {
         let menu = NSMenu()
         
-        let proxyItem = NSMenuItem(title: Text.Title.MenuItemProxy, action: #selector(advancedProxyAction), keyEquivalent: "")
-        menu.addItem(proxyItem)
-        let quitItem = NSMenuItem(title: Text.Title.MenuItemQuit, action: #selector(advancedQuitAction), keyEquivalent: "q")
-        menu.addItem(quitItem)
-
+        let menuInfo: [String : Selector?] = [
+            Text.MenuItem.Proxy : #selector(showProxyViewAction),
+            Text.MenuItem.General : #selector(showGeneralViewAction),
+            Text.MenuItem.About : #selector(showAboutViewAction),
+            Text.MenuItem.Quit : #selector(advancedQuitAction)
+        ]
+        
+//        let keyEquivalents: [String : String] = [
+//            Text.MenuItem.Proxy : "",
+//            Text.MenuItem.General : "",
+//            Text.MenuItem.About : "",
+//            Text.MenuItem.Quit : "q",
+//        ]
+        
+        menuInfo.forEach { (title, action) in
+            let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
+            menu.addItem(item)
+        }
+        
         return menu
+    }
+
+    @objc fileprivate func showProxyViewAction(sender: NSButton) {
+        presentViewControllerFromBottom(ProxySettingViewController())
+    }
+    
+    @objc fileprivate func showGeneralViewAction(sender: NSButton) {
+        presentViewControllerFromBottom(GeneralSettingViewController())
+    }
+    
+    @objc fileprivate func showAboutViewAction(sender: NSButton) {
+        presentViewControllerFromBottom(AboutViewController())
     }
     
     @objc fileprivate func advancedQuitAction(sender: NSButton) {
-        
         NSApp.terminate(nil)
-        
-    }
-    
-    @objc fileprivate func advancedProxyAction(sender: NSButton) {
-        
-        showProxyView()
-    }
-    
-    fileprivate func showProxyView() {
-        
-        let proxyView = popoverView.proxyView
-        
-        proxyView.setProxyType(with: PV.proxyType!)
-        
-        proxyView.addressTextField.stringValue = PV.proxyAddress ?? ""
-        
-        proxyView.portTextField.stringValue = PV.proxyPort ?? ""
-        
-        proxyView.isHidden = false
-        
-        NSAnimationContext.runAnimationGroup({ (context) in
-            context.duration = 0.2
-            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-            
-            popoverView.proxyViewTopConstraint.animator().constant = -PopoverView.Size.ProxyHeight
-
-        })
-        
-    }
-    
-    fileprivate func hideProxyView() {
-        
-        let proxyView = popoverView.proxyView
-        
-        PV.proxyType = proxyView.proxyType()
-        
-        PV.proxyAddress = proxyView.addressTextField.stringValue
-        
-        PV.proxyPort = proxyView.portTextField.stringValue
-
-        NSAnimationContext.runAnimationGroup({ (context) in
-            context.duration = 0.2
-            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-            
-            popoverView.proxyViewTopConstraint.animator().constant = 0
-            
-        }) {
-            proxyView.isHidden = true
-        }
-
-    }
-    
-    //MARK:-
-    
-    internal func download(with url: String) {
-        
-        guard url != "" else {
-            let error = "url is nil!"
-            Log.log(error)
-            showError(error)
-            return
-        }
-
-        var isPorxyUrl = false
-        
-        if !ytdlController.shared.isURLAvailable(url: url) {
-            if !ytdlController.shared.isURLAvailableInProxy(url: url) {
-                let error = "url is unavailable!"
-                Log.log(error)
-                showError(error)
-                return
-            }
-            isPorxyUrl = true
-        }
-        guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
-            let error = "json is unavailable!"
-            Log.log(error)
-            showError(error)
-            return
-        }
-        
-        let dump = JSONHelper.getDictionary(from: json)
-        
-        let video = Video()
-        video.url = url
-        video.name = dump[YDJKey.kTitle] as? String ?? ""
-        video.ext = dump[YDJKey.kExt] as? String ?? ""
-        video.size = dump[YDJKey.kFileSize] as? Int64 ?? 0
-        video.duration = dump[YDJKey.kDuration] as? Int64 ?? 0
-        video.format = dump[YDJKey.kFormat] as? String ?? ""
-        video.playlist = dump[YDJKey.kPlayList] as? String ?? ""
-        video.id = dump[YDJKey.kID] as? String ?? ""
-        
-        video.localFolder = URL(string: "file://" + PV.localStoragePath!)
-        
-        video.needProxy = isPorxyUrl
-        VideoDownloader.shared.download(with: video)
-    }
-    
-    func showError(_ error: String) {
-        let addView = popoverView.addView
-        if Thread.isMainThread {
-            showAddView()
-            addView.showError(with: error)
-        } else {
-            DispatchQueue.main.async {
-                self.showAddView()
-                addView.showError(with: error)
-            }
-        }
     }
     
 }
@@ -387,11 +182,11 @@ extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
         
         let cell = ContentCellView(frame: NSZeroRect)
 
-       // cell.nameLabel.stringValue = "这是名字这是名字这是名字这是名字这是名字"
+//        cell.pauseButton.action = #selector(self.pauseButtonClick)
+//        cell.pauseButton.target = self
+//        
+        cell.pauseButton.add(#selector(self.pauseButtonClick), self)
         
-        cell.pauseButton.action = #selector(self.pauseButtonClick)
-        cell.pauseButton.target = self
-
         let video = videos[row]
         cell.video = video
         cell.setButtonImage(state: video.state)
@@ -404,9 +199,8 @@ extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
                 cell.etaLabel.stringValue = eta
             }
         }
-
+        
         return cell
-
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -458,8 +252,10 @@ extension PopoverViewController: NSMenuDelegate {
         }
     }
     
+    //MARK:- menu item
+    
     func startDownloadMenuItem() -> NSMenuItem {
-        return NSMenuItem(title: "开始下载", action: #selector(self.startDownloadAction), keyEquivalent: "s")
+        return NSMenuItem(title: "Start Download", action: #selector(self.startDownloadAction), keyEquivalent: "s")
     }
     
     @objc func startDownloadAction() {
@@ -473,7 +269,7 @@ extension PopoverViewController: NSMenuDelegate {
     
     func suspendDownloadMenuItem() -> NSMenuItem {
         
-        return NSMenuItem(title: Text.Title.MenuItemSuspend, action: #selector(self.suspendDownloadAction), keyEquivalent: "p")
+        return NSMenuItem(title: Text.MenuItem.Suspend, action: #selector(self.suspendDownloadAction), keyEquivalent: "p")
     }
     
     @objc func suspendDownloadAction() {
@@ -485,11 +281,10 @@ extension PopoverViewController: NSMenuDelegate {
         suspendDownload(video)
         
         cell.setButtonImage(state: video.state)
-        
     }
     
     func removeDownloadMenuItem() -> NSMenuItem {
-        return NSMenuItem(title: Text.Title.MenuItemRemove, action: #selector(self.removeDownloadAction), keyEquivalent: "d")
+        return NSMenuItem(title: Text.MenuItem.Remove, action: #selector(self.removeDownloadAction), keyEquivalent: "d")
     }
     
     @objc func removeDownloadAction() {
@@ -503,8 +298,7 @@ extension PopoverViewController: NSMenuDelegate {
     }
     
     func showInTheFinderMenuItem() -> NSMenuItem {
-
-        return NSMenuItem(title: Text.Title.MenuItemShowInTheFinder, action: #selector(self.showInTheFinderAction), keyEquivalent: "f")
+        return NSMenuItem(title: Text.MenuItem.ShowInTheFinder, action: #selector(self.showInTheFinderAction), keyEquivalent: "f")
     }
     
     @objc func showInTheFinderAction() {
@@ -512,11 +306,8 @@ extension PopoverViewController: NSMenuDelegate {
         let row = tableView.clickedRow
         
         let video = VideoDownloader.shared.downloadingVideos[row]
-        
         NSWorkspace.shared.selectFile(video.downloadPath!.path + ".part", inFileViewerRootedAtPath: (video.localFolder?.path)!)
-        
     }
     
 }
-
 
