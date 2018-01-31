@@ -28,6 +28,8 @@ class PopoverViewController: NSViewController {
             
             // table view
             
+            static let Start = "Start Download"
+            
             static let Suspend = "Suspend"
             
             static let Remove = "Remove"
@@ -62,28 +64,14 @@ class PopoverViewController: NSViewController {
     //MARK:- popover setting
     
     func setup() {
-        setPopoverView()
-        setTableView()
-    }
-    
-    fileprivate func setPopoverView() {
-
-//        let buttonAndAction: [NSButton : Selector?] = [
-//            popoverView.newTaskButton : #selector(newTaskAction),
-//            popoverView.settingButton : #selector(settingAction),
-//            popoverView.openFolderButton : #selector(openFolderAction),
-//        ]
-//
-//        buttonAndAction.forEach { (button,action) in
-//            button.action = action
-//            button.target = self
-//        }
         
         NSButton.batchAddActions([
             popoverView.newTaskButton : #selector(newTaskAction),
             popoverView.settingButton : #selector(settingAction),
             popoverView.openFolderButton : #selector(openFolderAction),
             ], self)
+        
+        setTableView()
     }
 
     @objc fileprivate func newTaskAction(_ sender: NSButton) {
@@ -181,22 +169,16 @@ extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let cell = ContentCellView(frame: NSZeroRect)
-
-//        cell.pauseButton.action = #selector(self.pauseButtonClick)
-//        cell.pauseButton.target = self
-//        
         cell.pauseButton.add(#selector(self.pauseButtonClick), self)
         
         let video = videos[row]
         cell.video = video
         cell.setButtonImage(state: video.state)
         cell.nameLabel.stringValue = video.name
-        cell.sizeLabel.stringValue = video.sizeDescription
         if let task = video.task {
             task.progressEvent = { ( progress ,speed , eta) in
                 cell.progressLabel.stringValue = progress
                 cell.speedLabel.stringValue = speed
-                cell.etaLabel.stringValue = eta
             }
         }
         
@@ -204,7 +186,7 @@ extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return ContentCellView.Size.Height
+        return 50
     }
     
     @objc fileprivate func pauseButtonClick(sender: NSButton) {
@@ -255,7 +237,7 @@ extension PopoverViewController: NSMenuDelegate {
     //MARK:- menu item
     
     func startDownloadMenuItem() -> NSMenuItem {
-        return NSMenuItem(title: "Start Download", action: #selector(self.startDownloadAction), keyEquivalent: "s")
+        return NSMenuItem(title: Text.MenuItem.Start, action: #selector(self.startDownloadAction), keyEquivalent: "")
     }
     
     @objc func startDownloadAction() {
@@ -269,7 +251,7 @@ extension PopoverViewController: NSMenuDelegate {
     
     func suspendDownloadMenuItem() -> NSMenuItem {
         
-        return NSMenuItem(title: Text.MenuItem.Suspend, action: #selector(self.suspendDownloadAction), keyEquivalent: "p")
+        return NSMenuItem(title: Text.MenuItem.Suspend, action: #selector(self.suspendDownloadAction), keyEquivalent: "")
     }
     
     @objc func suspendDownloadAction() {
@@ -284,7 +266,7 @@ extension PopoverViewController: NSMenuDelegate {
     }
     
     func removeDownloadMenuItem() -> NSMenuItem {
-        return NSMenuItem(title: Text.MenuItem.Remove, action: #selector(self.removeDownloadAction), keyEquivalent: "d")
+        return NSMenuItem(title: Text.MenuItem.Remove, action: #selector(self.removeDownloadAction), keyEquivalent: "")
     }
     
     @objc func removeDownloadAction() {
@@ -298,7 +280,7 @@ extension PopoverViewController: NSMenuDelegate {
     }
     
     func showInTheFinderMenuItem() -> NSMenuItem {
-        return NSMenuItem(title: Text.MenuItem.ShowInTheFinder, action: #selector(self.showInTheFinderAction), keyEquivalent: "f")
+        return NSMenuItem(title: Text.MenuItem.ShowInTheFinder, action: #selector(self.showInTheFinderAction), keyEquivalent: "")
     }
     
     @objc func showInTheFinderAction() {

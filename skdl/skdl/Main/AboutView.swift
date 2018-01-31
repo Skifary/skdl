@@ -21,8 +21,8 @@ class AboutView: NSView {
     }()
     
     let copyrightLabel: SKLabel = {
-        let label = SKLabel(title: "Copyright © 2017-2018 Skifary. All rights reserved.")
-
+        let label = SKLabel(title: "Copyright © 2017-2018 Skifary.\nAll rights reserved.")
+        label.alignment = .center
         label.font = NSFont.systemFont(ofSize: 13, weight: .thin)
         label.textColor = Color.Basic.Title
         return label

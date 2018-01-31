@@ -39,7 +39,7 @@ internal class PopoverView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         
         // 小tips NSGradient 需要一个context上下文 才能绘制！
-        let gradient = NSGradient(colors: [Color.Main, Color.Minor])
+        let gradient = NSGradient(colors: [Color.Main/*, Color.Minor*/])
         let rect = NSMakeRect(0, 0, NSWidth(frame), NSHeight(frame))
         gradient?.draw(in: rect, angle: -90.0)
 

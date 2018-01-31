@@ -8,16 +8,17 @@
 
 import Cocoa
 
-func generalTitleLabel(_ title: String) -> SKLabel {
-    let label = SKLabel(title: title)
-    
-    label.font = NSFont.systemFont(ofSize: 13, weight: .thin)
-    label.textColor = Color.Basic.Title
-    
-    return label
-}
 
 class GeneralSettingView: BasicView {
+    
+    static func generalTitleLabel(_ title: String) -> SKLabel {
+        let label = SKLabel(title: title)
+        
+        label.font = NSFont.systemFont(ofSize: 13, weight: .thin)
+        label.textColor = Color.Basic.Title
+        
+        return label
+    }
     
     //MARK:-
     

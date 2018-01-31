@@ -11,14 +11,14 @@ import Cocoa
 
 internal struct Color {
     
-    internal static let Main = color(with: 0x6A2C70)
+   // internal static let Main = color(with: 0x6A2C70)
     
-    internal static let Minor = color(with: 0xB83B5E)
+   // internal static let Minor = color(with: 0xB83B5E)
     
-    internal static let NormalText = color(with: 0xd7d7d9)
+    internal static let Main = color(with: 0x262932, alpha: 0.8)
     
-    internal static let Error = color(with: 0xF9ED69)
-    
+    internal static let MainDesc = color(with: 0xBBBDC3)
+
     internal struct Basic {
         
         internal static let Title = color(with: 0x4B4F63, alpha: 0.59)
@@ -38,7 +38,6 @@ internal struct Color {
     }
     
     internal struct TitledInput {
-        
 
         internal static let Input = color(with: 0x4B4F63)
         

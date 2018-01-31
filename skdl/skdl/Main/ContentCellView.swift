@@ -8,26 +8,23 @@
 
 import Cocoa
 
-
-
 internal class ContentCellView: NSTableCellView {
     
- 
-    internal struct Size {
-        internal static let Height: CGFloat = 50
-        
-        fileprivate static let PauseButton: CGFloat = 20
-        
+    static func descriptionLabel(with title: String) -> SKLabel {
+        let label = SKLabel(title: title)
+        label.textColor = Color.MainDesc
+        label.font = NSFont.systemFont(ofSize: 10, weight: .thin)
+        return label
     }
     
-    internal weak var video: Video!
+    //MARK:-
     
-    internal let thumbnailView: NSImageView = NSImageView(image: NSImage(named: ImageName.Default)!)
+    internal weak var video: Video!
 
     internal let nameLabel: SKLabel = {
         let textField = SKLabel(title: "")
         
-        textField.font = NSFont.systemFont(ofSize: 11)
+        textField.font = NSFont.systemFont(ofSize: 14, weight: .thin)
         textField.textColor = NSColor.white
         
         textField.lineBreakMode = .byTruncatingTail
@@ -35,38 +32,26 @@ internal class ContentCellView: NSTableCellView {
         return textField
     }()
     
-    internal let sizeLabel: SKLabel = {
-        let textField = SKLabel.descriptionLabel(fontSize: 10, title: "888.88MiB")
-        textField.textColor = NSColor.white
-        textField.alignment = NSTextAlignment.left
-        return textField
-    }()
-    
     internal let progressLabel: SKLabel = {
-        let textField = SKLabel.descriptionLabel(fontSize: 10, title: "88.88%")
-        textField.textColor = NSColor.white
-        return textField
+        let label = descriptionLabel(with: "88.88%")
+        label.alignment = .left
+        return label
     }()
     
     internal let speedLabel: SKLabel = {
-        let textField = SKLabel.descriptionLabel(fontSize: 10, title: "888.88MiB/s")
-        textField.textColor = NSColor.white
-        return textField
-    }()
-    
-    internal let etaLabel: SKLabel = {
-        let textField = SKLabel.descriptionLabel(fontSize: 10, title: "88:88:88")
-        textField.textColor = NSColor.white
-        return textField
+        let label = descriptionLabel(with: "888.88MiB/s")
+        label.alignment = .right
+        return label
     }()
     
     internal let pauseButton: NSButton = NSButton.button(with: ImageName.Pause)
+    
+    //MARK:-
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
 
         setSubviews()
-        
     }
     
     required init?(coder decoder: NSCoder) {
@@ -76,65 +61,43 @@ internal class ContentCellView: NSTableCellView {
     
     fileprivate func setSubviews() {
         
-        addSubviews([thumbnailView, nameLabel, sizeLabel, progressLabel, pauseButton, etaLabel, speedLabel])
+        addSubviews([nameLabel, progressLabel, pauseButton, speedLabel])
         
-        thumbnailView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.top.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(-8)
-            make.width.equalTo(ContentCellView.Size.Height - 16)
-        }
+        let buttonSize: CGFloat = 20
         
         pauseButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-8)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(Size.PauseButton)
+            make.height.width.equalTo(buttonSize)
         }
         
         nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(thumbnailView.snp.right).offset(8)
-            make.top.equalToSuperview().offset(12)
-            make.height.equalTo(13)
-            make.width.equalTo(AppSize.Content.width - 28 - 50 - ContentCellView.Size.Height - Size.PauseButton)
-        }
-        
-        sizeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(thumbnailView.snp.right).offset(8)
-            make.bottom.equalTo(thumbnailView.snp.bottom)
-            make.height.equalTo(12)
-            make.width.equalTo(54)
+            make.left.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(8)
+            make.height.equalTo(17)
+            make.right.equalTo(pauseButton.snp.left).offset(-8)
         }
         
         progressLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(pauseButton.snp.left).offset(-4)
-            make.bottom.equalTo(sizeLabel.snp.bottom)
+            make.left.equalToSuperview().offset(8)
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
             make.height.equalTo(12)
-            make.width.equalTo(42)
-        }
-        
-        etaLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(pauseButton.snp.left).offset(-4)
-            make.centerY.equalTo(nameLabel)
-            make.height.equalTo(12)
-            make.width.equalTo(50)
+            make.width.equalTo(100)
         }
         
         speedLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(progressLabel.snp.left)
+            make.right.equalTo(pauseButton.snp.left).offset(-8)
             make.bottom.equalTo(progressLabel.snp.bottom)
             make.height.equalTo(12)
-            make.width.equalTo(70)
+            make.width.equalTo(100)
         }
-        
+
     }
-    
     
     //MARK:-
     
     internal func setButtonImage(state: Video.State) {
-        
         pauseButton.image = NSImage(named: state == Video.State.downloading ? ImageName.Pause : ImageName.Continue)
-        
     }
     
 }
