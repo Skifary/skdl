@@ -23,19 +23,43 @@ class ProxySettingViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        proxySettingView.okTitle = "SAVE"
+        proxySettingView.okTitle = "Save"
         
         let proxy = Proxy()
         proxySettingView.type = proxy.type
         proxySettingView.address = proxy.address
         proxySettingView.port = proxy.port
+        
+        proxySettingView.rules = rules()
+        
     }
-    
     
     override func okAction(_ sender: NSButton) {
         
+        let rules = proxySettingView.rules.split(separator: "\n")
+        
+        Config.shared.rules.removeAll()
+        for index in 0..<rules.count {
+            
+            if rules[index].first == "#" {
+                continue
+            }
+            
+            Config.shared.rules.append(String(rules[index]))
+        }
+        
+        Config.shared.save()
         Proxy.save(proxySettingView.type, proxySettingView.address, proxySettingView.port)
         super.okAction(sender)
+    }
+    
+    fileprivate func rules() -> String {
+        var rules = "#custom rules\n#use sharp(#) for comment\n#eg:www.youtube-dl.com\n"
+        
+        Config.shared.rules.forEach { (rule) in
+            rules += rule + "\n"
+        }
+        return rules
     }
     
 }

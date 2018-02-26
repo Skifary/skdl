@@ -58,10 +58,10 @@ internal class DownloadTask: NSObject {
     //MARK:- api
     
     internal func start() {
-        let res = ytdlController.shared.download(with: url, localPath: local!, isProxyUrl: video.needProxy)
-        error = res.error
-        out = res.out
-        process = res.process
+        let handle = ytdlController.shared.download(with: url, localPath: local!, isProxyUrl: video.needProxy)
+        error = handle.error
+        out = handle.out
+        process = handle.process
         process.launch()
         VideoDownloader.shared.downloadQueue.addOperation {
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.readLoop), userInfo: nil, repeats: true)

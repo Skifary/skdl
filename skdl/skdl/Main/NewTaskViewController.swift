@@ -26,55 +26,23 @@ class NewTaskViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newTaskView.okTitle = "DOWNLOAD"
+        newTaskView.okTitle = "Download"
     }
     
     override func okAction(_ sender: NSButton) {
+
         let url = newTaskView.url
-        let isUseProxy = newTaskView.isUseProxy
+        
+        if url.isEmpty {
+            print("url is empty")
+            return
+        }
+        
+        let useProxy = newTaskView.isUseProxy
         DispatchQueue.global().async {
-            self.download(with: url, isUseProxy)
+           VideoDownloader.shared.download(with: url, useProxy)
         }
         super.okAction(sender)
     }
     
-    //MARK:-
-    
-    func download(with url: String, _ isUseProxy: Bool = false) {
-        
-        guard url != "" else {
-            let error = "url is nil!"
-            Log.log(error)
-          //  showError(error)
-            return
-        }
-
-        // 需要理清逻辑，例如需要proxy和不需要proxy，应该根据网址来判断
-        // 给一个需要自动判断和添加的地方？
-        
-        guard let json = ytdlController.shared.dumpJson(url: url, isUseProxy) else {
-            let error = "json is unavailable!"
-            Log.log(error)
-            //showError(error)
-            return
-        }
-        
-        let dump = JSONHelper.getDictionary(from: json)
-        
-        let video = Video()
-        video.url = url
-        video.name = dump[YDJKey.kTitle] as? String ?? ""
-        video.ext = dump[YDJKey.kExt] as? String ?? ""
-        video.size = dump[YDJKey.kFileSize] as? Int64 ?? 0
-        video.duration = dump[YDJKey.kDuration] as? Int64 ?? 0
-        video.format = dump[YDJKey.kFormat] as? String ?? ""
-        video.playlist = dump[YDJKey.kPlayList] as? String ?? ""
-        video.id = dump[YDJKey.kID] as? String ?? ""
-        
-        video.localFolder = URL(string: "file://" + PV.localStoragePath!)
-        
-        video.needProxy = isUseProxy
-        VideoDownloader.shared.download(with: video)
-    }
-  
 }

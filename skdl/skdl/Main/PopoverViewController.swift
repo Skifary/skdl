@@ -11,8 +11,6 @@ import Cocoa
 class PopoverViewController: NSViewController {
     
     fileprivate struct Text {
-        
-        static let ChooseFolder = "Choose Folder"
 
         struct MenuItem {
 
@@ -75,6 +73,7 @@ class PopoverViewController: NSViewController {
     }
 
     @objc fileprivate func newTaskAction(_ sender: NSButton) {
+
         let vc = NewTaskViewController()
         presentViewControllerFromBottom(vc)
     }
@@ -86,7 +85,8 @@ class PopoverViewController: NSViewController {
     }
     
     @objc fileprivate func openFolderAction(_ sender: NSButton) {
-        NSWorkspace.shared.selectFile(PV.localStoragePath, inFileViewerRootedAtPath: PV.localStoragePath!)
+        PathUtility.openFolder(PV.localStoragePath!)
+       // NSWorkspace.shared.selectFile(PV.localStoragePath, inFileViewerRootedAtPath: PV.localStoragePath!)
     }
     
     //MARK:- table view
@@ -125,14 +125,7 @@ class PopoverViewController: NSViewController {
             Text.MenuItem.About : #selector(showAboutViewAction),
             Text.MenuItem.Quit : #selector(advancedQuitAction)
         ]
-        
-//        let keyEquivalents: [String : String] = [
-//            Text.MenuItem.Proxy : "",
-//            Text.MenuItem.General : "",
-//            Text.MenuItem.About : "",
-//            Text.MenuItem.Quit : "q",
-//        ]
-        
+ 
         menuInfo.forEach { (title, action) in
             let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
             menu.addItem(item)

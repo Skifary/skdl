@@ -9,7 +9,6 @@
 import Cocoa
 
 internal class PopoverView: NSView {
-    
 
     internal let settingButton: NSButton = NSButton.button(with: ImageName.Setting)
 

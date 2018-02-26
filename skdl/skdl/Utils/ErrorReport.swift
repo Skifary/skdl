@@ -10,11 +10,11 @@ import Foundation
 
 public class ErrorReport {
     
-    public static func fatal(_ message: String, _ block: () -> Void = {}) -> Never {
-        Log.logWithCallStack(message)
-        Alert.criticize("fatal_error", message)
-        block()
-        exit(1)
-    }
+//    public static func fatal(_ message: String, _ block: () -> Void = {}) -> Never {
+//        Log.logWithCallStack(message)
+//        Alert.criticize("fatal_error", message)
+//        block()
+//        exit(1)
+//    }
 
 }

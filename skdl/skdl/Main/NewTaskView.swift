@@ -8,10 +8,6 @@
 
 import Cocoa
 
-fileprivate let NewTaskViewTitle = "NEW TASK"
-
-fileprivate let UseProxyText = "Use proxy"
-
 class NewTaskView: BasicView {
 
     //MARK:-
@@ -41,8 +37,8 @@ class NewTaskView: BasicView {
         
         addSubviews([urlInputView, useProxyCheckBox])
         layoutSubviews()
-        titleLabel.stringValue = NewTaskViewTitle
-        useProxyCheckBox.title = UseProxyText
+        titleLabel.stringValue = "NEW TASK"
+        useProxyCheckBox.title = "Use proxy"
     }
     
     required init?(coder decoder: NSCoder) {

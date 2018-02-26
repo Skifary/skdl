@@ -10,19 +10,19 @@ import Foundation
 
 public class JSONHelper {
     
-    public static func getDictionary(from json: String) -> [String : Any] {
+    public static func getDictionary(from json: String) -> [String : Any]? {
         guard let data = json.data(using: .utf8) else {
-                Log.logWithCallStack("json.data() failed, json: \(json)")
-                return [:]
+            print("can't get data from json, json : \(json)")
+            return nil
         }
         do {
             let object = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            let dictionary = object as? [String : Any] ?? [:]
+            let dictionary = object as? [String : Any] ?? nil
             return dictionary
         } catch {
-            Log.logWithCallStack("JSONSerialization failed, json: \(json)")
+            print("JSONSerialization failed, json : \(json)")
         }
-        return [:]
+        return nil
     }
     
 }

@@ -12,7 +12,6 @@ class AboutViewController: NSViewController {
 
     override func loadView() {
         view = AboutView(frame: NSZeroRect)
-        
     }
     
 }

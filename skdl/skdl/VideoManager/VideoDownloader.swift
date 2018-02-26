@@ -11,11 +11,13 @@ import Foundation
 //MARK:- fileprivate constante
 fileprivate let DownloadOperationQueueName = "com.skifary.skdl.downloadqueue"
 
-fileprivate let MaxConcurrentDownloadTaskCount = 5
+//fileprivate let MaxConcurrentDownloadTaskCount = 5
 
 internal typealias DownloadTaskStartHandle = () -> Void
 
 internal typealias DownloadTaskEndHandle = () -> Void
+
+//internal typealias
 
 //MARK:- VideoDownloader
 internal class VideoDownloader {
@@ -28,7 +30,7 @@ internal class VideoDownloader {
     internal var downloadQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.name = DownloadOperationQueueName
-        queue.maxConcurrentOperationCount = MaxConcurrentDownloadTaskCount
+        queue.maxConcurrentOperationCount = 5
         return queue
     }()
     
@@ -58,45 +60,41 @@ internal class VideoDownloader {
         }
     }
     
-    internal func download(with url: String) {
-        guard url != "" else {
-            let error = "url is nil!"
-            Log.log(error)
-            return
+    internal func download(with url: String, _ useProxy: Bool = false) {
+        
+        var useProxy = useProxy
+        
+        // automate check proxy
+        if useProxy == false {
+            let realURL = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
+            useProxy = Config.shared.rules.contains((realURL?.host)!)
         }
 
-        var isPorxyUrl = false
-        
-        if !ytdlController.shared.isURLAvailable(url: url) {
-            if !ytdlController.shared.isURLAvailableInProxy(url: url) {
-                let error = "url is unavailable!"
-                Log.log(error)
-                return
-            }
-            isPorxyUrl = true
-        }
-        
-        guard let json = ytdlController.shared.dumpJson(url: url, isPorxyUrl) else {
-            let error = "json is unavailable!"
-            Log.log(error)
+        guard let json = ytdlController.shared.dumpJson(url: url, useProxy) else {
+            print("json is unavailable!")
+            Log.log2File("can't dump json",["url" : url])
             return
         }
         
-        let dump = JSONHelper.getDictionary(from: json)
+        guard let info = JSONHelper.getDictionary(from: json) else {
+            print("can't get info from json")
+            Log.log2File("can't get info from json",["json" : json])
+            return
+        }
         
         let video = Video()
         video.url = url
-        video.name = dump[YDJKey.kTitle] as? String ?? ""
-        video.ext = dump[YDJKey.kExt] as? String ?? ""
-        video.size = dump[YDJKey.kFileSize] as? Int64 ?? 0
-        video.duration = dump[YDJKey.kDuration] as? Int64 ?? 0
-        video.format = dump[YDJKey.kFormat] as? String ?? ""
-        video.playlist = dump[YDJKey.kPlayList] as? String ?? ""
-        video.id = dump[YDJKey.kID] as? String ?? ""
+        video.name = info[YDJKey.kTitle] as? String ?? ""
+        video.ext = info[YDJKey.kExt] as? String ?? ""
+        video.size = info[YDJKey.kFileSize] as? Int64 ?? 0
+        video.duration = info[YDJKey.kDuration] as? Int64 ?? 0
+        video.format = info[YDJKey.kFormat] as? String ?? ""
+        video.playlist = info[YDJKey.kPlayList] as? String ?? ""
+        video.id = info[YDJKey.kID] as? String ?? ""
 
         video.localFolder = URL(string: "file://" + PV.localStoragePath!)
 
-        video.needProxy = isPorxyUrl
+        video.needProxy = useProxy
 
         download(with: video)
         
@@ -120,11 +118,11 @@ internal class VideoDownloader {
     }
     
     internal func registerStartHandle(handle: @escaping DownloadTaskStartHandle) {
-        self.startHandles.append(handle)
+        startHandles.append(handle)
     }
     
     internal func registerEndHandle(handle: @escaping DownloadTaskEndHandle) {
-        self.endHandles.append(handle)
+        endHandles.append(handle)
     }
     
 }

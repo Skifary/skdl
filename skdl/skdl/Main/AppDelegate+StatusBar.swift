@@ -42,7 +42,6 @@ internal extension AppDelegate {
         }
         
         guard let positionView = statusBarItem.button else {
-            Log.log("statusbaritem's button is nil!")
             return
         }
 
@@ -78,7 +77,6 @@ internal extension AppDelegate {
     fileprivate func setPopover(background color: NSColor) {
         
         guard let popoverViewController = popover.contentViewController else {
-            Log.log("popoverViewController is nil!")
             return
         }
         

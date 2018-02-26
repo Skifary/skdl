@@ -72,7 +72,7 @@ class PresentAnimator: NSObject, NSViewControllerPresentationAnimator {
             viewController.view.animator().frame = toFrame
         }, completionHandler: nil)
         
-        // 需要重新计算 view loop  不然会导致响应链失效
+        // 需要重新计算 view loop  
         fromViewController.view.window?.recalculateKeyViewLoop()
     }
     

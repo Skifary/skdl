@@ -28,7 +28,11 @@ class CheckBoxView: NSView {
     
     // public
 
-    var isChecked: Bool = false
+    var isChecked: Bool = false {
+        didSet {
+            updateCheckButton(isChecked)
+        }
+    }
     
     var title: String {
         get {
@@ -47,6 +51,15 @@ class CheckBoxView: NSView {
         set {
             label.font = newValue
             updateFrame()
+        }
+    }
+    
+    var isEnable: Bool {
+        get {
+            return checkButton.isEnabled
+        }
+        set {
+           checkButton.isEnabled = newValue
         }
     }
     
@@ -71,9 +84,6 @@ class CheckBoxView: NSView {
         layoutSubviews()
         
         checkButton.add(#selector(checkAction), self)
-//        
-//        checkButton.target = self
-//        checkButton.action = #selector(checkAction)
     }
     
     required init?(coder decoder: NSCoder) {
@@ -88,17 +98,22 @@ class CheckBoxView: NSView {
         updateFrame()
     }
     
-    
     @objc fileprivate func checkAction(_ sender: NSButton) {
         
-        if isChecked {
-            isChecked = false
-            checkButton.image = NSImage(named: ImageName.CheckBox.Unchecked)
-        } else {
-            isChecked = true
-            checkButton.image = NSImage(named: ImageName.CheckBox.Checked)
-        }
-        
+//        if isChecked {
+//            isChecked = false
+//            checkButton.image = NSImage(named: ImageName.CheckBox.Unchecked)
+//        } else {
+//            isChecked = true
+//            checkButton.image = NSImage(named: ImageName.CheckBox.Checked)
+//        }
+//
+        isChecked = !isChecked
+        updateCheckButton(isChecked)
+    }
+    
+    fileprivate func updateCheckButton(_ status: Bool) {
+        checkButton.image = status ? NSImage(named: ImageName.CheckBox.Checked) : NSImage(named: ImageName.CheckBox.Unchecked)
     }
     
     fileprivate func updateFrame() {

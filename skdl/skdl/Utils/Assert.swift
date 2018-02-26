@@ -10,13 +10,13 @@ import Foundation
 
 public class Assert {
     
-    public static func assert(_ expr: Bool, _ errorMessage: String, _ block: () -> Void = {}) {
-        if !expr {
-            Log.logWithCallStack(errorMessage)
-            Alert.criticize("fatal_error", errorMessage)
-            block()
-            exit(1)
-        }
-    }
+//    public static func assert(_ expr: Bool, _ errorMessage: String, _ block: () -> Void = {}) {
+//        if !expr {
+//            Log.logWithCallStack(errorMessage)
+//            Alert.criticize("fatal_error", errorMessage)
+//            block()
+//            exit(1)
+//        }
+//    }
 
 }

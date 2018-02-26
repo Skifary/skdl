@@ -24,4 +24,11 @@ public extension NSButton {
         return button
     }
     
+    public static func button(with text: String, fontSize: CGFloat = 25, color: NSColor = NSColor.black) -> NSButton {
+        let image = NSImage.image(with: text, fontSize: fontSize, color: color)
+        let button = NSButton.button(with: image)
+        button.frame = NSMakeRect(0, 0, image.size.width, image.size.height)
+        return button
+    }
+    
 }

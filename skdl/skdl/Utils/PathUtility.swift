@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 public class PathUtility {
     
@@ -15,10 +16,11 @@ public class PathUtility {
         // check exist
         if !FileManager.default.fileExists(atPath: path) {
             do {
-                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+              //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
             } catch {
-                Log.log(error.localizedDescription)
-                ErrorReport.fatal("Cannot create folder in Application Support directory")
+                print("can't create folder,url : \(url)")
+                print(error.localizedDescription)
             }
         }
     }
@@ -26,7 +28,7 @@ public class PathUtility {
     public static let appSupportDirectoryURL: URL = {
         // get path
         let asPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        Assert.assert(asPath.count >= 1, "Cannot get path to Application Support directory")
+        assert(asPath.count >= 1, "Cannot get path to Application Support directory")
         let bundleID = Bundle.main.bundleIdentifier!
         let appASURL = asPath.first!.appendingPathComponent(bundleID)
         createDirectoryIfNotExist(url: appASURL)
@@ -34,13 +36,26 @@ public class PathUtility {
     }()
     
     static func deleteFileIfExist(url: URL) {
-        let path = url.path
+        
+        deleteFileIfExist(url.path)
+        //let path = url.path
+//        if FileManager.default.fileExists(atPath: path) {
+//            do {
+//                try FileManager.default.removeItem(atPath: path)
+//            } catch {
+//                print("can't delete file, url : \(url)")
+//                print(error.localizedDescription)
+//            }
+//        }
+    }
+    
+    static func deleteFileIfExist(_ path: String) {
         if FileManager.default.fileExists(atPath: path) {
             do {
                 try FileManager.default.removeItem(atPath: path)
             } catch {
-                Log.log(error.localizedDescription)
-                ErrorReport.fatal("Cannot delete file in Application Support directory")
+                print("can't delete file, path : \(path)")
+                print(error.localizedDescription)
             }
         }
     }
@@ -50,10 +65,23 @@ public class PathUtility {
             do {
                 try FileManager.default.moveItem(at: old, to: new)
             } catch {
-                Log.log(error.localizedDescription)
-                ErrorReport.fatal("Cannot rename file")
+                print("can't rename file, old url : \(old), new url : \(new)")
+                print(error.localizedDescription)
             }
         }
+    }
+    
+    static func fileExist(_ path: URL) -> Bool {
+        return FileManager.default.fileExists(atPath: path.path)
+    }
+    
+    static func openFolder(_ path: String) {
+        var isDir : ObjCBool = true
+        if !FileManager.default.fileExists(atPath: path, isDirectory: &isDir) {
+            print("open folder failed, directory is not exist, path is \(path)")
+            return
+        }
+        NSWorkspace.shared.selectFile(path, inFileViewerRootedAtPath: path)
     }
     
 }

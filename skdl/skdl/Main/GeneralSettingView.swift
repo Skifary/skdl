@@ -8,23 +8,30 @@
 
 import Cocoa
 
+func generalTitleLabel(_ title: String) -> SKLabel {
+    let label = SKLabel(title: title)
+    
+    label.font = NSFont.systemFont(ofSize: 13, weight: .thin)
+    label.textColor = Color.Basic.Title
+    
+    return label
+}
 
 class GeneralSettingView: BasicView {
-    
-    static func generalTitleLabel(_ title: String) -> SKLabel {
-        let label = SKLabel(title: title)
-        
-        label.font = NSFont.systemFont(ofSize: 13, weight: .thin)
-        label.textColor = Color.Basic.Title
-        
-        return label
-    }
-    
+
     //MARK:-
     
     fileprivate let folderLabel: SKLabel = generalTitleLabel("Folder")
     
-    fileprivate let extensionLabel:  SKLabel = generalTitleLabel("Extension")
+    fileprivate let extensionLabel: SKLabel = generalTitleLabel("Extension")
+    
+    fileprivate let ytdlLabel: SKLabel = generalTitleLabel("Youtube-dl")
+    
+    fileprivate let useLocalYTDLCheckBox: CheckBoxView = CheckBoxView(frame: NSRect.zero)
+    
+    fileprivate let automaticUpdateYTDLCheckBox: CheckBoxView = CheckBoxView(frame: NSRect.zero)
+    
+    fileprivate let logLabel: SKLabel = generalTitleLabel("Log")
     
     //public
     
@@ -36,20 +43,48 @@ class GeneralSettingView: BasicView {
     
     let chooseFolderButton: NSButton = NSButton.button(with: ImageName.General.ChooseFolder)
     
-    let googleExtensionButton: NSButton = {
+    let googleExtensionButton: NSButton = NSButton.button(with: "Google Extension", fontSize: 18, color: Color.Basic.LightBlue) /*{
         let image = NSImage.image(with: "Google Extension", fontSize: 18, color: Color.Basic.LightBlue)
         let button = NSButton.button(with: image)
         button.frame = NSMakeRect(0, 0, image.size.width, image.size.height)
         return button
-    }()
+    }()*/
+    
+    let openLogFolderButton: NSButton = NSButton.button(with: "Open Log Folder", fontSize: 18, color: Color.Basic.LightBlue)
+    
+    let clearLogsButton: NSButton = NSButton.button(with: "Clear Logs", fontSize: 18, color: Color.Basic.LightBlue)
+    
+    var isUseLocalYTDL: Bool {
+        set {
+            useLocalYTDLCheckBox.isChecked = newValue
+        }
+        get {
+            return useLocalYTDLCheckBox.isChecked
+        }
+    }
+    
+    var isAutomaticUpdateYTDL: Bool {
+        set {
+            automaticUpdateYTDLCheckBox.isChecked = newValue
+        }
+        get {
+            return automaticUpdateYTDLCheckBox.isChecked
+        }
+    }
+    
+    let updateYTDLButton: NSButton = NSButton.button(with: "Update youtube-dl", fontSize: 18, color: Color.Basic.LightBlue)
     
     //MARK:-
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        addSubviews([folderLabel, folderInput, extensionLabel, googleExtensionButton, chooseFolderButton])
+        addSubviews([folderLabel, folderInput, extensionLabel, googleExtensionButton, chooseFolderButton, ytdlLabel, useLocalYTDLCheckBox, automaticUpdateYTDLCheckBox, updateYTDLButton, logLabel, openLogFolderButton, clearLogsButton])
         layoutSubviews()
-         titleLabel.stringValue = "GENERAL"
+        titleLabel.stringValue = "GENERAL"
+        
+        useLocalYTDLCheckBox.title = "Use local youtube-dl"
+        automaticUpdateYTDLCheckBox.title = "Automatic update"
+        
     }
     
     required init?(coder decoder: NSCoder) {
@@ -58,41 +93,98 @@ class GeneralSettingView: BasicView {
     
     fileprivate func layoutSubviews() {
         
+        let sectionOffset = 24
+        
+        let itemOffset = 12
+        
         folderLabel.snp.makeConstraints { (make) in
             
-            make.left.equalToSuperview().offset(32)
+            make.left.equalToSuperview().offset(24)
             make.top.equalToSuperview().offset(AppSize.Height * 0.1)
-            make.height.equalTo(16)
-            make.right.equalToSuperview().offset(-32)
+            make.height.equalTo(18)
+            make.right.equalToSuperview().offset(-24)
         }
  
         folderInput.snp.makeConstraints { (make) in
-            make.top.equalTo(folderLabel.snp.bottom).offset(12)
+            make.top.equalTo(folderLabel.snp.bottom).offset(itemOffset)
             make.height.equalTo(40)
             make.left.equalTo(folderLabel).offset(4)
-            // -32 - 25 -8
-            make.right.equalToSuperview().offset(-65)
+            // -24 - 25 -8
+            make.right.equalToSuperview().offset(-57)
         }
         
         chooseFolderButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(folderInput)
             make.height.width.equalTo(25)
-            make.right.equalToSuperview().offset(-32)
+            make.right.equalToSuperview().offset(-24)
+        }
+        
+        ytdlLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(folderInput.snp.bottom).offset(sectionOffset)
+            make.height.equalTo(18)
+            make.left.equalTo(folderLabel)
+            make.right.equalTo(folderLabel)
+        }
+        
+        useLocalYTDLCheckBox.snp.makeConstraints { (make) in
+            make.top.equalTo(ytdlLabel.snp.bottom).offset(itemOffset)
+            make.left.equalTo(ytdlLabel).offset(16)
+            make.height.equalTo(16)
+            make.right.equalTo(ytdlLabel)
+        }
+        
+        automaticUpdateYTDLCheckBox.snp.makeConstraints { (make) in
+            make.top.equalTo(useLocalYTDLCheckBox.snp.bottom).offset(itemOffset)
+            make.left.equalTo(useLocalYTDLCheckBox)
+            make.height.equalTo(16)
+            make.right.equalTo(ytdlLabel)
+        }
+        
+        updateYTDLButton.snp.makeConstraints { (make) in
+            make.top.equalTo(automaticUpdateYTDLCheckBox.snp.bottom).offset(itemOffset)
+            make.left.equalTo(automaticUpdateYTDLCheckBox)
+            // make sure is ok
+            make.height.equalTo(updateYTDLButton.frame.height)
+            make.width.equalTo(updateYTDLButton.frame.width)
         }
         
         extensionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(folderInput.snp.bottom).offset(32)
+            make.top.equalTo(updateYTDLButton.snp.bottom).offset(sectionOffset)
             make.height.equalTo(16)
             make.left.equalTo(folderLabel)
-            make.right.equalToSuperview().offset(-32)
+            make.right.equalTo(ytdlLabel)
         }
         
         googleExtensionButton.snp.makeConstraints { (make) in
-            make.top.equalTo(extensionLabel.snp.bottom).offset(12)
-            make.left.equalTo(extensionLabel).offset(8)
+            make.top.equalTo(extensionLabel.snp.bottom).offset(itemOffset)
+            make.left.equalTo(extensionLabel).offset(16)
             // make sure is ok
             make.height.equalTo(googleExtensionButton.frame.height)
             make.width.equalTo(googleExtensionButton.frame.width)
         }
+
+        logLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(googleExtensionButton.snp.bottom).offset(sectionOffset)
+            make.left.equalTo(ytdlLabel)
+            make.right.equalTo(ytdlLabel)
+            make.height.equalTo(18)
+        }
+        
+        openLogFolderButton.snp.makeConstraints { (make) in
+            make.top.equalTo(logLabel.snp.bottom).offset(itemOffset)
+            make.left.equalTo(logLabel).offset(16)
+            // make sure is ok
+            make.height.equalTo(openLogFolderButton.frame.height)
+            make.width.equalTo(openLogFolderButton.frame.width)
+        }
+        
+        clearLogsButton.snp.makeConstraints { (make) in
+            make.top.equalTo(openLogFolderButton.snp.bottom).offset(itemOffset)
+            make.left.equalTo(openLogFolderButton)
+            // make sure is ok
+            make.height.equalTo(clearLogsButton.frame.height)
+            make.width.equalTo(clearLogsButton.frame.width)
+        }
+
     }
 }

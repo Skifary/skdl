@@ -45,6 +45,10 @@ class ProxySettingView: BasicView {
         return input
     }()
     
+    fileprivate let filterLabel: SKLabel = generalTitleLabel("Rule")
+    
+    fileprivate let ruleTextView: RuleTextView = RuleTextView()
+    
     // public
     
     var type: Int {
@@ -74,11 +78,20 @@ class ProxySettingView: BasicView {
         }
     }
     
+    var rules: String {
+        get {
+            return ruleTextView.textView.string
+        }
+        set {
+            ruleTextView.textView.string = newValue
+        }
+    }
+    
     //MARK:-
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        addSubviews([proxySegment, addressInput, portInput])
+        addSubviews([proxySegment, addressInput, portInput, filterLabel, ruleTextView])
         layoutSubviews()
         
         titleLabel.stringValue = "PROXY"
@@ -110,6 +123,21 @@ class ProxySettingView: BasicView {
             make.height.equalTo(40)
             make.left.equalTo(addressInput)
             make.right.equalTo(addressInput)
+        }
+        
+        filterLabel.sizeToFit()
+        filterLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(portInput.snp.bottom).offset(32)
+            make.left.equalTo(portInput)
+            make.height.equalTo(filterLabel.frame.height)
+            make.width.equalTo(filterLabel.frame.width)
+        }
+        
+        ruleTextView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(32)
+            make.right.equalToSuperview().offset(-32)
+            make.top.equalTo(filterLabel.snp.bottom).offset(4)
+            make.bottom.equalTo(okButton.snp.top).offset(-32)
         }
         
     }

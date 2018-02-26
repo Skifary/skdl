@@ -25,21 +25,6 @@ class BasicViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setActions()
-    }
-    
-    fileprivate func setActions() {
-        
-//        let actionDictionary: [NSButton : Selector?] = [
-//            basicView.backButton : #selector(dismissAction),
-//            basicView.okButton : #selector(okAction),
-//        ]
-//
-//        actionDictionary.forEach { (button, aciton) in
-//            button.target = self
-//            button.action = aciton
-//        }
-        
         NSButton.batchAddActions([
             basicView.backButton : #selector(dismissAction),
             basicView.okButton : #selector(okAction),

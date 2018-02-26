@@ -19,11 +19,12 @@ struct Preference {
     static let defaultPreference:[String : Any] = [
         Key.localStorageFolder : docDir + "/skdl",
         Key.historyStorageFolders : [docDir],
-        Key.defaultPlayer : "",
         Key.proxyType : 0,
         Key.proxyAddress : "127.0.0.1",
         Key.proxtPort : "1080",
         Key.socketTimeout : "5",
+        Key.useLocalYTDL : false,
+        Key.automaticUpdateYTDL : true,
     ]
     
     struct Key {
@@ -32,8 +33,6 @@ struct Preference {
         
         static let historyStorageFolders = "historyStorageFolders"
         
-        static let defaultPlayer = "defaultPlayer"
-        
         static let proxyType = "proxyType"
         
         static let proxyAddress = "proxyAddress"
@@ -41,6 +40,10 @@ struct Preference {
         static let proxtPort = "proxtPort"
         
         static let socketTimeout = "socketTimeout"
+        
+        static let useLocalYTDL = "useLocalYoutubeDL"
+        
+        static let automaticUpdateYTDL = "automaticUpdateYTDL"
     }
     
     
@@ -69,16 +72,7 @@ struct Preference {
             hsp?.insert(path, at: 0)
             standardUD.set(hsp, forKey: Key.historyStorageFolders)
         }
-        
-        static var defaultPlayer: String? {
-            set {
-                standardUD.set(newValue, forKey: Key.defaultPlayer)
-            }
-            get {
-                return standardUD.string(forKey: Key.defaultPlayer)
-            }
-        }
-        
+
         static var proxyType: Int? {
             set {
                 standardUD.set(newValue, forKey: Key.proxyType)
@@ -112,6 +106,24 @@ struct Preference {
             }
             get {
                 return standardUD.string(forKey: Key.socketTimeout)
+            }
+        }
+        
+        static var useLocalYTDL: Bool {
+            set {
+                standardUD.set(newValue, forKey: Key.useLocalYTDL)
+            }
+            get {
+                return standardUD.bool(forKey: Key.useLocalYTDL)
+            }
+        }
+        
+        static var automaticUpdateYTDL: Bool {
+            set {
+                standardUD.set(newValue, forKey: Key.automaticUpdateYTDL)
+            }
+            get {
+                return standardUD.bool(forKey: Key.automaticUpdateYTDL)
             }
         }
         

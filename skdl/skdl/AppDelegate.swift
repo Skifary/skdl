@@ -28,7 +28,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //MARK:- application
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+
+        if PV.automaticUpdateYTDL {
+            ytdlController.shared.update()
+        }
         
         if !isReady {
             UserDefaults.standard.register(defaults: Preference.defaultPreference)
@@ -70,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let host = parsed.host, host == "weblink" {
             guard let urlValue = (parsed.queryItems?.first { $0.name == "url" }?.value) else { return }
             DispatchQueue.global().async {
-                VideoDownloader.shared.download(with: urlValue)
+               VideoDownloader.shared.download(with: urlValue)
             }
         }
     }

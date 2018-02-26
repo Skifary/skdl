@@ -53,5 +53,4 @@ internal struct ImageName {
         static let Logo = NSImage.Name("about_logo")
     }
     
-    
 }

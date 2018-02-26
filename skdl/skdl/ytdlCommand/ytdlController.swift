@@ -10,47 +10,45 @@ import Foundation
 
 internal class ytdlController {
     
-    
     //MARK:- singleton
     internal static let shared = ytdlController()
     
-    fileprivate init() {
-        
-    }
+    internal var isAvailable = true
+    
+    // 增加对 可用和不可用的时候的一个处理
+    
+    fileprivate init() {}
     
     //MARK:- api
     
     internal func isURLAvailable(url: String) -> Bool {
         let args = [YOS.GetUrl, url, YON.SocketTimeout, PV.socketTimeout!]
-        let res = ytdlCommand.resultFromCommand(args: args)
-        if res.result == "" {
-            Log.log(res.errorMessage)
+        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
+        if commandResult.result == "" {
             return false
         }
         return true
     }
     
     internal func isURLAvailableInProxy(url: String) -> Bool {
-        let proxy: String = Preference.proxy
-        let args = [YOS.GetUrl, url, YON.Proxy, proxy]
-        let res = ytdlCommand.resultFromCommand(args: args)
-        if res.result == "" {
-            Log.log(res.errorMessage)
+        let args = [YOS.GetUrl, url, YON.Proxy, Preference.proxy]
+        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
+        if commandResult.result == "" {
             return false
         }
         return true
     }
     
+    // batch
     internal func dumpJson(urls: [String], _ isProxyUrl: Bool = false) -> [String]? {
         var args = [YOS.DumpJson]
         args.append(contentsOf: urls)
         if isProxyUrl {
-            args.append(YON.Proxy)
-            args.append(Preference.proxy)
+            args.append(contentsOf: [YON.Proxy, Preference.proxy])
         }
         
-        let res = ytdlCommand.resultFromCommand(args: args)
-        let jsons = res.result?.components(separatedBy: "\n")
+        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
+        let jsons = commandResult.result?.components(separatedBy: "\n")
         return jsons
     }
     
@@ -58,20 +56,43 @@ internal class ytdlController {
         var args = [YOS.DumpJson]
         args.append(url)
         if isProxyUrl {
-            args.append(YON.Proxy)
-            args.append(Preference.proxy)
+            args.append(contentsOf: [YON.Proxy, Preference.proxy])
         }
-        let res = ytdlCommand.resultFromCommand(args: args)
-        return res.result
+        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
+        
+      //  if commandResult.errorMessage?.isEmpty
+        
+        return commandResult.result
     }
     
-    internal func download(with url: String, localPath: String, isProxyUrl: Bool = false) -> (process: Process, out: Pipe, error: Pipe) {
+    internal func download(with url: String, localPath: String, isProxyUrl: Bool = false) -> ytdlCommand.Handle {
         var args = [YOF.Output, localPath, url]
         if isProxyUrl {
-            args.append(YON.Proxy)
-            args.append(Preference.proxy)
+            args.append(contentsOf: [YON.Proxy, Preference.proxy])
         }
         return ytdlCommand.command(args: args)
+    }
+    
+    // todo
+    // 没有做对于youtube-dl升级的时候做的事
+    internal func update() {
+        DispatchQueue.global().async {
+            self.isAvailable = false
+            _ = ytdlCommand.commandWaitingForResult(args: [YO.Update])
+            self.isAvailable = true
+        }
+    }
+    
+    internal func version() -> String? {
+        let args = [YO.Version]
+        
+        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
+        
+        guard let version = commandResult.result  else {
+            print("version is nil!")
+            return nil
+        }
+        return version
     }
     
 }

@@ -8,11 +8,16 @@
 
 import Foundation
 
+internal typealias YO = ytdlOptions
 internal typealias YOS = ytdlOptions.Simulate
 internal typealias YOF = ytdlOptions.Filesystem
 internal typealias YON = ytdlOptions.NetworkOptions
 
 internal struct ytdlOptions {
+    
+    static let Update: String = "-U" // update to latest version
+    
+    static let Version: String = "--version" // youtube-dl version
     
     internal struct Simulate {
         

@@ -97,7 +97,7 @@ internal class Video: NSObject, NSCoding {
     
     internal var downloadPath: URL? {
         guard let url = localFolder else {
-            Log.logWithCallStack("local folder is nil")
+            print("local folder is nil")
             return nil
         }
         return url.appendingPathComponent("/" + id, isDirectory: false)
@@ -105,9 +105,17 @@ internal class Video: NSObject, NSCoding {
     
     internal var filePath: URL? {
         guard let url = localFolder else {
-            Log.logWithCallStack("local folder is nil")
+            print("local folder is nil")
             return nil
         }
-        return url.appendingPathComponent("/" + name + "." + ext, isDirectory: false)
+
+        var path = url.appendingPathComponent("/" + name + "." + ext, isDirectory: false)
+        var n: Int = 1
+        while PathUtility.fileExist(path) {
+            path = url.appendingPathComponent("/" + name + "\(n)." + ext, isDirectory: false)
+            n += 1
+        }
+
+        return path
     }
 }

@@ -41,7 +41,7 @@ internal class VideoManager {
     internal func save() {
         PathUtility.deleteFileIfExist(url: historyUrl)
         if !NSKeyedArchiver.archiveRootObject(videos, toFile: historyUrl.path) {
-            Log.log("Cannot save files history!")
+            print("Cannot save files history!")
         }
     }
     
