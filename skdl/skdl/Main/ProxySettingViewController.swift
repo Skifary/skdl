@@ -26,7 +26,7 @@ class ProxySettingViewController: BasicViewController {
         proxySettingView.okTitle = "Save"
         
         let proxy = Proxy()
-        proxySettingView.type = proxy.type
+        proxySettingView.method = proxy.method.rawValue
         proxySettingView.address = proxy.address
         proxySettingView.port = proxy.port
         
@@ -49,7 +49,7 @@ class ProxySettingViewController: BasicViewController {
         }
         
         Config.shared.save()
-        Proxy.save(proxySettingView.type, proxySettingView.address, proxySettingView.port)
+        Proxy.save(ProxyMethod(rawValue: proxySettingView.method)!, proxySettingView.address, proxySettingView.port)
         super.okAction(sender)
     }
     

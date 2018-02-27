@@ -66,8 +66,18 @@ internal class VideoDownloader {
         
         // automate check proxy
         if useProxy == false {
-            let realURL = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)
-            useProxy = Config.shared.rules.contains((realURL?.host)!)
+            if let host = URL(string: url)?.host {
+                // 判断 www.youtube.com
+                if Config.shared.rules.contains(host) {
+                    useProxy = true
+                } else {
+                    // 判断 youtube.com
+                    var index = host.index(of: ".")!
+                    index = host.index(after: index)
+                    let subHost = host[index...]
+                    useProxy = Config.shared.rules.contains(String(subHost))
+                }
+            }
         }
 
         guard let json = ytdlController.shared.dumpJson(url: url, useProxy) else {

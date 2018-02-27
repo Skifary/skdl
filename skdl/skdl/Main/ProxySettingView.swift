@@ -10,15 +10,15 @@ import Cocoa
 
 struct Proxy {
     
-    var type: Int = PV.proxyType ?? 0
+    var method: ProxyMethod = PV.proxyMethod ?? ProxyMethod.HTTP
     
     var address: String = PV.proxyAddress ?? ""
     
     var port: String = PV.proxyPort ?? ""
     
-    static func save(_ type: Int, _ address: String, _ port: String) {
+    static func save(_ method: ProxyMethod, _ address: String, _ port: String) {
         
-        PV.proxyType = type
+        PV.proxyMethod = method
         
         PV.proxyAddress = address
         
@@ -51,7 +51,7 @@ class ProxySettingView: BasicView {
     
     // public
     
-    var type: Int {
+    var method: Int {
         get {
             return proxySegment.currentIndex
         }

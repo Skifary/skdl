@@ -58,11 +58,13 @@ internal class ytdlController {
         if isProxyUrl {
             args.append(contentsOf: [YON.Proxy, Preference.proxy])
         }
-        let commandResult = ytdlCommand.commandWaitingForResult(args: args)
-        
-      //  if commandResult.errorMessage?.isEmpty
-        
-        return commandResult.result
+        guard let json = ytdlCommand.commandWaitingForResult(args: args).result else {
+            return nil
+        }
+        if json.isEmpty {
+            return nil
+        }
+        return json
     }
     
     internal func download(with url: String, localPath: String, isProxyUrl: Bool = false) -> ytdlCommand.Handle {

@@ -14,12 +14,17 @@ typealias PV = Preference.Value
 let standardUD = UserDefaults.standard
 let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 
+enum ProxyMethod : Int {
+    case HTTP = 0
+    case SOCKS5 = 1
+}
+
 struct Preference {
     
     static let defaultPreference:[String : Any] = [
         Key.localStorageFolder : docDir + "/skdl",
         Key.historyStorageFolders : [docDir],
-        Key.proxyType : 0,
+        Key.proxyMethod : ProxyMethod.HTTP.rawValue,
         Key.proxyAddress : "127.0.0.1",
         Key.proxtPort : "1080",
         Key.socketTimeout : "5",
@@ -33,7 +38,7 @@ struct Preference {
         
         static let historyStorageFolders = "historyStorageFolders"
         
-        static let proxyType = "proxyType"
+        static let proxyMethod = "proxyMethod"
         
         static let proxyAddress = "proxyAddress"
         
@@ -73,12 +78,12 @@ struct Preference {
             standardUD.set(hsp, forKey: Key.historyStorageFolders)
         }
 
-        static var proxyType: Int? {
+        static var proxyMethod: ProxyMethod? {
             set {
-                standardUD.set(newValue, forKey: Key.proxyType)
+                standardUD.set(newValue?.rawValue, forKey: Key.proxyMethod)
             }
             get {
-                return standardUD.integer(forKey: Key.proxyType)
+                return ProxyMethod(rawValue: standardUD.integer(forKey: Key.proxyMethod))
             }
         }
         
@@ -130,7 +135,7 @@ struct Preference {
     }
     
     static var proxy: String {
-        let proxyType = Value.proxyType == 0 ? "socks5" : "http"
+        let proxyType = Value.proxyMethod == ProxyMethod.HTTP ? "http" : "socks5"
         let address = Value.proxyAddress
         let port = Value.proxyPort
         
