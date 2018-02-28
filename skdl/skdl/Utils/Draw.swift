@@ -21,6 +21,7 @@ func drawImageInNewCGContext(size: CGSize, useNSGraphicsContext: Bool = false, d
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
     let scaleFactor = NSScreen.main!.backingScaleFactor
     
+    // 这里 scale 有问题
     let context = CGContext(
         data: nil,
         width: Int(size.width * scaleFactor),
@@ -44,7 +45,7 @@ func drawImageInNewCGContext(size: CGSize, useNSGraphicsContext: Bool = false, d
     
     let image = context!.makeImage()
     // 重点 cgimage的坐标原点在左上角
-    let newImage = image?.cropping(to: NSMakeRect(0, size.height, size.width, size.height))
+    let newImage = image?.cropping(to: NSMakeRect(0, size.height * (scaleFactor - 1), size.width, size.height))
     
     return NSImage(cgImage: newImage!, size: NSMakeSize(size.width/scaleFactor, size.height/scaleFactor))
     
