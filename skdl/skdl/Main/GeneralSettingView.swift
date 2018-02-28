@@ -33,6 +33,12 @@ class GeneralSettingView: BasicView {
     
     fileprivate let logLabel: SKLabel = generalTitleLabel("Log")
     
+    fileprivate let ytdlVersionLabel: SKLabel = {
+        let label = SKLabel(title: "Version : ")
+        label.font = NSFont.systemFont(ofSize: 11, weight: .thin)
+        label.textColor = Color.CheckBox.LightGray
+        return label
+    }()
     //public
     
     let folderInput: TitledInputView = {
@@ -78,7 +84,7 @@ class GeneralSettingView: BasicView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        addSubviews([folderLabel, folderInput, extensionLabel, googleExtensionButton, chooseFolderButton, ytdlLabel, useLocalYTDLCheckBox, automaticUpdateYTDLCheckBox, updateYTDLButton, logLabel, openLogFolderButton, clearLogsButton])
+        addSubviews([folderLabel, folderInput, extensionLabel, googleExtensionButton, chooseFolderButton, ytdlLabel, useLocalYTDLCheckBox, automaticUpdateYTDLCheckBox, updateYTDLButton, logLabel, openLogFolderButton, clearLogsButton, ytdlVersionLabel])
         layoutSubviews()
         titleLabel.stringValue = "GENERAL"
         
@@ -140,9 +146,15 @@ class GeneralSettingView: BasicView {
             make.right.equalTo(ytdlLabel)
         }
         
-        updateYTDLButton.snp.makeConstraints { (make) in
+        ytdlVersionLabel.snp.makeConstraints { (make) in
             make.top.equalTo(automaticUpdateYTDLCheckBox.snp.bottom).offset(itemOffset)
-            make.left.equalTo(automaticUpdateYTDLCheckBox)
+            make.left.right.equalTo(automaticUpdateYTDLCheckBox)
+            make.height.equalTo(16)
+        }
+        
+        updateYTDLButton.snp.makeConstraints { (make) in
+            make.top.equalTo(ytdlVersionLabel.snp.bottom).offset(itemOffset)
+            make.left.equalTo(ytdlVersionLabel)
             // make sure is ok
             make.height.equalTo(updateYTDLButton.frame.height)
             make.width.equalTo(updateYTDLButton.frame.width)
@@ -186,5 +198,11 @@ class GeneralSettingView: BasicView {
             make.width.equalTo(clearLogsButton.frame.width)
         }
 
+    }
+    
+    func setVersion(_ version: String?) {
+        
+        guard let version = version else { return }
+        ytdlVersionLabel.stringValue = "Version : " + version
     }
 }

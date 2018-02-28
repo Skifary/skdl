@@ -85,6 +85,8 @@ class PopoverViewController: NSViewController {
     }
     
     @objc fileprivate func openFolderAction(_ sender: NSButton) {
+        
+        PathUtility.createDirectoryIfNotExist(PV.localStoragePath!)
         PathUtility.openFolder(PV.localStoragePath!)
        // NSWorkspace.shared.selectFile(PV.localStoragePath, inFileViewerRootedAtPath: PV.localStoragePath!)
     }

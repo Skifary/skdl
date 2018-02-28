@@ -28,7 +28,7 @@ class NewTaskViewController: BasicViewController {
         
         newTaskView.okTitle = "Download"
     }
-    
+
     override func okAction(_ sender: NSButton) {
 
         let url = newTaskView.url

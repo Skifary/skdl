@@ -12,14 +12,27 @@ import Cocoa
 public class PathUtility {
     
     public static func createDirectoryIfNotExist(url: URL) {
-        let path = url.path
+        createDirectoryIfNotExist(url.path)
+//        // check exist
+//        if !FileManager.default.fileExists(atPath: path) {
+//            do {
+//              //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+//                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
+//            } catch {
+//                print("can't create folder,url : \(url)")
+//                print(error.localizedDescription)
+//            }
+//        }
+    }
+    
+    public static func createDirectoryIfNotExist(_ path: String) {
         // check exist
         if !FileManager.default.fileExists(atPath: path) {
             do {
-              //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+                //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
                 try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
             } catch {
-                print("can't create folder,url : \(url)")
+                print("can't create folder, path is : \(path)")
                 print(error.localizedDescription)
             }
         }

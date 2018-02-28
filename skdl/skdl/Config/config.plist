@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>googleextension</key>
+	<string>https://raw.githubusercontent.com/Skifary/skdl/master/chrome_extension/crx/chrome_extension.crx</string>
 	<key>rule</key>
 	<array>
 		<string>www.youtube.com</string>

@@ -70,7 +70,7 @@ class AboutView: NSView {
 
     override func mouseDown(with event: NSEvent) {
         let viewController = nextResponder as? NSViewController
-        viewController?.dismissViewController(viewController!)
+        viewController?.dismiss(nil)
     }
 
 }

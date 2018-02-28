@@ -29,12 +29,17 @@ internal class ytdlCommand {
         process.environment = ProcessInfo.processInfo.environment
         
        // process.environment!["PATH"] = "/Users/Skifary/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/go/bin:/Users/Skifary/Go/bin:/Users/Skifary/.rvm/bin"//[":/usr/local/bin:/usr/local/go/bin:/Users/Skifary/Go/bin:/Users/Skifary/.rvm/bin"]
-        if let path = Shell.excuteCommand("which ffmpeg") {
-           
-            //添加 ffmpeg 来合并视频
-            process.environment!["PATH"]! += ":" + path.substring(to: path.count - 8)
+//        if let path = Shell.excuteCommand("which ffmpeg") {
+//
+//            //添加 ffmpeg 来合并视频
+//            process.environment!["PATH"]! += ":" + path.substring(to: path.count - 8)
+//        }
+//
+        
+        if let path = ffmpegPATH() {
+            process.environment!["PATH"]! += ":" + path
         }
-       
+        
         process.launchPath = ytdlPath
         process.arguments = args
         let out = Pipe()

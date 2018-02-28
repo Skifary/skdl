@@ -28,7 +28,15 @@ class Shell {
             print(errorMessage!)
             return nil
         }
-        return String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
+        
+        guard let ret = String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) else {
+            return nil
+        }
+        
+        if ret.isEmpty {
+            return nil
+        }
+        return ret
     }
     
 }

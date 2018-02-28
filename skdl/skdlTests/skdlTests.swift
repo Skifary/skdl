@@ -24,7 +24,7 @@ class skdlTests: XCTestCase {
     
     func testExample() {
  
-        let s = ProxyMethod.HTTP.rawValue
+        let s = hasFFmpeg()
         
         print(s)
         

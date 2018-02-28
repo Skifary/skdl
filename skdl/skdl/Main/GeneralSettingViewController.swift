@@ -40,8 +40,15 @@ class GeneralSettingViewController: BasicViewController {
             generalSettingView.openLogFolderButton : #selector(openLogFolderAction),
             generalSettingView.clearLogsButton : #selector(clearLogsAction),
             ], self)
+        
+        setVersion(ytdlController.shared.isUpdating)
+        
+        ytdlController.shared.register4UpdateStatus("GeneralSettingViewObserver") { (isUpdating) in
+            self.setVersion(isUpdating)
+        }
+        
     }
-    
+
     @objc fileprivate func chooseAction(_ sender: NSButton) {
         
         guard let url = FolderBrowser.chooseFolder(title: "Choose Folder") else {
@@ -54,7 +61,7 @@ class GeneralSettingViewController: BasicViewController {
     }
     
     @objc fileprivate func jump2GoogleExtensionAction(_ sender: NSButton) {
-        //....
+        NSWorkspace.shared.open(URL(string: Config.shared.googleExtensionURL)!)
     }
     
     @objc fileprivate func updateYTDLAction(_ sender: NSButton) {
@@ -62,23 +69,20 @@ class GeneralSettingViewController: BasicViewController {
     }
     
     @objc fileprivate func openLogFolderAction(_ sender: NSButton) {
-
-        // open folder
         PathUtility.openFolder(LogManager.shared.logDir.path)
     }
     
     @objc fileprivate func clearLogsAction(_ sender: NSButton) {
-        
-        // clear logs
-        // print("clear logs")
-        
         let enumerator: FileManager.DirectoryEnumerator? = FileManager.default.enumerator(atPath: LogManager.shared.logDir.path)
 
         while let file = enumerator?.nextObject() as? String {
             PathUtility.deleteFileIfExist(LogManager.shared.logDir.path + "/" + file)
         }
-        
-        
+    }
+    
+    override func dismissAction(_ sender: NSButton) {
+        ytdlController.shared.removeUpdateStatus("GeneralSettingViewObserver")
+        super.dismissAction(sender)
     }
     
     override func okAction(_ sender: NSButton) {
@@ -86,7 +90,22 @@ class GeneralSettingViewController: BasicViewController {
         PV.useLocalYTDL =  generalSettingView.isUseLocalYTDL
         
         PV.automaticUpdateYTDL = generalSettingView.isAutomaticUpdateYTDL
-        
+        ytdlController.shared.removeUpdateStatus("GeneralSettingViewObserver")
         super.okAction(sender)
+    }
+    
+    func setVersion(_ isUpdating: Bool) {
+        if isUpdating {
+            DispatchQueue.main.async {
+                self.generalSettingView.setVersion("Updating")
+            }
+        } else {
+            DispatchQueue.global().async {
+                let verison = ytdlController.shared.version()
+                DispatchQueue.main.async {
+                    self.generalSettingView.setVersion(verison)
+                }
+            }
+        }
     }
 }

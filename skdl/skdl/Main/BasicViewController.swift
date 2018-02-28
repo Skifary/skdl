@@ -31,15 +31,15 @@ class BasicViewController: NSViewController {
             ], self)
         
     }
-    
+
     //MARK:- action
     
     @objc func dismissAction(_ sender: NSButton) {
-        dismissViewController(self)
+        dismiss(nil)
     }
     
     @objc func okAction(_ sender: NSButton) {
-        dismissViewController(self)
+        dismiss(nil)
     }
     
 }

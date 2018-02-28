@@ -36,6 +36,10 @@ class Config {
         }
     }
     
+    var googleExtensionURL: String {
+        return configs["googleextension"] as! String
+    }
+    
     //MARK:-
     
     func save() {

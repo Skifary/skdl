@@ -17,6 +17,7 @@
 		D52AD1F11F99D37800F50A3D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */; };
 		D52AD1F31F9A39CB00F50A3D /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */; };
 		D53BF18D2024C2AD0045032B /* RuleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53BF18C2024C2AD0045032B /* RuleTextView.swift */; };
+		D5416F1E2045A82500401002 /* FFmpeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5416F1D2045A82500401002 /* FFmpeg.swift */; };
 		D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541FCB91F910E9000CB8381 /* Assert.swift */; };
 		D546ABD41F96549600FC3310 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABD31F96549600FC3310 /* Color.swift */; };
 		D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B04D31F8FC806003A4884 /* ErrorReport.swift */; };
@@ -131,6 +132,7 @@
 		D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverViewController.swift; path = Main/PopoverViewController.swift; sourceTree = "<group>"; };
 		D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverView.swift; path = Main/PopoverView.swift; sourceTree = "<group>"; };
 		D53BF18C2024C2AD0045032B /* RuleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuleTextView.swift; path = Main/RuleTextView.swift; sourceTree = "<group>"; };
+		D5416F1D2045A82500401002 /* FFmpeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFmpeg.swift; path = ytdlCommand/FFmpeg.swift; sourceTree = "<group>"; };
 		D541FCB91F910E9000CB8381 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Assert.swift; path = Utils/Assert.swift; sourceTree = "<group>"; };
 		D546ABD31F96549600FC3310 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = AppData/Color.swift; sourceTree = "<group>"; };
 		D54B04D31F8FC806003A4884 /* ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorReport.swift; path = Utils/ErrorReport.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				D5C72ABC1F6286A5004CB147 /* ytdlController.swift */,
 				D561A83E1F6A304A00BEE709 /* ytdlDumpJsonKey.swift */,
 				D5CDDE0220245DC40076126D /* Shell.swift */,
+				D5416F1D2045A82500401002 /* FFmpeg.swift */,
 			);
 			name = ytdlCommand;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				D5067AF21F4E7FEB00B93ED4 /* AppDelegate.swift in Sources */,
 				D5F5055C201E256A00E6001C /* AboutViewController.swift in Sources */,
 				D5D9B1EA1F721161008E5991 /* ConstraintConfig.swift in Sources */,
+				D5416F1E2045A82500401002 /* FFmpeg.swift in Sources */,
 				D5D9B1F61F721161008E5991 /* ConstraintMaker.swift in Sources */,
 				D5EC26E21F8E6AFB009363A2 /* NSButton+Image.swift in Sources */,
 				D55587FB1FB68A2F008E254A /* Preference.swift in Sources */,

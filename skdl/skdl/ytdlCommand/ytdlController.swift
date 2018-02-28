@@ -10,12 +10,25 @@ import Foundation
 
 internal class ytdlController {
     
+    typealias ytdlStatusChangedHandle = (Bool)->()
+    
     //MARK:- singleton
     internal static let shared = ytdlController()
     
-    internal var isAvailable = true
+    internal var isUpdating = true {
+        didSet {
+//            statusChangedHandles.forEach { (handle) in
+//                handle(isAvailable)
+//            }
+            statusChangedHandles.forEach { (_, handle) in
+                handle(isUpdating)
+            }
+        }
+    }
     
     // 增加对 可用和不可用的时候的一个处理
+    
+    fileprivate var statusChangedHandles: [String : ytdlStatusChangedHandle] = [:]
     
     fileprivate init() {}
     
@@ -58,10 +71,14 @@ internal class ytdlController {
         if isProxyUrl {
             args.append(contentsOf: [YON.Proxy, Preference.proxy])
         }
-        guard let json = ytdlCommand.commandWaitingForResult(args: args).result else {
+        let cmdResult = ytdlCommand.commandWaitingForResult(args: args)
+        guard let json = cmdResult.result else {
+            Log.log2File("json is nil", ["error" : cmdResult.errorMessage!])
             return nil
         }
         if json.isEmpty {
+            
+            Log.log2File("json is empty", ["error" : cmdResult.errorMessage!])
             return nil
         }
         return json
@@ -79,9 +96,9 @@ internal class ytdlController {
     // 没有做对于youtube-dl升级的时候做的事
     internal func update() {
         DispatchQueue.global().async {
-            self.isAvailable = false
+            self.isUpdating = true
             _ = ytdlCommand.commandWaitingForResult(args: [YO.Update])
-            self.isAvailable = true
+            self.isUpdating = false
         }
     }
     
@@ -95,6 +112,14 @@ internal class ytdlController {
             return nil
         }
         return version
+    }
+    
+    internal func register4UpdateStatus(_ key: String, _ handle: @escaping ytdlStatusChangedHandle) {
+        statusChangedHandles[key] = handle
+    }
+    
+    internal func removeUpdateStatus(_ key: String) {
+        statusChangedHandles.removeValue(forKey: key)
     }
     
 }
