@@ -66,7 +66,10 @@ internal class VideoDownloader {
         
         // automate check proxy
         if useProxy == false {
-            if let host = URL(string: url)?.host {
+            
+            let u = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)
+            
+            if let host = u?.host {
                 // 判断 www.youtube.com
                 if Config.shared.rules.contains(host) {
                     useProxy = true

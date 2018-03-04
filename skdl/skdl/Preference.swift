@@ -27,7 +27,7 @@ struct Preference {
         Key.proxyMethod : ProxyMethod.HTTP.rawValue,
         Key.proxyAddress : "127.0.0.1",
         Key.proxtPort : "1080",
-        Key.socketTimeout : "5",
+        Key.socketTimeout : "10",
         Key.useLocalYTDL : false,
         Key.automaticUpdateYTDL : true,
     ]
@@ -105,7 +105,7 @@ struct Preference {
             }
         }
         
-        static var socketTimeout: String? {
+        static var socketTimeout: String! {
             set {
                 standardUD.set(newValue, forKey: Key.socketTimeout)
             }

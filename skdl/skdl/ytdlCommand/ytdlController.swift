@@ -69,7 +69,7 @@ internal class ytdlController {
         var args = [YOS.DumpJson]
         args.append(url)
         if isProxyUrl {
-            args.append(contentsOf: [YON.Proxy, Preference.proxy])
+            args.append(contentsOf: [YON.Proxy, Preference.proxy, YON.SocketTimeout, PV.socketTimeout])
         }
         let cmdResult = ytdlCommand.commandWaitingForResult(args: args)
         guard let json = cmdResult.result else {
