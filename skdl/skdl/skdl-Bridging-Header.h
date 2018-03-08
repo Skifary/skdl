@@ -9,5 +9,6 @@
 #ifndef skdl_Bridging_Header_h
 #define skdl_Bridging_Header_h
 
+#import "KSCrashFramework.h"
 
 #endif /* skdl_Bridging_Header_h */

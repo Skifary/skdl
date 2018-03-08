@@ -28,6 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //MARK:- application
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        // use email, hook email
+        let kscrash = KSCrashInstallationEmail.sharedInstance()
+        kscrash?.recipients = ["gskifary@outlook.com"]
+        kscrash?.setReportStyle(KSCrashEmailReportStyleApple, useDefaultFilenameFormat: true)
+        kscrash?.install()
+        
+        kscrash?.sendAllReports(completion: nil)
 
         if PV.automaticUpdateYTDL {
             ytdlController.shared.update()

@@ -73,9 +73,7 @@ class PopoverViewController: NSViewController {
     }
 
     @objc fileprivate func newTaskAction(_ sender: NSButton) {
-
-        let vc = NewTaskViewController()
-        presentViewControllerFromBottom(vc)
+        presentViewControllerFromBottom(NewTaskViewController())
     }
     
     @objc fileprivate func settingAction(_ sender: NSButton) {
@@ -88,7 +86,6 @@ class PopoverViewController: NSViewController {
         
         PathUtility.createDirectoryIfNotExist(PV.localStoragePath!)
         PathUtility.openFolder(PV.localStoragePath!)
-       // NSWorkspace.shared.selectFile(PV.localStoragePath, inFileViewerRootedAtPath: PV.localStoragePath!)
     }
     
     //MARK:- table view
