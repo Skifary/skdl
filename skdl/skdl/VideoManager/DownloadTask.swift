@@ -50,10 +50,6 @@ internal class DownloadTask: NSObject {
     override init() {
         
     }
-  
-    deinit {
-        
-    }
     
     //MARK:- api
     

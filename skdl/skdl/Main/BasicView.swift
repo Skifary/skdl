@@ -22,12 +22,7 @@ class BasicView: NSView {
         return label
     }()
     
-    let okButton: NSButton = NSButton.button(with: "OK", fontSize: 25, color: Color.Basic.LightBlue) /*{
-        let image = NSImage.image(with: "OK", fontSize: 25, color: Color.Basic.LightBlue)
-        let button = NSButton.button(with: image)
-        button.frame = NSMakeRect(0, 0, image.size.width, image.size.height)
-        return button
-    }()*/
+    let okButton: NSButton = NSButton.button(with: "OK", fontSize: 25, color: Color.Basic.LightBlue)
     
     var okTitle: String = "OK" {
         didSet {

@@ -100,9 +100,7 @@
 		D52AD1F31F9A39CB00F50A3D /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */; };
 		D53BF18D2024C2AD0045032B /* RuleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53BF18C2024C2AD0045032B /* RuleTextView.swift */; };
 		D5416F1E2045A82500401002 /* FFmpeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5416F1D2045A82500401002 /* FFmpeg.swift */; };
-		D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541FCB91F910E9000CB8381 /* Assert.swift */; };
 		D546ABD41F96549600FC3310 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D546ABD31F96549600FC3310 /* Color.swift */; };
-		D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54B04D31F8FC806003A4884 /* ErrorReport.swift */; };
 		D54E8403201C5E1700D6A798 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E8402201C5E1700D6A798 /* Draw.swift */; };
 		D54E8407201CA95B00D6A798 /* ShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E8406201CA95B00D6A798 /* ShadowLayer.swift */; };
 		D54E840C201CCB2600D6A798 /* NSTextField+Frameless.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */; };
@@ -119,7 +117,6 @@
 		D57A2C9C20123F0400A4FCD9 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57A2C9B20123F0400A4FCD9 /* BasicViewController.swift */; };
 		D57A9C9120148A2E00D1C35C /* NSImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */; };
 		D58AABE1201B077500E9BA83 /* TitledInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AABE0201B077500E9BA83 /* TitledInputView.swift */; };
-		D5A177F71FD8415500EB7B21 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A177F61FD8415500EB7B21 /* Toast.swift */; };
 		D5A177F91FD841AA00EB7B21 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A177F81FD841AA00EB7B21 /* BasicView.swift */; };
 		D5A551E51FB2E11C008BF506 /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A551E41FB2E11C008BF506 /* ContentTableView.swift */; };
 		D5A551E71FB2FC97008BF506 /* ContentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A551E61FB2FC97008BF506 /* ContentCellView.swift */; };
@@ -131,7 +128,6 @@
 		D5ACC57C201A3BD8009B6322 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC57B201A3BD8009B6322 /* NewTaskViewController.swift */; };
 		D5ACC57E201A3BFF009B6322 /* URLInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC57D201A3BFF009B6322 /* URLInputView.swift */; };
 		D5C72ABD1F6286A5004CB147 /* ytdlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C72ABC1F6286A5004CB147 /* ytdlController.swift */; };
-		D5C8906F1FA0BA0400331F9A /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8906E1FA0BA0400331F9A /* SKButton.swift */; };
 		D5CDDE0320245DC40076126D /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDDE0220245DC40076126D /* Shell.swift */; };
 		D5CDDE05202485270076126D /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDDE04202485270076126D /* String+Substring.swift */; };
 		D5D4F9A7201A3D4B00BA27DB /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D4F9A6201A3D4B00BA27DB /* SegmentControl.swift */; };
@@ -395,9 +391,7 @@
 		D52AD1F21F9A39CB00F50A3D /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverView.swift; path = Main/PopoverView.swift; sourceTree = "<group>"; };
 		D53BF18C2024C2AD0045032B /* RuleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuleTextView.swift; path = Main/RuleTextView.swift; sourceTree = "<group>"; };
 		D5416F1D2045A82500401002 /* FFmpeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FFmpeg.swift; path = ytdlCommand/FFmpeg.swift; sourceTree = "<group>"; };
-		D541FCB91F910E9000CB8381 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Assert.swift; path = Utils/Assert.swift; sourceTree = "<group>"; };
 		D546ABD31F96549600FC3310 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = AppData/Color.swift; sourceTree = "<group>"; };
-		D54B04D31F8FC806003A4884 /* ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorReport.swift; path = Utils/ErrorReport.swift; sourceTree = "<group>"; };
 		D54E8402201C5E1700D6A798 /* Draw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Draw.swift; path = Utils/Draw.swift; sourceTree = "<group>"; };
 		D54E8406201CA95B00D6A798 /* ShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShadowLayer.swift; path = Main/ShadowLayer.swift; sourceTree = "<group>"; };
 		D54E840B201CCB2600D6A798 /* NSTextField+Frameless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Frameless.swift"; sourceTree = "<group>"; };
@@ -414,7 +408,6 @@
 		D57A2C9B20123F0400A4FCD9 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicViewController.swift; path = Main/BasicViewController.swift; sourceTree = "<group>"; };
 		D57A9C9020148A2E00D1C35C /* NSImage+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Text.swift"; sourceTree = "<group>"; };
 		D58AABE0201B077500E9BA83 /* TitledInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitledInputView.swift; path = Main/TitledInputView.swift; sourceTree = "<group>"; };
-		D5A177F61FD8415500EB7B21 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		D5A177F81FD841AA00EB7B21 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BasicView.swift; path = Main/BasicView.swift; sourceTree = "<group>"; };
 		D5A551E41FB2E11C008BF506 /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentTableView.swift; path = Main/ContentTableView.swift; sourceTree = "<group>"; };
 		D5A551E61FB2FC97008BF506 /* ContentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentCellView.swift; path = Main/ContentCellView.swift; sourceTree = "<group>"; };
@@ -427,7 +420,6 @@
 		D5ACC57D201A3BFF009B6322 /* URLInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLInputView.swift; path = Main/URLInputView.swift; sourceTree = "<group>"; };
 		D5C6B2401F650E9E00BC2D04 /* skdl-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "skdl-Bridging-Header.h"; sourceTree = "<group>"; };
 		D5C72ABC1F6286A5004CB147 /* ytdlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytdlController.swift; path = ytdlCommand/ytdlController.swift; sourceTree = "<group>"; };
-		D5C8906E1FA0BA0400331F9A /* SKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
 		D5CDDE0220245DC40076126D /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shell.swift; path = ytdlCommand/Shell.swift; sourceTree = "<group>"; };
 		D5CDDE04202485270076126D /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
 		D5D4F9A6201A3D4B00BA27DB /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = Main/SegmentControl.swift; sourceTree = "<group>"; };
@@ -988,9 +980,7 @@
 				D57A9C8F201489B900D1C35C /* CocoaExtension */,
 				D5EC26D81F8E6AFA009363A2 /* View */,
 				D5EC26DC1F8E6AFA009363A2 /* Alert.swift */,
-				D541FCB91F910E9000CB8381 /* Assert.swift */,
 				D54E8402201C5E1700D6A798 /* Draw.swift */,
-				D54B04D31F8FC806003A4884 /* ErrorReport.swift */,
 				D5EC26E01F8E6AFB009363A2 /* FileSize.swift */,
 				D5EC26D71F8E6AFA009363A2 /* FolderBrowser.swift */,
 				D5EC26DD1F8E6AFA009363A2 /* JSONHelper.swift */,
@@ -1069,8 +1059,6 @@
 			isa = PBXGroup;
 			children = (
 				D5EC26DA1F8E6AFA009363A2 /* SKLabel.swift */,
-				D5C8906E1FA0BA0400331F9A /* SKButton.swift */,
-				D5A177F61FD8415500EB7B21 /* Toast.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1240,7 +1228,6 @@
 				D5047BDC205187E7008C3EC8 /* KSCrashInstallationEmail.m in Sources */,
 				D5047BB4205187E7008C3EC8 /* KSCrashMonitor_User.c in Sources */,
 				D561A83F1F6A304A00BEE709 /* ytdlDumpJsonKey.swift in Sources */,
-				D541FCBA1F910E9000CB8381 /* Assert.swift in Sources */,
 				D53BF18D2024C2AD0045032B /* RuleTextView.swift in Sources */,
 				D5047BCB205187E7008C3EC8 /* KSCPU.c in Sources */,
 				D5067AF21F4E7FEB00B93ED4 /* AppDelegate.swift in Sources */,
@@ -1328,13 +1315,11 @@
 				D5047B9C205187E7008C3EC8 /* KSCrashReportFilterGZip.m in Sources */,
 				D54E840C201CCB2600D6A798 /* NSTextField+Frameless.swift in Sources */,
 				D5ACC5782018E38D009B6322 /* NSView+Subviews.swift in Sources */,
-				D5C8906F1FA0BA0400331F9A /* SKButton.swift in Sources */,
 				D5047B9A205187E7008C3EC8 /* KSCrashReportFilterAppleFmt.m in Sources */,
 				D52AC2EF2021B090005BA48B /* NSButton+Action.swift in Sources */,
 				D5047BE1205187E7008C3EC8 /* Demangle.cpp in Sources */,
 				D5047BB9205187E7008C3EC8 /* KSCPU_x86_32.c in Sources */,
 				D5047BCE205187E7008C3EC8 /* KSJSONCodec.c in Sources */,
-				D54B04D41F8FC806003A4884 /* ErrorReport.swift in Sources */,
 				D5D9B2011F721161008E5991 /* ConstraintRelation.swift in Sources */,
 				D5D9B2031F721161008E5991 /* ConstraintView.swift in Sources */,
 				D5F203C71F979C3E00720C64 /* DownloadTask.swift in Sources */,
@@ -1342,7 +1327,6 @@
 				D5D9B2021F721161008E5991 /* ConstraintView+Extensions.swift in Sources */,
 				D5A7825D202020E900D39F70 /* NSViewController+Present.swift in Sources */,
 				D5D4F9A7201A3D4B00BA27DB /* SegmentControl.swift in Sources */,
-				D5A177F71FD8415500EB7B21 /* Toast.swift in Sources */,
 				D5047BA6205187E7008C3EC8 /* KSCrashReportSinkVictory.m in Sources */,
 				D56AFB341F616E1300131348 /* ytdlOptions.swift in Sources */,
 				D5EC26E91F8E6AFB009363A2 /* FileSize.swift in Sources */,

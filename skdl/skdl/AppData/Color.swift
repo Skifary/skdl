@@ -11,10 +11,6 @@ import Cocoa
 
 internal struct Color {
     
-   // internal static let Main = color(with: 0x6A2C70)
-    
-   // internal static let Minor = color(with: 0xB83B5E)
-    
     internal static let Main = color(with: 0x262932, alpha: 0.8)
     
     internal static let MainDesc = color(with: 0xBBBDC3)

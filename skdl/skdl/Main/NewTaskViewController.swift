@@ -10,7 +10,6 @@ import Cocoa
 
 class NewTaskViewController: BasicViewController {
 
-    
     //MARK:-
     
     var newTaskView: NewTaskView {

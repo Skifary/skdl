@@ -35,8 +35,8 @@ internal class ytdlCommand {
 //            process.environment!["PATH"]! += ":" + path.substring(to: path.count - 8)
 //        }
 //
-        
         if let path = ffmpegPATH() {
+            //添加 ffmpeg 来合并视频
             process.environment!["PATH"]! += ":" + path
         }
         

@@ -17,9 +17,6 @@ internal class ytdlController {
     
     internal var isUpdating = true {
         didSet {
-//            statusChangedHandles.forEach { (handle) in
-//                handle(isAvailable)
-//            }
             statusChangedHandles.forEach { (_, handle) in
                 handle(isUpdating)
             }
@@ -92,8 +89,6 @@ internal class ytdlController {
         return ytdlCommand.command(args: args)
     }
     
-    // todo
-    // 没有做对于youtube-dl升级的时候做的事
     internal func update() {
         DispatchQueue.global().async {
             self.isUpdating = true

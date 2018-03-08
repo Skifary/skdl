@@ -60,7 +60,6 @@ class NewTaskView: BasicView {
             make.left.equalTo(urlInputView)
             make.right.equalTo(urlInputView)
         }
-        
     }
     
 }

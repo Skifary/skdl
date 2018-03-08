@@ -76,5 +76,4 @@ internal class PopoverView: NSView {
         
     }
     
-    //MARK:- api
 }

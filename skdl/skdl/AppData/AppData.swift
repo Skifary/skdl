@@ -10,9 +10,7 @@ import Foundation
 
 
 internal struct AppData {
-    
     internal static let HistoryFileName = "history.plist"
-    
 }
 
 internal struct AppSize {

@@ -52,7 +52,6 @@ class GeneralSettingViewController: BasicViewController {
     @objc fileprivate func chooseAction(_ sender: NSButton) {
         
         guard let url = FolderBrowser.chooseFolder(title: "Choose Folder") else {
-            
             return
         }
         

@@ -72,12 +72,6 @@ class CheckBoxView: NSView {
     
     //MARK:-
     
-    func addStatusChangeHandle(_ action: CheckChangeHandle) {
-        // waiting for s
-    }
-    
-    //MARK:-
-    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
@@ -99,15 +93,7 @@ class CheckBoxView: NSView {
     }
     
     @objc fileprivate func checkAction(_ sender: NSButton) {
-        
-//        if isChecked {
-//            isChecked = false
-//            checkButton.image = NSImage(named: ImageName.CheckBox.Unchecked)
-//        } else {
-//            isChecked = true
-//            checkButton.image = NSImage(named: ImageName.CheckBox.Checked)
-//        }
-//
+
         isChecked = !isChecked
         updateCheckButton(isChecked)
     }

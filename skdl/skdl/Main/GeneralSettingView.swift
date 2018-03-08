@@ -39,8 +39,7 @@ class GeneralSettingView: BasicView {
         label.textColor = Color.CheckBox.LightGray
         return label
     }()
-    //public
-    
+
     let folderInput: TitledInputView = {
         let input = TitledInputView(frame: NSZeroRect)
         input.title = "Local Folder"
@@ -49,12 +48,7 @@ class GeneralSettingView: BasicView {
     
     let chooseFolderButton: NSButton = NSButton.button(with: ImageName.General.ChooseFolder)
     
-    let googleExtensionButton: NSButton = NSButton.button(with: "Google Extension", fontSize: 18, color: Color.Basic.LightBlue) /*{
-        let image = NSImage.image(with: "Google Extension", fontSize: 18, color: Color.Basic.LightBlue)
-        let button = NSButton.button(with: image)
-        button.frame = NSMakeRect(0, 0, image.size.width, image.size.height)
-        return button
-    }()*/
+    let googleExtensionButton: NSButton = NSButton.button(with: "Google Extension", fontSize: 18, color: Color.Basic.LightBlue)
     
     let openLogFolderButton: NSButton = NSButton.button(with: "Open Log Folder", fontSize: 18, color: Color.Basic.LightBlue)
     

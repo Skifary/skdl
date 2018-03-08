@@ -92,7 +92,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popoverCloseEvent.append(event)
     }
 }
-
-
-
-

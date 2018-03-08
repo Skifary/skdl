@@ -11,8 +11,6 @@ import Foundation
 //MARK:- fileprivate constante
 fileprivate let DownloadOperationQueueName = "com.skifary.skdl.downloadqueue"
 
-//fileprivate let MaxConcurrentDownloadTaskCount = 5
-
 internal typealias DownloadTaskStartHandle = () -> Void
 
 internal typealias DownloadTaskEndHandle = () -> Void

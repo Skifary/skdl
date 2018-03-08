@@ -11,33 +11,13 @@ import Foundation
 
 public class Log {
     
-//    public static func debugLog<T>(_ message: T) {
-//        #if DEBUG
-//            print("debug log : \(#file) \(#function) \(#line) \n \(message)")
-//        #endif
-//    }
-    
-//    public static func log<T>(_ message: T) {
-//        #if DEBUG
-//            print("log: \(message)")
-//        #endif
-//    }
-    
-//    public static func logWithCallStack<T>(_ message: T) {
-//        #if DEBUG
-//            print("log: \(message)")
-//            print(Thread.callStackSymbols.joined(separator: "\n"))
-//        #endif
-//    }
-    
     /* TODO: 需要做一个简单的日志文件系统 */
  
     static public func log2File(_ content: String, _ param: [String : String] = [:]) {
         LogManager.shared.log2File(content, param)
 
     }
-    
-    
+
 }
 
 public class LogManager {
@@ -50,15 +30,7 @@ public class LogManager {
         PathUtility.createDirectoryIfNotExist(url: url)
         return url
     }()
-    
-//    var currentZoneDate: Date {
-//        var date = Date()
-//        let timezone = NSTimeZone.system
-//        let interval = timezone.secondsFromGMT()
-//        date = date.addingTimeInterval(Double(interval))
-//        return date
-//    }
-    
+
     var currentDateComponents: DateComponents {
         return Calendar.current.dateComponents([.second, .minute, .hour, .day, .month, .year], from: Date())
     }

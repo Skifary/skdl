@@ -13,23 +13,12 @@ public class PathUtility {
     
     public static func createDirectoryIfNotExist(url: URL) {
         createDirectoryIfNotExist(url.path)
-//        // check exist
-//        if !FileManager.default.fileExists(atPath: path) {
-//            do {
-//              //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-//                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
-//            } catch {
-//                print("can't create folder,url : \(url)")
-//                print(error.localizedDescription)
-//            }
-//        }
     }
     
     public static func createDirectoryIfNotExist(_ path: String) {
         // check exist
         if !FileManager.default.fileExists(atPath: path) {
             do {
-                //  try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
                 try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
             } catch {
                 print("can't create folder, path is : \(path)")
@@ -49,17 +38,7 @@ public class PathUtility {
     }()
     
     static func deleteFileIfExist(url: URL) {
-        
         deleteFileIfExist(url.path)
-        //let path = url.path
-//        if FileManager.default.fileExists(atPath: path) {
-//            do {
-//                try FileManager.default.removeItem(atPath: path)
-//            } catch {
-//                print("can't delete file, url : \(url)")
-//                print(error.localizedDescription)
-//            }
-//        }
     }
     
     static func deleteFileIfExist(_ path: String) {
