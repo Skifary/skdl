@@ -21,6 +21,7 @@ public class JSONHelper {
             return dictionary
         } catch {
             print("JSONSerialization failed, json : \(json)")
+            print(error.localizedDescription)
         }
         return nil
     }

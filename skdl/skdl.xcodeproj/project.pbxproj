@@ -94,6 +94,7 @@
 		D5067AF61F4E7FEB00B93ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5067AF51F4E7FEB00B93ED4 /* Assets.xcassets */; };
 		D50732641F986D5E00A928FD /* AppDelegate+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50732631F986D5E00A928FD /* AppDelegate+StatusBar.swift */; };
 		D50FC6271F8FBB07004420D1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50FC6261F8FBB07004420D1 /* Log.swift */; };
+		D523ECB12072838A00D0730A /* String+NullCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523ECB02072838A00D0730A /* String+NullCheck.swift */; };
 		D52AC2EF2021B090005BA48B /* NSButton+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AC2EE2021B090005BA48B /* NSButton+Action.swift */; };
 		D52AD1CA1F99A9C300F50A3D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1C91F99A9C300F50A3D /* main.swift */; };
 		D52AD1F11F99D37800F50A3D /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */; };
@@ -385,6 +386,7 @@
 		D5067AFA1F4E7FEB00B93ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D50732631F986D5E00A928FD /* AppDelegate+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppDelegate+StatusBar.swift"; path = "Main/AppDelegate+StatusBar.swift"; sourceTree = "<group>"; };
 		D50FC6261F8FBB07004420D1 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Utils/Log.swift; sourceTree = "<group>"; };
+		D523ECB02072838A00D0730A /* String+NullCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NullCheck.swift"; sourceTree = "<group>"; };
 		D52AC2EE2021B090005BA48B /* NSButton+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Action.swift"; sourceTree = "<group>"; };
 		D52AD1C91F99A9C300F50A3D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D52AD1F01F99D37800F50A3D /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopoverViewController.swift; path = Main/PopoverViewController.swift; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				D5ACC5772018E38D009B6322 /* NSView+Subviews.swift */,
 				D5A7825C202020E900D39F70 /* NSViewController+Present.swift */,
 				D5CDDE04202485270076126D /* String+Substring.swift */,
+				D523ECB02072838A00D0730A /* String+NullCheck.swift */,
 			);
 			path = CocoaExtension;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				D5047B99205187E7008C3EC8 /* KSCrashReportFilterJSON.m in Sources */,
 				D54E8407201CA95B00D6A798 /* ShadowLayer.swift in Sources */,
 				D5047BAE205187E7008C3EC8 /* KSCrashMonitor_AppState.c in Sources */,
+				D523ECB12072838A00D0730A /* String+NullCheck.swift in Sources */,
 				D5047BAB205187E7008C3EC8 /* KSCrashReportStore.c in Sources */,
 				D5F203C81F979C3E00720C64 /* VideoDownloader.swift in Sources */,
 				D5D9B2081F721162008E5991 /* LayoutConstraintItem.swift in Sources */,
@@ -1522,14 +1526,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HCGGZBEBSU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
@@ -1541,14 +1548,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HCGGZBEBSU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = skdl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skifary.skdl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "skdl/skdl-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;

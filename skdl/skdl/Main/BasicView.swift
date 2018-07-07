@@ -26,6 +26,7 @@ class BasicView: NSView {
     
     var okTitle: String = "OK" {
         didSet {
+        
             let image = NSImage.image(with: okTitle, fontSize: 25, color: Color.Basic.LightBlue)
             okButton.image = image
             updateOKButtonFrame(with: image.size)
