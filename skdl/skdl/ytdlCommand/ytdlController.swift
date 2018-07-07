@@ -92,7 +92,26 @@ internal class ytdlController {
     internal func update() {
         DispatchQueue.global().async {
             self.isUpdating = true
-            _ = ytdlCommand.commandWaitingForResult(args: [YO.Update])
+            
+            let tmpUrl = PathUtility.cacheDirectoryURL.appendingPathComponent("youtube-dl");
+            
+            PathUtility.deleteFileIfExist(url: tmpUrl)
+
+            let cmd = "wget https://yt-dl.org/latest/youtube-dl -O \(tmpUrl.path);chmod a+x \(tmpUrl.path);hash -r"
+
+            _ = Shell.excuteCommand(cmd)
+            
+            if let ytdlPath = ytdlCommand.getYTDLPathFromSKDL() {
+                
+                let dst = URL(fileURLWithPath: ytdlPath, isDirectory: false) //URL(string: ytdlPath)
+                
+                print(dst)
+                
+                PathUtility.deleteFileIfExist(url: dst)
+                PathUtility.moveFile(at: tmpUrl, to: dst)
+                
+            }
+            
             self.isUpdating = false
         }
     }

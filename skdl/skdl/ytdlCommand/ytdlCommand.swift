@@ -27,14 +27,7 @@ internal class ytdlCommand {
         let process = Process()
         
         process.environment = ProcessInfo.processInfo.environment
-        
-       // process.environment!["PATH"] = "/Users/Skifary/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/go/bin:/Users/Skifary/Go/bin:/Users/Skifary/.rvm/bin"//[":/usr/local/bin:/usr/local/go/bin:/Users/Skifary/Go/bin:/Users/Skifary/.rvm/bin"]
-//        if let path = Shell.excuteCommand("which ffmpeg") {
-//
-//            //添加 ffmpeg 来合并视频
-//            process.environment!["PATH"]! += ":" + path.substring(to: path.count - 8)
-//        }
-//
+
         if let path = ffmpegPATH() {
             //添加 ffmpeg 来合并视频
             process.environment!["PATH"]! += ":" + path
@@ -49,7 +42,7 @@ internal class ytdlCommand {
         return (process, out, error)
     }
     
-    fileprivate static func getYTDLPathFromSKDL() -> String? {
+    internal static func getYTDLPathFromSKDL() -> String? {
 
         if !PV.useLocalYTDL {
             return builtinYTDLPath()
@@ -70,6 +63,14 @@ internal class ytdlCommand {
     }
     
     fileprivate static func builtinYTDLPath() -> String {
-        return Bundle.main.path(forResource: "youtube-dl", ofType: "")!
+        
+        let url = PathUtility.appSupportDirectoryURL.appendingPathComponent("youtube-dl")
+        
+        if !PathUtility.fileExist(url) {
+            let src = Bundle.main.url(forResource: "youtube-dl", withExtension: "")!
+            PathUtility.copyFile(src: src, dst: url)
+        }
+        
+        return url.path //Bundle.main.path(forResource: "youtube-dl", ofType: "")!
     }
 }
