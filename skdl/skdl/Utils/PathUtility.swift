@@ -37,6 +37,16 @@ public class PathUtility {
         return appASURL
     }()
     
+    public static let cacheDirectoryURL: URL = {
+        // get path
+        let cachePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+        assert(cachePath.count >= 1, "Cannot get path to Application Support directory")
+        let bundleID = Bundle.main.bundleIdentifier!
+        let cacheURL = cachePath.first!.appendingPathComponent(bundleID)
+        createDirectoryIfNotExist(url: cacheURL)
+        return cacheURL
+    }()
+
     static func deleteFileIfExist(url: URL) {
         deleteFileIfExist(url.path)
     }
@@ -52,6 +62,15 @@ public class PathUtility {
         }
     }
     
+    static func moveFile(at src: URL, to dst: URL) {
+        do {
+            try FileManager.default.moveItem(at: src, to: dst)
+        } catch {
+            print("can't move file, src url : \(src), dst url : \(dst)")
+            print(error.localizedDescription)
+        }
+    }
+    
     static func renameFileIfExist(old: URL, new: URL) {
         if FileManager.default.fileExists(atPath: old.path) {
             do {
@@ -61,6 +80,19 @@ public class PathUtility {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    static func copyFile(src: URL, dst: URL) {
+        
+        if FileManager.default.fileExists(atPath: src.path) {
+            do {
+                try FileManager.default.copyItem(at: src, to: dst)
+            } catch {
+                print("can't copy file, src url : \(src), dst url : \(dst)")
+                print(error.localizedDescription)
+            }
+        }
+        
     }
     
     static func fileExist(_ path: URL) -> Bool {
