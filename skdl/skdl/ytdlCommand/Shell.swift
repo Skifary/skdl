@@ -10,11 +10,18 @@ import Foundation
 
 class Shell {
     
-    static func excuteCommand(_ command: String) -> String? {
+    static func excuteCommand(_ command: String, _ otherEnvironment : [String : String]? = nil) -> String? {
         let process = Process()
         
         let info = ProcessInfo.processInfo
-        process.environment = info.environment
+        var environment : [String : String] = info.environment
+        
+        if let otherEnvironment = otherEnvironment {
+            otherEnvironment.forEach { (key, value) in
+                environment[key] = value
+            }
+        }
+        process.environment = environment
         
         process.launchPath = info.environment["SHELL"]
         process.arguments = ["-l","-c",command]
