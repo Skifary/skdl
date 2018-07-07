@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+extension String {
+    
+    static func isNullOrEmpty(_ str: String?) -> Bool {
+        guard let str = str else {
+            return true
+        }
+        return str.isEmpty
+    }
+    
+}
